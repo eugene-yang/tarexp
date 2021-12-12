@@ -6,8 +6,8 @@ import numpy as np
 from scipy.sparse import issparse
 import pandas as pd
 
-from .ledger import Ledger
-from .util import stable_hash
+from tarpy.ledger import Ledger
+from tarpy.util import stable_hash
 
 class Dataset:
 
@@ -32,6 +32,10 @@ class Dataset:
     @property
     def labels(self):
         raise NotImplementedError
+    
+    @property
+    def hasLabels(self):
+        return self._labels is not None
 
     @property
     def pos_doc_ids(self) -> set:
@@ -82,6 +86,8 @@ class SparseVectorDataset(Dataset):
     
     @property
     def labels(self):
+        if self._labels is None:
+            raise AttributeError("Labels are not set for this dataset.")
         return self._labels.copy()
 
     @property

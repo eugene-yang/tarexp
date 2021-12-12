@@ -2,7 +2,7 @@ import warnings
 from copy import deepcopy
 
 import numpy as np
-from .base import Component
+from tarpy.component.base import Component
 
 """
 ## Note 

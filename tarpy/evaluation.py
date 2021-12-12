@@ -5,9 +5,9 @@ import pandas as pd
 import numpy as np
 import ir_measures
 
-from .dataset import Dataset
-from .ledger import Ledger
-from .util import getOneDimScores
+from tarpy.dataset import Dataset
+from tarpy.ledger import Ledger
+from tarpy.util import getOneDimScores
 
 class MeasureKey(NamedTuple):
     measure: ir_measures.measures.Measure
@@ -65,11 +65,11 @@ class OptimisticCost:
             ])
         return ret
 
-def evaluate(dataset: Dataset, ledger: Ledger, score, measures):
+def evaluate(labels, ledger: Ledger, score, measures):
     df = pd.DataFrame({
         'query_id': '0', 
         'iteration': str(ledger.n_rounds),
-        'relevance': dataset.labels.astype(int), 
+        'relevance': np.asanyarray(labels).astype(int), 
         'score': getOneDimScores(score),
         'control': ledger.control_mask,
         'known': ledger.annotated

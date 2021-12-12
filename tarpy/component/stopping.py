@@ -1,6 +1,6 @@
 import numpy as np
-from .base import Component
-from ..ledger import Ledger
+from tarpy.component.base import Component
+from tarpy.ledger import Ledger
 
 """
 Note:

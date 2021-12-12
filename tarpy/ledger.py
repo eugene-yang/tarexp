@@ -1,6 +1,6 @@
 from dataclasses import FrozenInstanceError
 import numpy as np
-from .base import Eventable, Savable
+from tarpy.base import Savable
 
 class Ledger(Savable):
     

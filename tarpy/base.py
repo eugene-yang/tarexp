@@ -1,6 +1,6 @@
 from collections import defaultdict
-from os import read
-from .util import saveObj, readObj
+
+from tarpy.util import saveObj, readObj
 
 class Eventable:
 

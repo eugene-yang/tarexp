@@ -1,5 +1,5 @@
-from .base import Component
-from ..dataset import Dataset
+from tarpy.component.base import Component
+from tarpy.dataset import Dataset
 import numpy as np
 
 class Labeler(Component):

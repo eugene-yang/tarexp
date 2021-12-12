@@ -1,7 +1,9 @@
 from dataclasses import dataclass
-from typing import List, Type
-from ..base import Savable
+from typing import List
 from functools import partial
+
+from tarpy.base import Savable
+
 
 """
 Note:
@@ -18,6 +20,9 @@ class Component(Savable):
 
     def reset(self, *args, **kwargs):
         pass
+
+    def checkRole(self, role):
+        return hasattr(self, role)
 
     @property
     def hasStoppingRule(self):

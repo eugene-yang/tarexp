@@ -1,17 +1,18 @@
 from dataclasses import dataclass
+from multiprocessing import Value
 from warnings import warn
 from collections import OrderedDict
 
 from pathlib import Path
 import numpy as np
 
-from .base import Savable
-from .component import Component
-from .ledger import FrozenLedger, Ledger
-from .dataset import Dataset
-from .evaluation import evaluate
+from tarpy.base import Savable
+from tarpy.component import Component
+from tarpy.ledger import FrozenLedger, Ledger
+from tarpy.dataset import Dataset
+from tarpy.evaluation import evaluate
 
-from .util import saveObj, readObj
+from tarpy.util import saveObj, readObj
 
 def checkAutoRoles(component: Component):
     return component.hasRanker and \
@@ -31,6 +32,7 @@ class Workflow(Savable):
             warn("Input component does not have all essential roles. "
                  "Require manual intervention during iterations to avoid "
                  "infinite loop.")
+        
         self._random = np.random.RandomState(random_seed)
         self.saved_score_limit = saved_score_limit
 
@@ -40,8 +42,9 @@ class Workflow(Savable):
         self._saved_scores = OrderedDict()
 
         if not resume:
-            self._component.begin(dataset=self._dataset, random_seed=random_seed, 
-                                **kwargs)
+            self._component.begin(dataset=self._dataset, 
+                                  random_seed=random_seed, 
+                                  **kwargs)
         self._stopped = None
     
     @property
@@ -154,7 +157,7 @@ class Workflow(Savable):
 class OnePhaseTARWorkflow(Workflow):
 
     def __init__(self, dataset: Dataset, component: Component, 
-                 seed_doc: int = None, batch_size: int = 200,
+                 seed_doc: list = [], batch_size: int = 200,
                  control_set_size: int = 0, 
                  saved_score_limit: int = -1,
                  random_seed: int = None, 
@@ -175,12 +178,7 @@ class OnePhaseTARWorkflow(Workflow):
             self.ledger.createControl(control_set,
                                       self.component.labelDocs(control_set))
 
-        if seed_doc == None: # pick a random doc
-            seed_doc = self._random.choice(
-                list(self.dataset.pos_doc_ids - set(control_set))
-            )
-
-        self._review_candidates = [seed_doc]
+        self._review_candidates = seed_doc
 
     @property
     def _saving_attrs(self):
@@ -200,22 +198,27 @@ class OnePhaseTARWorkflow(Workflow):
             self.batch_size, self.ledger, self.latest_scores
         )
 
-    def getMetrics(self, measures):
-        return evaluate(self.dataset, self.ledger, self.latest_scores, measures)
+    def getMetrics(self, measures, labels=None):
+        if labels is None:
+            if not self.dataset.hasLabels:
+                raise ValueError("Labels are not provided.")
+            labels = self.dataset.labels
+        return evaluate(labels, self.ledger, self.latest_scores, measures)
     
     def overwriteCandidates(self, new_candidates):
         self._review_candidates = new_candidates
 
 
-class TwoPhaseTARWorkflow(OnePhaseTARWorkflow): # TODO
+class TwoPhaseTARWorkflow(OnePhaseTARWorkflow):
 
-    def __init__(self):
-        pass
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if self.component.checkRole('after_stopping'):
+            raise ValueError("Two phase workflow requires role `after_stopping`.")
 
-    def step(self):
-        ctl = super().step()
+    def step(self, *args, **kwargs):
+        super().step(*args, **kwargs)
         if self.isStopped:
-            self.post_stopping()
-    
-    def post_stopping(self):
-        pass
+            self.component.after_stopping(
+                self.ledger, self.component, self.dataset
+            )
