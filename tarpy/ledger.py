@@ -29,6 +29,9 @@ class Ledger(Savable):
             self._record[doc_id] = (self._n_rounds, label)
         return len(new_annotations)
 
+    def getReviewedIds(self, round: int):
+        return np.where(self._record[:, 0] == round)[0]
+
     @property
     def control_mask(self):
         return self._record[:, 0] == -1
@@ -82,3 +85,11 @@ class FrozenLedger(Ledger):
     @property
     def n_rounds(self):
         return int(np.nan_to_num(self._record[:, 0]).max())
+    
+    def freeze_at(self, round: int):
+        dup = FrozenLedger(self)
+        dup._record.flags.writeable = True
+        to_remove = dup._record[:, 0] > round
+        dup._record[to_remove] = np.nan
+        dup._record.flags.writeable = False
+        return dup

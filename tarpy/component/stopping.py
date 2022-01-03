@@ -1,6 +1,6 @@
 import numpy as np
 from tarpy.component.base import Component
-from tarpy.ledger import Ledger
+from tarpy.ledger import Ledger, FrozenLedger
 
 """
 Note:
@@ -11,8 +11,9 @@ We could make it read-only but might be very messy and ambiguous.
 """
 
 class StoppingRule(Component):
-    def __init__(self):
+    def __init__(self, target_recall: float=None):
         super().__init__()
+        self.target_recall = target_recall
     
     def checkStopping(self, ledger: Ledger, *args, **kwargs) -> bool:
         raise NotImplementedError
@@ -25,11 +26,12 @@ class NullStoppingRule(StoppingRule):
 
 class FixedRoundStoppingRule(StoppingRule):
     def __init__(self, max_round, *args, **kwargs):
-        assert max_round > 0
-        self._max_round = max_round
+        super().__init__(**kwargs)
+        assert max_round >= 0
+        self.max_round = max_round
 
     def checkStopping(self, ledger, *args, **kwargs):
-        return ledger.n_rounds >= self._max_round
+        return ledger.n_rounds >= self.max_round
 
 
 # TODO: convert them to stopping rules ------

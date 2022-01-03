@@ -3,24 +3,18 @@ from typing import Any, Iterable
 from collections import OrderedDict
 
 import numpy as np
-from scipy.sparse import issparse
 import pandas as pd
+from scipy.sparse import issparse
 
 from tarpy.ledger import Ledger
 from tarpy.util import stable_hash
 
 class Dataset:
 
-    def __init__(self):
+    def __init__(self, name=None):
         self._vectors = None
         self._labels = None
-
-    @property
-    def n_docs(self):
-        return len(self._vectors)
-    
-    def __len__(self):
-        return self.n_docs
+        self._name = name
 
     @property
     def identifier(self):
@@ -28,6 +22,27 @@ class Dataset:
     
     def __hash__(self):
         return hash(self.identifier)
+
+    def __repr__(self):
+        _name = "" if self._name is None else f": {self._name}"
+        return f"<Dataset{_name} ({self.identifier})>"
+    
+    @property
+    def name(self):
+        return self._name
+    
+    @name.setter
+    def name(self, name: str):
+        if self._name is not None:
+            raise AttributeError(f"Name already set.")
+        self._name = name
+
+    @property
+    def n_docs(self):
+        return len(self._vectors)
+    
+    def __len__(self):
+        return self.n_docs
 
     @property
     def labels(self):
@@ -39,6 +54,10 @@ class Dataset:
 
     @property
     def pos_doc_ids(self) -> set:
+        raise NotImplementedError
+
+    @property
+    def neg_doc_ids(self) -> set:
         raise NotImplementedError
 
     def ingest(self, text, force=False):
@@ -61,11 +80,6 @@ class Dataset:
         ds = cls(**kwargs)
         ds.ingest(text)
         return ds
-    
-    @classmethod
-    def from_irds(cls, text, **kwargs):
-        # TODO
-        raise NotImplemented
 
 
 class SparseVectorDataset(Dataset):
@@ -99,6 +113,12 @@ class SparseVectorDataset(Dataset):
         if self._labels is None:
             raise AttributeError("Have not set the labels.")
         return set(np.where(self._labels)[0])
+    
+    @property
+    def neg_doc_ids(self) -> set:
+        if self._labels is None:
+            raise AttributeError("Have not set the labels.")
+        return set(np.where(~self._labels)[0])
         
     def ingest(self, text, force=False):
         if self._labels is not None and len(text) != len(self._labels):
@@ -141,10 +161,11 @@ class TaskFeeder:
     def __init__(self, dataset: Dataset, labels: Any):
         assert dataset._labels is None
         self._base_dataset = dataset
+        self._raw_labels = labels
         if isinstance(labels, pd.DataFrame):
-            assert labels.shape[1] == dataset.n_docs
+            assert labels.shape[0] == dataset.n_docs # rows
             self._task_gen = labels.items()
-            self._len = labels.shape[0]
+            self._len = labels.shape[1] # columns
         elif isinstance(labels, dict):
             assert all(len(s) == dataset.n_docs for s in labels.values())
             self._task_gen = OrderedDict(sorted(labels.items(), key=lambda x: x[0])).items()
@@ -155,6 +176,11 @@ class TaskFeeder:
             self._task_gen = iter(labels)
             self._len = len(labels) if hasattr(labels, '__len__') else -1
     
+    def _createTask(self, name, labels):
+        ds = self._base_dataset.setLabels(labels, inplace=False)
+        ds.name = name
+        return ds
+
     def __len__(self):
         return self._len
     
@@ -162,5 +188,14 @@ class TaskFeeder:
         return self
     
     def __next__(self):
-        name, labels = next(self._task_gen)
-        return name, self._base_dataset.setLabels(labels)
+        return self._createTask(*next(self._task_gen))
+    
+    def __getitem__(self, name):
+        if not hasattr(self._raw_labels, '__getitem__'):
+            raise NotImplemented(f"Provided labels do not support lookup operation.")
+        return self._createTask(name, self._raw_labels[name])
+    
+    @classmethod
+    def from_irds(cls, **kwargs):
+        # TODO
+        raise NotImplemented

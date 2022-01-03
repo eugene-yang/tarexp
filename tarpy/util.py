@@ -42,3 +42,4 @@ class iter_with_length(Iterable):
 
     def __len__(self):
         return self._len
+

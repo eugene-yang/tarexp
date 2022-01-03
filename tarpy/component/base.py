@@ -1,19 +1,18 @@
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
 from functools import partial
 
-from tarpy.base import Savable
+from tarpy import Savable, easy_repr
+from tarpy.util import saveObj, readObj
 
 
 """
 Note:
 If component involves randomness, random seed should be set in `begin` method.
 """
-
+@easy_repr
 class Component(Savable):
-
-    def __init__(self):
-        super().__init__()
     
     def begin(self, *args, **kwargs):
         pass
@@ -45,6 +44,9 @@ class Component(Savable):
         if hasattr(self, 'name'):
             return self.name
         return self.__class__.__name__
+    
+    def __repr__(self):
+        return self.__name__
 
 
 class FunctionComponent(Component):
@@ -83,6 +85,38 @@ class CombinedComponent(Component):
                 return getattr(comp, attr)
         raise AttributeError
     
+    @property
+    def __name__(self):
+        return " + ".join([ repr(comp) for comp in self._comps ])
+
+    def __repr__(self):
+        return self.__class__.__name__ + f"[{self.__name__}]"
+    
+    def save(self, output_file: Path):
+        if output_file.is_dir():
+            output_file = output_file / "component.meta.pgz"
+        prefix = output_file.stem
+        output_dir = output_file.parent
+
+        references = []
+        for comp in self._comps:
+            fn = output_dir / f"{prefix}.{comp.__name__}"
+            references.append((comp.__class__, fn.name))
+            comp.save(fn)
+
+        saveObj(references, output_file)
+        return output_file
+    
+    @classmethod
+    def load(cls, path: Path):
+        if path.is_dir():
+            path = path / "component.meta.pgz"
+        
+        return cls([
+            subcls.load(path.parent / fn)
+            for subcls, fn in readObj(path, list)
+        ])
+        
 
 def combine(*comps):
     return lambda **kwargs: CombinedComponent(comps)

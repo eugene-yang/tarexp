@@ -1,30 +1,39 @@
+from __future__ import annotations
 from dataclasses import dataclass
-from typing import NamedTuple
+from typing import Dict
 
 import pandas as pd
 import numpy as np
 import ir_measures
 
-from tarpy.dataset import Dataset
 from tarpy.ledger import Ledger
 from tarpy.util import getOneDimScores
 
-class MeasureKey(NamedTuple):
-    measure: ir_measures.measures.Measure
-    sec: str
+@dataclass(frozen=True)
+class MeasureKey:
+    measure: str | ir_measures.measures.Measure = None
+    section: str = 'all'
+    target_recall: float = None
 
-class CostCountKey(NamedTuple):
-    target_reall: float
-    section: str
-    label: bool
+    def __hash__(self):
+        return hash(repr(self))
+    
+@dataclass(frozen=True)
+class CostCountKey(MeasureKey):
+    label: bool = None
+    
+    def __post_init__(self):
+        object.__setattr__(self, 'measure', f"Count({self.label})")
 
 @dataclass(frozen=True)
-class OptimisticCost:
+class OptimisticCost(MeasureKey):
     """Optimistic cost measures
     These cost measures relies on an oracle for the optimal cutoff of the rank. 
     """
-    target_recall: float
-    cost_structure: tuple[float, float, float, float]
+    cost_structure: tuple[float, float, float, float] = None
+
+    def __post_init__(self):
+        object.__setattr__(self, 'measure', f"OptimisticCost{repr(self.cost_structure)}")
 
     def __call__(self, *args):
         if len(args) == 1 and isinstance(args[0], pd.DataFrame):
@@ -34,9 +43,6 @@ class OptimisticCost:
                 num*ucost for num, ucost in zip(args, self.cost_structure) 
             ])
     
-    def __hash__(self):
-        return hash(repr(self))
-
     @staticmethod
     def calc_all(measures, df):
         assert all([ isinstance(m, OptimisticCost) for m in measures ])
@@ -51,21 +57,22 @@ class OptimisticCost:
             # oracle reviewed df
             ordf_above = df.iloc[: (df.relevance.cumsum() > df.relevance.sum()*tr).values.argmax() + 1]
             ordf_below = df.iloc[(df.relevance.cumsum() > df.relevance.sum()*tr).values.argmax() + 1:]
-            ret[CostCountKey(tr, 'training', True)] = (df.known & df.relevance).sum()
-            ret[CostCountKey(tr, 'training', False)] = (df.known & ~df.relevance).sum()
-            ret[CostCountKey(tr, 'unknown-above-cutoff', True)] = (~ordf_above.known & ordf_above.relevance).sum()
-            ret[CostCountKey(tr, 'unknown-above-cutoff', False)] = (~ordf_above.known & ~ordf_above.relevance).sum()
-            ret[CostCountKey(tr, 'unknown-below-cutoff', True)] = (~ordf_below.known & ordf_below.relevance).sum()
-            ret[CostCountKey(tr, 'unknown-below-cutoff', False)] = (~ordf_below.known & ~ordf_below.relevance).sum()
+
+            ret[CostCountKey(target_recall=tr, section='training', label=True)] = (df.known & df.relevance).sum()
+            ret[CostCountKey(target_recall=tr, section='training', label=False)] = (df.known & ~df.relevance).sum()
+            ret[CostCountKey(target_recall=tr, section='unknown-above-cutoff', label=True)] = (~ordf_above.known & ordf_above.relevance).sum()
+            ret[CostCountKey(target_recall=tr, section='unknown-above-cutoff', label=False)] = (~ordf_above.known & ~ordf_above.relevance).sum()
+            ret[CostCountKey(target_recall=tr, section='unknown-below-cutoff', label=True)] = (~ordf_below.known & ordf_below.relevance).sum()
+            ret[CostCountKey(target_recall=tr, section='unknown-below-cutoff', label=False)] = (~ordf_below.known & ~ordf_below.relevance).sum()
         for m in measures:
             ret[m] = m(*[ 
-                ret[CostCountKey(m.target_recall, sec, label)]
+                ret[CostCountKey(target_recall=m.target_recall, section=sec, label=label)]
                 for sec in ['training', 'unknown-above-cutoff'] 
                 for label in [True, False] 
             ])
         return ret
 
-def evaluate(labels, ledger: Ledger, score, measures):
+def evaluate(labels, ledger: Ledger, score, measures) -> Dict[MeasureKey, int | float]:
     df = pd.DataFrame({
         'query_id': '0', 
         'iteration': str(ledger.n_rounds),
@@ -84,7 +91,7 @@ def evaluate(labels, ledger: Ledger, score, measures):
             other_measures.append(m)
 
     ret = { 
-        MeasureKey(k, sec): v 
+        MeasureKey(measure=k, section=sec): v 
         for sec, d in zip(('all', 'unknown'), (df, df[~df.known]))
         for k, v in ir_measures.calc_aggregate(irms_measures, d, d).items() 
     }
