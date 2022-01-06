@@ -44,9 +44,6 @@ class Component(Savable):
         if hasattr(self, 'name'):
             return self.name
         return self.__class__.__name__
-    
-    def __repr__(self):
-        return self.__name__
 
 
 class FunctionComponent(Component):
@@ -65,9 +62,11 @@ def asComponent(method):
         return factory
     return wrapper
 
-@dataclass(frozen=True)
+
 class CombinedComponent(Component):
-    _comps: List[Component]
+
+    def __init__(self, comps: List[Component]):
+        self._comps: List[Component] = comps
 
     def begin(self, *args, **kwargs):
         for comp in self._comps:
@@ -82,7 +81,10 @@ class CombinedComponent(Component):
             raise AttributeError
         for comp in self._comps:
             if hasattr(comp, attr):
-                return getattr(comp, attr)
+                val = getattr(comp, attr)
+                if callable(val):
+                    return partial(val, __combined_component__=self)
+                return val
         raise AttributeError
     
     @property

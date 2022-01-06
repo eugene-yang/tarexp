@@ -41,7 +41,7 @@ class SklearnRanker(Ranker):
         # advantage of the state of the model as input
         self.model = self.sk_module(**self._model_kwargs)
     
-    def trainRanker(self, X, y):
+    def trainRanker(self, X, y, **kwargs):
         assert X.shape[0] == len(y)
         if np.unique(y).size == 1:
             # fix for sklearn models that does not support one-class classification
@@ -49,7 +49,7 @@ class SklearnRanker(Ranker):
         assert np.unique(y).size == 2
         return self.model.fit(X, y)
     
-    def scoreDocuments(self, X):
+    def scoreDocuments(self, X, **kwargs):
         if hasattr(self.model, 'predict_proba'):
             return self.model.predict_proba(X)
         else:

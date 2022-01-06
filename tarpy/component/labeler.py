@@ -20,5 +20,5 @@ class PerfectLabeler(Labeler):
     def reset(self):
         self._Y = None
     
-    def labelDocs(self, doc_ids):
+    def labelDocs(self, doc_ids, **kwargs):
         return list(self._Y[doc_ids])

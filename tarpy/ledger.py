@@ -69,6 +69,12 @@ class Ledger(Savable):
     @property
     def isDone(self):
         return all(self.annotated)
+
+    def getAnnotationCounts(self):
+        return [
+            dict(zip(*np.unique(self._record[ self._record[:, 0] == r ][:, 1], return_counts=True)))
+            for r in range(self.n_rounds)
+        ]
     
     def freeze(self):
         return FrozenLedger(self)

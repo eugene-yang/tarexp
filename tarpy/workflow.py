@@ -2,6 +2,7 @@ from __future__ import annotations
 from typing import Dict, List
 from warnings import warn
 from collections import OrderedDict
+from shutil import rmtree
 
 from ir_measures.measures import Measure
 
@@ -27,6 +28,7 @@ class Workflow(Savable):
 
     def __init__(self, dataset: Dataset, component: Component, 
                        saved_score_limit: int = -1,
+                       saved_checkpoint_limit: int = 2,
                        random_seed: int = None, 
                        resume: bool = False, **kwargs):
         super().__init__()
@@ -37,6 +39,7 @@ class Workflow(Savable):
         
         self._random = np.random.RandomState(random_seed)
         self.saved_score_limit = saved_score_limit
+        self.saved_checkpoint_limit = saved_checkpoint_limit
 
         self._component = component
         self._dataset = dataset
@@ -51,7 +54,8 @@ class Workflow(Savable):
     
     @property
     def _saving_attrs(self):
-        return ['_random', 'saved_score_limit', '_saved_scores']
+        return ['_random', 'saved_score_limit', 'saved_checkpoint_limit', 
+                '_saved_scores']
     
     @property
     def ledger(self):
@@ -74,7 +78,7 @@ class Workflow(Savable):
         # cache the decision given the same round
         if self._stopped is None or self._stopped[0] != self.n_rounds:
             self._stopped = (self.n_rounds, 
-                             self.component.checkStopping(self.ledger.freeze()))
+                             self.component.checkStopping(self.ledger.freeze(), workflow=self))
         return self._stopped[1] or self.ledger.isDone
 
     @property
@@ -100,7 +104,13 @@ class Workflow(Savable):
         return self
     
     def save(self, output_dir, with_component=True, overwrite=False):
-        output_dir = Path(output_dir) / f"it_{self.ledger.n_rounds}"
+        output_dir = Path(output_dir)
+        existing_checkpoints = list(output_dir.glob("it_*"))
+        if len(existing_checkpoints) >= self.saved_checkpoint_limit:
+            for d in sorted(existing_checkpoints, key=lambda d: int(d.name.split("_")[1]))[:-self.saved_checkpoint_limit+1]:
+                rmtree(d)
+
+        output_dir = output_dir / f"it_{self.ledger.n_rounds}"
         if output_dir.exists():
             if not output_dir.is_dir():
                 raise NotADirectoryError(f"Path {output_dir} is not a directory.") 
@@ -165,7 +175,7 @@ class Workflow(Savable):
     def getMetrics(self, measures: List[OptimisticCost | Measure | str]) -> Dict[MeasureKey, int | float]:
         raise NotImplementedError
     
-    def makeReplay(self):
+    def makeReplay(self) -> WorkflowReplay:
         raise NotImplementedError
 
 class WorkflowReplay(Workflow):
@@ -207,11 +217,8 @@ class OnePhaseTARWorkflow(Workflow):
     def __init__(self, dataset: Dataset, component: Component, 
                  seed_doc: list = [], batch_size: int = 200,
                  control_set_size: int = 0, 
-                 saved_score_limit: int = -1,
-                 random_seed: int = None, 
                  **kwargs):
-        super().__init__(dataset, component, saved_score_limit, 
-                         random_seed, **kwargs)
+        super().__init__(dataset=dataset, component=component, **kwargs)
         if not self.component.hasRanker:
             raise ValueError("Must have a ranker in the component for "
                              f"{self.__class__.__name__}")
@@ -286,12 +293,12 @@ class TwoPhaseTARWorkflow(OnePhaseTARWorkflow):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        if self.component.checkRole('after_stopping'):
-            raise ValueError("Two phase workflow requires role `after_stopping`.")
+        if self.component.checkRole('poststopping'):
+            raise ValueError("Two phase workflow requires role `poststopping`.")
 
     def step(self, *args, **kwargs):
         super().step(*args, **kwargs)
         if self.isStopped:
-            self.component.after_stopping(
+            self.component.poststopping(
                 self.ledger, self.component, self.dataset
             )

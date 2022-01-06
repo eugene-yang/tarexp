@@ -90,6 +90,9 @@ class Experiment:
     dump_frequency: int = 10
     random_seed: int = None 
     metrics: List[ir_measures.measures.Measure | OptimisticCost | str] = None
+
+    saved_score_limit: int = -1 # experiment setting instead of parameter
+    saved_checkpoint_limit: int = 2
     
     def __post_init__(self):
         if isinstance(self.output_path, str):
@@ -103,8 +106,11 @@ class Experiment:
         self._exec_static_kwargs = {
             'resume': self.resume,
             'dump_frequency': self.dump_frequency,
+            'saved_score_limit': self.saved_score_limit,
+            'saved_checkpoint_limit': self.saved_checkpoint_limit,
             'metrics': self.metrics,
-            'callbacks': self.callbacks
+            'random_seed': self.random_seed,
+            'callbacks': self.callbacks,
         }
     
     def on(self, event: str, func: callable):
@@ -181,9 +187,6 @@ class TARExperiment(Experiment):
 
     repeat_tasks: int = 1
     seed_docs_construction: Tuple[int, int] = (1, 0)
-    
-    saved_score_limit: int = -1 # experiment setting instead of parameter
-    
 
     def __post_init__(self):
         super().__post_init__()
@@ -205,7 +208,7 @@ class TARExperiment(Experiment):
             self.workflow_kwargs = {}
         
         self.registerExecArguments({
-            'workflow_cls': self.workflow
+            'workflow_cls': self.workflow,
         })
     
     @property
@@ -239,8 +242,6 @@ class TARExperiment(Experiment):
                     'irep': irep,
                     'batch_size': bs,
                     'control_set_size': ctl_set,
-                    'saved_score_limit': self.saved_score_limit,
-                    'random_seed': self.random_seed,
                     **other_settings
                 }
                 for ds in tasks
@@ -260,22 +261,22 @@ class TARExperiment(Experiment):
         )
         
     @staticmethod
-    def exec(setting: dict, run_path: Path, 
+    def exec(exp_setting: dict, run_path: Path, 
              workflow_cls: Workflow, resume: bool, 
              metrics: list, dump_frequency: int, 
-             callbacks: dict, **kwargs) -> List[Dict[MeasureKey, int | float]]:
+             callbacks: dict, **static_setting) -> List[Dict[MeasureKey, int | float]]:
         if run_path.exists():
             if not resume:
                 warn(f"Run path {run_path} already exists, task skipped.")
                 return 
             
             # resume
-            workflow = workflow_cls.load(run_path, setting['dataset'])
+            workflow = workflow_cls.load(run_path, exp_setting['dataset'])
             metric_vals: list = readObj(run_path / "exp_metrics.pgz", list)
             if workflow.isStopped:
                 return metric_vals
         else:
-            workflow = workflow_cls(**setting)
+            workflow = workflow_cls(**exp_setting, **static_setting)
             metric_vals = []
 
         def _createAction():
@@ -314,6 +315,8 @@ class StoppingExperimentOnReplay(Experiment):
     saved_exp_path: Path | str = None
     stopping_rules: List[StoppingRule] = None
 
+    exp_early_stopping: bool = True
+
     def __post_init__(self):
         super().__post_init__()
 
@@ -330,7 +333,8 @@ class StoppingExperimentOnReplay(Experiment):
 
         self.registerExecArguments({
             'replay_cls': self.replay,
-            'stopping_rules': self.stopping_rules
+            'stopping_rules': self.stopping_rules,
+            'exp_early_stopping': self.exp_early_stopping
         })
 
     @property
@@ -355,8 +359,8 @@ class StoppingExperimentOnReplay(Experiment):
         
     
     def exec(setting: dict, run_path: Path, replay_cls: WorkflowReplay, 
-             stopping_rules: List[StoppingRule], dump_frequency: int, 
-             callbacks: dict, **kwargs):
+             stopping_rules: List[StoppingRule], metrics: list, 
+             dump_frequency: int, exp_early_stopping: bool, callbacks: dict, **kwargs):
         run_path.mkdir(exist_ok=True, parents=True)
         replay = replay_cls.load( setting['save_path'], setting['dataset'] )
 
@@ -371,17 +375,21 @@ class StoppingExperimentOnReplay(Experiment):
             dispatchEvent(callbacks, "step_taken", None, replay)
 
             frozen_ledger = replay.ledger
+            # TODO: add real recall here
             stopping_record.append({
-                MeasureKey(measure=f"{repr(rule)}", target_recall=rule.target_recall): \
-                    rule.checkStopping(frozen_ledger)
-                for rule in stopping_rules
+                **{
+                    MeasureKey(measure=f"{repr(rule)}", target_recall=rule.target_recall): \
+                        rule.checkStopping(frozen_ledger, workflow=replay)
+                    for rule in stopping_rules
+                },
+                **replay.getMetrics(metrics)
             })
 
             if replay.n_rounds % dump_frequency == 0:
                 saveObj(stopping_record, run_path / "exp_metrics.pgz")
                 dispatchEvent(callbacks, "saved", None, replay)
             
-            if replay.isStopped or all(stopping_record[-1].values()):
+            if replay.isStopped or (exp_early_stopping and all(stopping_record[-1].values())):
                 # reached the end of replay or all testing stopping rules suggested stopping
                 dispatchEvent(callbacks, "stopped", None, replay)
                 break

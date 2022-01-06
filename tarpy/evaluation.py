@@ -58,8 +58,8 @@ class OptimisticCost(MeasureKey):
             ordf_above = df.iloc[: (df.relevance.cumsum() > df.relevance.sum()*tr).values.argmax() + 1]
             ordf_below = df.iloc[(df.relevance.cumsum() > df.relevance.sum()*tr).values.argmax() + 1:]
 
-            ret[CostCountKey(target_recall=tr, section='training', label=True)] = (df.known & df.relevance).sum()
-            ret[CostCountKey(target_recall=tr, section='training', label=False)] = (df.known & ~df.relevance).sum()
+            ret[CostCountKey(target_recall=tr, section='known', label=True)] = (df.known & df.relevance).sum()
+            ret[CostCountKey(target_recall=tr, section='known', label=False)] = (df.known & ~df.relevance).sum()
             ret[CostCountKey(target_recall=tr, section='unknown-above-cutoff', label=True)] = (~ordf_above.known & ordf_above.relevance).sum()
             ret[CostCountKey(target_recall=tr, section='unknown-above-cutoff', label=False)] = (~ordf_above.known & ~ordf_above.relevance).sum()
             ret[CostCountKey(target_recall=tr, section='unknown-below-cutoff', label=True)] = (~ordf_below.known & ordf_below.relevance).sum()
@@ -67,7 +67,7 @@ class OptimisticCost(MeasureKey):
         for m in measures:
             ret[m] = m(*[ 
                 ret[CostCountKey(target_recall=m.target_recall, section=sec, label=label)]
-                for sec in ['training', 'unknown-above-cutoff'] 
+                for sec in ['known', 'unknown-above-cutoff'] 
                 for label in [True, False] 
             ])
         return ret
@@ -90,11 +90,13 @@ def evaluate(labels, ledger: Ledger, score, measures) -> Dict[MeasureKey, int | 
         except (NameError, TypeError):
             other_measures.append(m)
 
-    ret = { 
-        MeasureKey(measure=k, section=sec): v 
-        for sec, d in zip(('all', 'unknown'), (df, df[~df.known]))
-        for k, v in ir_measures.calc_aggregate(irms_measures, d, d).items() 
-    }
+    ret = {}
+    if len(irms_measures) > 0:
+        ret.update({ 
+            MeasureKey(measure=k, section=sec): v 
+            for sec, d in zip(('all', 'unknown'), (df, df[df.known], df[~df.known]))
+            for k, v in ir_measures.calc_aggregate(irms_measures, d, d).items() 
+        })
     for cls in set([ m.__class__ for m in other_measures ]):
         ret.update(cls.calc_all([m for m in measures if isinstance(m, cls)], df))
     return ret

@@ -1,14 +1,23 @@
 import numpy as np
 from tarpy.component.base import Component
-from tarpy.ledger import Ledger, FrozenLedger
+from tarpy.ledger import Ledger
+from tarpy.util import getOneDimScores
+from tarpy.workflow import Workflow
 
-"""
-Note:
-Complex stopping rule could involve additional computation that leverages 
-other components with builtin methods. `Control` will be able to facilatate that
-but relies on user to behave and not abusing it. 
-We could make it read-only but might be very messy and ambiguous. 
-"""
+from scipy.stats import hypergeom 
+
+
+def _inferBatchsize(ledger: Ledger, fast=True):
+    if fast:
+        return ledger.n_annotated // ledger.n_rounds    
+    batch_size = None
+    for r in range(1, ledger.n_rounds): # round 0 is the seed set
+        current_bs = (ledger._record[:, 0] == r).sum()
+        if batch_size is None:
+            batch_size = current_bs
+        assert batch_size == current_bs
+    return batch_size
+
 
 class StoppingRule(Component):
     def __init__(self, target_recall: float=None):
@@ -34,61 +43,116 @@ class FixedRoundStoppingRule(StoppingRule):
         return ledger.n_rounds >= self.max_round
 
 
-# TODO: convert them to stopping rules ------
+class KneeStoppingRule(StoppingRule):
+    def checkStopping(self, ledger: Ledger, *args, **kwargs) -> bool:
+        if ledger.n_rounds < 1:
+            return False
 
-# R1: knee method
-def stopping_knee(pos_found, batchsize=200, **kwargs):
-    pos_found = np.asanyarray(pos_found) - 1
-    for s in range(len(pos_found)):
+        pos_per_round = np.array([ c[1] if 1 in c else 0 for c in ledger.getAnnotationCounts() ])
+        pos_found = pos_per_round.cumsum()
+        
         rho_s = -1
-        for i in range(s):
-            rho = (pos_found[i]/(i+1)) / ((1+pos_found[s]-pos_found[i])/(s-i+1))
+        for i in range(ledger.n_rounds):
+            rho = (pos_found[i]/(i+1)) / ((1+pos_found[-1]-pos_found[i])/(ledger.n_rounds-i))
             rho_s = max(rho_s, rho)
-        if rho_s >= 156 - min(pos_found[s], 150):
-            # return s, rho_s
-            return s
-    # return -1, np.inf
-    return len(pos_found)-1
 
-# R2: budget method
-def stopping_budget(pos_found, batchsize=200, **kwargs):
-    pos_found = np.asanyarray(pos_found) - 1
-    for s in range(len(pos_found)):
+        return rho_s >= 156 - min(pos_found[-1], 150)
+
+
+class BudgetStoppingRule(StoppingRule):
+    def checkStopping(self, ledger: Ledger, *args, **kwargs) -> bool:
+        if ledger.n_rounds < 1:
+            return False
+            
+        batchsize = _inferBatchsize(ledger)
+        pos_per_round = np.array([ c[1] if 1 in c else 0 for c in ledger.getAnnotationCounts() ])
+        pos_found = pos_per_round.cumsum()
+        
         rho_s = -1
-        for i in range(s):
-            rho = (pos_found[i]/(i+1)) / ((1+pos_found[s]-pos_found[i])/(s-i+1))
+        for i in range(ledger.n_rounds):
+            rho = (pos_found[i]/(i+1)) / ((1+pos_found[-1]-pos_found[i])/(ledger.n_rounds-i))
             rho_s = max(rho_s, rho)
-        if (rho_s >= 6 and batchsize*i+1 >= 10*using_rel.shape[0] / pos_found[i]) or \
-           s*batchsize+1 >= using_rel.shape[0]*0.75:
-            # return s, rho_s
-            return s
-    # return -1, np.inf
-    return len(pos_found)-1
 
-# R3: review half
-def stopping_half(pos_found, batchsize=200, **kwargs):
-    half = int(np.ceil((using_rel.shape[0]-1) / batchsize))
-    return half if len(pos_found) > half else len(pos_found) - 1
+        return  (rho_s >= 6 and batchsize*i+1 >= 10*ledger.n_docs / pos_found[i]) or \
+                (ledger.n_annotated >= ledger.n_docs*0.75)
 
-# R8: Batch precision cutoff(O1)
-def stopping_precision(pos_found, batchsize=200, cutoff=5/200, slack=1, **kwargs):
-    pos_found = np.asanyarray(pos_found)
-    bpre = (pos_found[1:] - pos_found[:-1]) / batchsize
-    return ((bpre <= cutoff).cumsum() >= slack).argmax() + 1
 
-# R10: Elusion test
-def stopping_elusion(pos_found, batchsize=200, cutoff=1e-4, slack=1, **kwargs):
-    npos = npos_20sub[ pos_found.index[0][0] ]
-    N = using_rel.shape[0]
-    unreviewed = np.linspace(N-1, N-1-(200*(len(pos_found)-1)), len(pos_found))
-    pos_found = np.asanyarray(pos_found)
-    elu = (npos-pos_found) / unreviewed
-    return ((elu <= cutoff).cumsum() >= slack).argmax() + 1
+class ReviewHalfStoppingRule(StoppingRule):
+    def checkStopping(self, ledger: Ledger, *args, **kwargs) -> bool:
+        return ledger.n_annotated >= ledger.n_docs // 2
 
-# R11: G&M Trec R_hat + 2399 
-def stopping_gmtrec(pos_found, batchsize=200, **kwargs):
-    return ((np.arange(len(pos_found))*200 + 1) >= (1.2*pos_found + 2399)).argmax() + 1
 
-# and quant + quant CI
+class BatchPrecStoppingRule(StoppingRule):
+    def __init__(self, prec_cutoff=5/200, slack=1):
+        super().__init__()
+        self.prec_cutoff = prec_cutoff
+        self.slack = slack
+    
+    def checkStopping(self, ledger: Ledger, *args, **kwargs) -> bool:
+        bprec = np.array([ batch[1] / sum(batch.values()) for batch in ledger.getAnnotationCounts() ])
+        counter = 0
+        for prec in bprec:
+            counter = (counter+1) if prec <= self.prec_cutoff else 0
+            if counter >= self.slack:
+                return True
+        return False
 
-# CMH heuristics should put in CMH module alone with its interventional rule
+class Rule2399StoppingRule(StoppingRule):
+    def checkStopping(self, ledger: Ledger, *args, **kwargs) -> bool:
+        return ledger.n_annotated >= 1.2*ledger.n_pos_annotated + 2399
+
+class QuantStoppingRule(StoppingRule):
+    def __init__(self, target_recall: float, nstd: float = 0):
+        super().__init__(target_recall=target_recall)
+        self.nstd = nstd
+    
+    def checkStopping(self, ledger: Ledger, workflow: Workflow, **kwargs) -> bool:
+        if ledger.n_rounds < 2:
+            return False
+
+        scores = getOneDimScores(workflow.latest_scores)
+            
+        assert (scores <= 1).all() and (scores >= 0).all(), \
+                "Scores have to be probabilities to use Quant Rule."
+
+        # `ps` stands for probability sum
+        unknown_ps = scores[ ~ledger.annotated ].sum()
+        known_ps = scores[ ledger.annotated ].sum()
+        est_recall = (known_ps) / (known_ps + unknown_ps)
+        if self.nstd == 0:
+            return est_recall >= self.target_recall
+        
+        prod = scores * (1-scores)
+        all_var = prod.sum()
+        unknown_var = prod[ ~ledger.annotated ].sum()
+
+        est_var = (known_ps**2 / (known_ps + unknown_ps)**4 * all_var) + (1 / (known_ps + unknown_ps)**2 * (all_var-unknown_var))
+        
+        return est_recall - self.nstd*np.sqrt(est_var) >= self.target_recall
+
+class CHMHeuristicsStoppingRule(StoppingRule):
+    def __init__(self, target_recall: float, alpha=0.05):
+        super().__init__(target_recall=target_recall)
+        self.alpha = alpha
+    
+    def checkStopping(self, ledger: Ledger, *args, **kwargs) -> bool:
+        if ledger.n_rounds < 2:
+            return False
+
+        counts = ledger.getAnnotationCounts()
+        pos_found = np.array([ c[1] if 1 in c else 0 for c in counts ]).cumsum()
+        annotated_cumsum = np.array([ sum(c.values()) for c in counts ]).cumsum()
+        n_docs = ledger.n_docs
+        
+        for i in range(1, ledger.n_rounds):
+            if hypergeom.cdf( pos_found[-1] - pos_found[i], # k
+                              n_docs-annotated_cumsum[i], # N
+                              int(pos_found[-1]/self.target_recall - pos_found[i]), # K_tar
+                              annotated_cumsum[-1] - annotated_cumsum[i] # n
+                            ) < self.alpha:
+                return True
+        return False
+
+    # Note: Full CMH rule is actually a two-phase workflow where the poststopping does a random walk
+
+
