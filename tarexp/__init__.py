@@ -1,1 +1,1 @@
-from .base import Eventable, Savable, easy_repr
+__version__ = "0.1.0"

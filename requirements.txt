@@ -1,0 +1,5 @@
+numpy
+pandas
+scipy
+tqdm
+ir_measures>=0.2.3
