@@ -1,8 +1,8 @@
 import numpy as np
-from tarpy.component.base import Component
+from tarexp.component.base import Component
 
-from tarpy.ledger import Ledger
-from tarpy.util import getOneDimScores
+from tarexp.ledger import Ledger
+from tarexp.util import getOneDimScores
 
 def removeKnownDocs(idx_list, ledger):
     known = np.where(ledger.annotated)[0]

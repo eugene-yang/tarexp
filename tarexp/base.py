@@ -2,7 +2,7 @@ from argparse import Namespace
 from collections import defaultdict
 from pathlib import Path
 
-from tarpy.util import saveObj, readObj, stable_hash
+from tarexp.util import saveObj, readObj, stable_hash
 
 class Eventable:
 

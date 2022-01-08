@@ -1,7 +1,7 @@
-from tarpy.component.base import Component, asComponent, CombinedComponent, combine
-from tarpy.component.ranker import Ranker, SklearnRanker 
-from tarpy.component.labeler import Labeler, PerfectLabeler
-from tarpy.component.sampler import (Sampler, RandomSampler, 
+from tarexp.component.base import Component, asComponent, CombinedComponent, combine
+from tarexp.component.ranker import Ranker, SklearnRanker 
+from tarexp.component.labeler import Labeler, PerfectLabeler
+from tarexp.component.sampler import (Sampler, RandomSampler, 
                                      UncertaintySampler, RelevanceSampler)
-from tarpy.component.stopping import (StoppingRule, 
+from tarexp.component.stopping import (StoppingRule, 
                                       NullStoppingRule, FixedRoundStoppingRule)

@@ -2,7 +2,7 @@ import warnings
 from copy import deepcopy
 
 import numpy as np
-from tarpy.component.base import Component
+from tarexp.component.base import Component
 
 """
 ## Note 

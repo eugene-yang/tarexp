@@ -1,8 +1,8 @@
 import numpy as np
-from tarpy.component.base import Component
-from tarpy.ledger import Ledger
-from tarpy.util import getOneDimScores
-from tarpy.workflow import Workflow
+from tarexp.component.base import Component
+from tarexp.ledger import Ledger
+from tarexp.util import getOneDimScores
+from tarexp.workflow import Workflow
 
 from scipy.stats import hypergeom 
 

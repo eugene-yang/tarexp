@@ -14,12 +14,12 @@ import numpy as np
 from tqdm.auto import tqdm
 import ir_measures
 
-from tarpy.util import iter_with_length, readObj, saveObj, stable_hash
+from tarexp.util import iter_with_length, readObj, saveObj, stable_hash
 
-from tarpy.dataset import Dataset, TaskFeeder
-from tarpy.component import Component, StoppingRule
-from tarpy.workflow import OnePhaseTARWorkflow, Workflow, WorkflowReplay
-from tarpy.evaluation import MeasureKey, OptimisticCost
+from tarexp.dataset import Dataset, TaskFeeder
+from tarexp.component import Component, StoppingRule
+from tarexp.workflow import OnePhaseTARWorkflow, Workflow, WorkflowReplay
+from tarexp.evaluation import MeasureKey, OptimisticCost
 
 
 def _make_list(it):

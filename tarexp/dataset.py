@@ -6,8 +6,8 @@ import numpy as np
 import pandas as pd
 from scipy.sparse import issparse
 
-from tarpy.ledger import Ledger
-from tarpy.util import stable_hash
+from tarexp.ledger import Ledger
+from tarexp.util import stable_hash
 
 class Dataset:
 

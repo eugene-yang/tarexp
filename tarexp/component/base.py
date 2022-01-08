@@ -3,8 +3,8 @@ from pathlib import Path
 from typing import List
 from functools import partial
 
-from tarpy import Savable, easy_repr
-from tarpy.util import saveObj, readObj
+from tarexp import Savable, easy_repr
+from tarexp.util import saveObj, readObj
 
 
 """

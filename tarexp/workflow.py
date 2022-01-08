@@ -9,13 +9,13 @@ from ir_measures.measures import Measure
 from pathlib import Path
 import numpy as np
 
-from tarpy.base import Savable
-from tarpy.component import Component
-from tarpy.ledger import FrozenLedger, Ledger
-from tarpy.dataset import Dataset
-from tarpy.evaluation import MeasureKey, OptimisticCost, evaluate
+from tarexp.base import Savable
+from tarexp.component import Component
+from tarexp.ledger import FrozenLedger, Ledger
+from tarexp.dataset import Dataset
+from tarexp.evaluation import MeasureKey, OptimisticCost, evaluate
 
-from tarpy.util import saveObj, readObj
+from tarexp.util import saveObj, readObj
 
 def checkAutoRoles(component: Component):
     return component.hasRanker and \

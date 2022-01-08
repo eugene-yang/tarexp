@@ -6,8 +6,8 @@ import pandas as pd
 import numpy as np
 import ir_measures
 
-from tarpy.ledger import Ledger
-from tarpy.util import getOneDimScores
+from tarexp.ledger import Ledger
+from tarexp.util import getOneDimScores
 
 @dataclass(frozen=True)
 class MeasureKey:
