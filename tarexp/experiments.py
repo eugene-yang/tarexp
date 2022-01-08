@@ -70,7 +70,7 @@ def _dispatchRun(setting: dict,
     with (output_path / "task_list.tsv").open('a') as fw:
         fw.write(f"{setting_str}\t{setting_json}\n")
 
-    return plain_setting, exec_func(setting=setting, run_path=output_path / setting_str, **kwargs)
+    return plain_setting, exec_func(exp_setting=setting, run_path=output_path / setting_str, **kwargs)
 
 def dispatchEvent(callbacks, event, *args, **kwargs):
     if event in callbacks:
@@ -358,11 +358,11 @@ class StoppingExperimentOnReplay(Experiment):
         return iter_with_length(map(mapping, runs), len(runs))
         
     
-    def exec(setting: dict, run_path: Path, replay_cls: WorkflowReplay, 
+    def exec(exp_setting: dict, run_path: Path, replay_cls: WorkflowReplay, 
              stopping_rules: List[StoppingRule], metrics: list, 
              dump_frequency: int, exp_early_stopping: bool, callbacks: dict, **kwargs):
         run_path.mkdir(exist_ok=True, parents=True)
-        replay = replay_cls.load( setting['save_path'], setting['dataset'] )
+        replay = replay_cls.load( exp_setting['save_path'], exp_setting['dataset'] )
 
         stopping_record = []
 
