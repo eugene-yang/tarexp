@@ -1,1 +1,1 @@
-# TARpy: A Python Framework for Technology-Assisted Review Experiments
+# TARexp: A Python Framework for Technology-Assisted Review Experiments
