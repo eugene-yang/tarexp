@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 
 from tarexp.base import Savable
-from tarexp.component import Component
+from tarexp.component.base import Component
 from tarexp.ledger import FrozenLedger, Ledger
 from tarexp.dataset import Dataset
 from tarexp.evaluation import MeasureKey, OptimisticCost, evaluate

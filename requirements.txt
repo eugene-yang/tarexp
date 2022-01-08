@@ -2,4 +2,6 @@ numpy
 pandas
 scipy
 tqdm
+xxhash
 ir_measures>=0.2.3
+scikit-learn

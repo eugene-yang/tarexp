@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import List
 from functools import partial
 
-from tarexp import Savable, easy_repr
+from tarexp.base import Savable, easy_repr
 from tarexp.util import saveObj, readObj
 
 

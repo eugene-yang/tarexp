@@ -375,7 +375,6 @@ class StoppingExperimentOnReplay(Experiment):
             dispatchEvent(callbacks, "step_taken", None, replay)
 
             frozen_ledger = replay.ledger
-            # TODO: add real recall here
             stopping_record.append({
                 **{
                     MeasureKey(measure=f"{repr(rule)}", target_recall=rule.target_recall): \

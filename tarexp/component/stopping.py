@@ -2,7 +2,7 @@ import numpy as np
 from tarexp.component.base import Component
 from tarexp.ledger import Ledger
 from tarexp.util import getOneDimScores
-from tarexp.workflow import Workflow
+# Note: not importing Workflow to avoid circular dependency
 
 from scipy.stats import hypergeom 
 
@@ -97,16 +97,18 @@ class BatchPrecStoppingRule(StoppingRule):
                 return True
         return False
 
+
 class Rule2399StoppingRule(StoppingRule):
     def checkStopping(self, ledger: Ledger, *args, **kwargs) -> bool:
         return ledger.n_annotated >= 1.2*ledger.n_pos_annotated + 2399
+
 
 class QuantStoppingRule(StoppingRule):
     def __init__(self, target_recall: float, nstd: float = 0):
         super().__init__(target_recall=target_recall)
         self.nstd = nstd
     
-    def checkStopping(self, ledger: Ledger, workflow: Workflow, **kwargs) -> bool:
+    def checkStopping(self, ledger: Ledger, workflow, **kwargs) -> bool:
         if ledger.n_rounds < 2:
             return False
 
