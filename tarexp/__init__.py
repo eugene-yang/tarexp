@@ -1,5 +1,7 @@
 __version__ = "0.1.0+"
 
+from . import component
+
 from tarexp.dataset import Dataset, SparseVectorDataset, TaskFeeder
 from tarexp.workflow import Workflow, WorkflowReplay, \
                             OnePhaseTARWorkflow, OnePhaseTARWorkflowReplay, \
