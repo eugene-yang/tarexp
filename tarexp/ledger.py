@@ -20,12 +20,14 @@ class Ledger(Savable):
         if len(args) == 1 and isinstance(args[0], dict):
             new_annotations = args[0]
         elif len(args) == 2:
-            assert len(args[0]) == len(args[1])
+            assert len(args[0]) == len(args[1]), "Mismatch number of document id and labels."
             new_annotations = dict(zip(*args))
 
+        assert np.isnan(self._record[list(new_annotations.keys()), 0]).all(), \
+               "All document annotating should not be annotated before"
+
         self._n_rounds += 1
-        for doc_id, label in new_annotations.items():
-            assert np.isnan(self._record[doc_id, 0])
+        for doc_id, label in new_annotations.items():            
             self._record[doc_id] = (self._n_rounds, label)
         return len(new_annotations)
 
@@ -78,6 +80,14 @@ class Ledger(Savable):
     
     def freeze(self):
         return FrozenLedger(self)
+    
+    def freeze_at(self, round: int):
+        dup = self.freeze()
+        dup._record.flags.writeable = True
+        to_remove = dup._record[:, 0] > round
+        dup._record[to_remove] = np.nan
+        dup._record.flags.writeable = False
+        return dup
 
 class FrozenLedger(Ledger):
 
@@ -85,17 +95,10 @@ class FrozenLedger(Ledger):
         self._record = org_ledger._record.copy()
         self._record.flags.writeable = False
     
-    def annotate(self, **new_annotations):
+    def annotate(self, *args, **kwargs):
         raise FrozenInstanceError
 
     @property
     def n_rounds(self):
         return int(np.nan_to_num(self._record[:, 0]).max())
     
-    def freeze_at(self, round: int):
-        dup = FrozenLedger(self)
-        dup._record.flags.writeable = True
-        to_remove = dup._record[:, 0] > round
-        dup._record[to_remove] = np.nan
-        dup._record.flags.writeable = False
-        return dup

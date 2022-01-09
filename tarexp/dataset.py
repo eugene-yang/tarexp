@@ -20,6 +20,9 @@ class Dataset:
     def identifier(self):
         raise NotImplementedError
     
+    def __eq__(self, other):
+        return self.identifier == other.identifier
+    
     def __hash__(self):
         return hash(self.identifier)
 
@@ -106,6 +109,8 @@ class SparseVectorDataset(Dataset):
 
     @property
     def identifier(self):
+        if self._labels is None:
+            return (self.n_docs, stable_hash(self._np_data), None)    
         return (self.n_docs, stable_hash(self._np_data), stable_hash(self.labels))
     
     @property

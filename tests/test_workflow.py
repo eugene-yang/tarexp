@@ -2,7 +2,6 @@ import unittest
 
 import shutil, tempfile
 from pathlib import Path
-from functools import lru_cache
 
 import numpy as np
 import pandas as pd
@@ -12,12 +11,7 @@ from ir_measures.measures import *
 import tarexp
 from tarexp import component
 
-@lru_cache(maxsize=1)
-def getRCV1():
-    from sklearn import datasets
-    rcv1 = datasets.fetch_rcv1()
-    return tarexp.SparseVectorDataset.from_sparse(rcv1['data']), \
-           pd.DataFrame(rcv1['target'].todense().astype(bool), columns=rcv1['target_names'])
+from utils import getRCV1
 
 class testWorkflow(unittest.TestCase):
 
