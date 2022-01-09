@@ -16,7 +16,7 @@ setuptools.setup(
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/eugene-yang/tarexp",
-    packages=setuptools.find_packages(include=['tarexp']),
+    packages=setuptools.find_packages(include=['tarexp', 'tarexp.*']),
     install_requires=list(open('requirements.txt')),
     python_requires='>=3.7'
 )
