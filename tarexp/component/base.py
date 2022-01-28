@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from warnings import warn
 from pathlib import Path
 from typing import List
 from functools import partial
@@ -65,8 +65,22 @@ def asComponent(method):
 
 class CombinedComponent(Component):
 
-    def __init__(self, comps: List[Component]):
+    def __init__(self, comps: List[Component], strict: bool= True):
         self._comps: List[Component] = comps
+        existing_methods = set()
+        for comp in self._comps:
+            methods = set([ 
+                a for a in dir(comp) 
+                if not a.startswith('_') and a not in ['begin', 'reset', 'save', 'load'] and callable(a)
+            ])
+            unique_methods = (methods - existing_methods)
+            if len(unique_methods) != len(methods):
+                mesg = f"Cannot resolve methods `{methods - unique_methods}` when combining."
+                if strict:
+                    raise AttributeError(mesg)
+                else:
+                    warn(mesg + " Invoking these methods will result in arbitrary resolution.")
+            existing_methods &= methods
 
     def begin(self, *args, **kwargs):
         for comp in self._comps:

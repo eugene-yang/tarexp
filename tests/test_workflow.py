@@ -7,9 +7,10 @@ import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 
-from ir_measures.measures import *
+from ir_measures import RPrec, P
 import tarexp
 from tarexp import component
+from tarexp.helper import createDFfromResults
 
 from utils import getRCV1
 
@@ -103,8 +104,8 @@ class testExperiments(unittest.TestCase):
         self.assertEqual(len(results), 8)
 
         self.assertTrue(all(
-            tarexp.createDFfromResults(results, remove_redundant_level=True) == \
-            tarexp.createDFfromResults(self.test_dir/"org", remove_redundant_level=True)
+            createDFfromResults(results, remove_redundant_level=True) == \
+            createDFfromResults(self.test_dir/"org", remove_redundant_level=True)
         ))
 
         replay_exp = tarexp.StoppingExperimentOnReplay(

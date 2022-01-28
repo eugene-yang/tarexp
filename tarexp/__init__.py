@@ -5,7 +5,7 @@ from tarexp.workflow import Workflow, WorkflowReplay, \
                             OnePhaseTARWorkflow, OnePhaseTARWorkflowReplay, \
                             TwoPhaseTARWorkflow
 from tarexp.ledger import Ledger, FrozenLedger
-from tarexp.experiments import TARExperiment, StoppingExperimentOnReplay, createDFfromResults
+from tarexp.experiments import TARExperiment, StoppingExperimentOnReplay
 from tarexp.evaluation import OptimisticCost
 
 from tarexp.util import readObj, saveObj

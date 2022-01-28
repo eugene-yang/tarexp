@@ -12,7 +12,7 @@ class testDataset(unittest.TestCase):
         self.ds, self.rel_info = getRCV1()
     
     def test_sparse_dataset(self):
-        ds = self.ds.setLabels(self.rel_info['C CAT'])
+        ds = self.ds.setLabels(self.rel_info['CCAT'])
         self.assertTrue((ds.labels == self.rel_info['CCAT']).all())
         self.assertEqual(ds.n_docs, 804414)
         pos_ids = ds.pos_doc_ids

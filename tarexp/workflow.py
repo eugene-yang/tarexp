@@ -27,6 +27,7 @@ def checkAutoRoles(component: Component):
 class Workflow(Savable):
 
     def __init__(self, dataset: Dataset, component: Component, 
+                       max_round_exec: int = -1, 
                        saved_score_limit: int = -1,
                        saved_checkpoint_limit: int = 2,
                        random_seed: int = None, 
@@ -40,6 +41,7 @@ class Workflow(Savable):
         self._random = np.random.RandomState(random_seed)
         self.saved_score_limit = saved_score_limit
         self.saved_checkpoint_limit = saved_checkpoint_limit
+        self.max_round_exec = max_round_exec
 
         self._component = component
         self._dataset = dataset
@@ -54,8 +56,7 @@ class Workflow(Savable):
     
     @property
     def _saving_attrs(self):
-        return ['_random', 'saved_score_limit', 'saved_checkpoint_limit', 
-                '_saved_scores']
+        return ['_random', 'max_round_exec', 'saved_score_limit', 'saved_checkpoint_limit', '_saved_scores']
     
     @property
     def ledger(self):
@@ -75,11 +76,12 @@ class Workflow(Savable):
 
     @property
     def isStopped(self):
-        # cache the decision given the same round
         if self._stopped is None or self._stopped[0] != self.n_rounds:
+            # cache the decision given the same round
             self._stopped = (self.n_rounds, 
                              self.component.checkStopping(self.ledger.freeze(), workflow=self))
-        return self._stopped[1] or self.ledger.isDone
+        return self._stopped[1] or self.ledger.isDone or \
+               (self.n_rounds > self.max_round_exec and self.max_round_exec > -1)
 
     @property
     def latest_scores(self):

@@ -195,6 +195,11 @@ class TaskFeeder:
     def __next__(self):
         return self._createTask(*next(self._task_gen))
     
+    def __contains__(self, item: str):
+        if not hasattr(self._raw_labels, '__contains__'):
+            raise NotImplemented(f"Provided labels do not support lookup operation.")
+        return item in self._raw_labels
+
     def __getitem__(self, name):
         if not hasattr(self._raw_labels, '__getitem__'):
             raise NotImplemented(f"Provided labels do not support lookup operation.")
