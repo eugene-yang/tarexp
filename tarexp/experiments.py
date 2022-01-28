@@ -93,6 +93,7 @@ class Experiment:
 
     saved_score_limit: int = -1 # experiment setting instead of parameter
     saved_checkpoint_limit: int = 2
+    max_round_exec: int = -1
     
     def __post_init__(self):
         if isinstance(self.output_path, str):
@@ -108,6 +109,7 @@ class Experiment:
             'dump_frequency': self.dump_frequency,
             'saved_score_limit': self.saved_score_limit,
             'saved_checkpoint_limit': self.saved_checkpoint_limit,
+            'max_round_exec': self.max_round_exec,
             'metrics': self.metrics,
             'random_seed': self.random_seed,
             'callbacks': self.callbacks,
