@@ -9,3 +9,5 @@ from tarexp.experiments import TARExperiment, StoppingExperimentOnReplay
 from tarexp.evaluation import OptimisticCost
 
 from tarexp.util import readObj, saveObj
+
+from tarexp import helper
