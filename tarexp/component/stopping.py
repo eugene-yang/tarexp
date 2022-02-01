@@ -89,7 +89,6 @@ class BatchPrecStoppingRule(StoppingRule):
         self.slack = slack
     
     def checkStopping(self, ledger: Ledger, *args, **kwargs) -> bool:
-        # TODO: debug
         bprec = np.array([ batch[1] / sum(batch.values()) for batch in ledger.getAnnotationCounts() ])
         counter = 0
         for prec in bprec:

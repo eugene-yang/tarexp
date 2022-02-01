@@ -1,4 +1,5 @@
 from dataclasses import FrozenInstanceError
+from collections import Counter
 import numpy as np
 from tarexp.base import Savable
 
@@ -74,7 +75,7 @@ class Ledger(Savable):
 
     def getAnnotationCounts(self):
         return [
-            dict(zip(*np.unique(self._record[ self._record[:, 0] == r ][:, 1], return_counts=True)))
+            Counter(dict(zip(*np.unique(self._record[ self._record[:, 0] == r ][:, 1], return_counts=True))))
             for r in range(self.n_rounds)
         ]
     
