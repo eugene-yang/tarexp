@@ -57,9 +57,7 @@ def _createPlainSetting(setting: dict | list) -> dict | list:
             for v in setting
         ]
 
-def _dispatchRun(setting: dict, 
-                output_path: Path, exec_func: function,
-                **kwargs):
+def _dispatchRun(setting: dict, output_path: Path, exec_func: function, **kwargs):
     plain_setting = _createPlainSetting(setting)
     setting_json = json.dumps(plain_setting)
     setting_str = stable_hash(setting_json)
@@ -141,6 +139,7 @@ class Experiment:
         job_iter = ( 
             setting for i, setting in enumerate(setting_iter) 
             if i%n_nodes == node_id
+            if setting is not None
         )
         n_jobs_local = len(setting_iter)//n_nodes + int((len(setting_iter))%n_nodes > node_id)
 
@@ -355,6 +354,8 @@ class StoppingExperimentOnReplay(Experiment):
                 setting['dataset'] = self.tasks[ setting['dataset'] ]
             else:
                 warn(f"Dataset `{setting['dataset']}` is not provided, skipped replay.")
+                return None
+
             setting['save_path'] = self.saved_exp_path / run_hash
 
             return setting
