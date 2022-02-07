@@ -3,8 +3,12 @@ import argparse
 
 import numpy as np
 import pandas as pd
-import matplotlib as mpl
-import matplotlib.pyplot as plt
+
+try:
+    import matplotlib as mpl
+    import matplotlib.pyplot as plt
+except ImportError:
+    pass
 
 from tarexp.util import readObj
 from tarexp.helper.pandas_tools import createDFfromResults
