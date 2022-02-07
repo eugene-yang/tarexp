@@ -7,20 +7,21 @@ import pandas as pd
 try:
     import matplotlib as mpl
     import matplotlib.pyplot as plt
+
+    _hatches = ['...', '\\\\', '', 'OO']
+    _colors = np.array(plt.rcParams['axes.prop_cycle'].by_key()['color'])
+    _legends = [
+        (mpl.patches.PathPatch([[0]], facecolor=_colors[i], edgecolor='#aaa', 
+                            hatch=_hatches[i], linewidth=0, linestyle='-'), n)
+        for i, n in enumerate([r'First-phase / Pos: $\alpha_p Q_t$', r'First-phase / Neg: $\alpha_n (bt - Q_t)$', 
+                            r'Second-phase / Pos: $\beta_p (Q - Q_t)$', r'Second-phase / Neg: $\beta_n (\rho_t - Q + Q_t)$'])
+    ]
 except ImportError:
     pass
 
 from tarexp.util import readObj
 from tarexp.helper.pandas_tools import createDFfromResults
 
-_hatches = ['...', '\\\\', '', 'OO']
-_colors = np.array(plt.rcParams['axes.prop_cycle'].by_key()['color'])
-_legends = [
-    (mpl.patches.PathPatch([[0]], facecolor=_colors[i], edgecolor='#aaa', 
-                           hatch=_hatches[i], linewidth=0, linestyle='-'), n)
-    for i, n in enumerate([r'First-phase / Pos: $\alpha_p Q_t$', r'First-phase / Neg: $\alpha_n (bt - Q_t)$', 
-                           r'Second-phase / Pos: $\beta_p (Q - Q_t)$', r'Second-phase / Neg: $\beta_n (\rho_t - Q + Q_t)$'])
-]
 
 def _runs(runstr):
     if '=' in runstr:
