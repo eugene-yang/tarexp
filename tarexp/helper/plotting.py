@@ -44,10 +44,14 @@ def lighten(color, amount=0.5):
     c = colorsys.rgb_to_hls(*mpl.colors.to_rgb(c))
     return colorsys.hls_to_rgb(c[0], 1 - amount * (1 - c[1]), c[2])
 
-def cost_dynamic(run_dfs: Dict[str, pd.DataFrame], recall_targets, cost_structures, output=None, 
+def cost_dynamic(run_dfs: Dict[str, pd.DataFrame], recall_targets, cost_structures,
                  after_recall_color=0.5, shape=None, figsize=None, y_thousands=True, 
                  with_hatches=False, legend_col=None, max_show_round=None,
                  **kwargs):
+    run_dfs = [
+        (name, d.T.loc[ d.columns.get_level_values('measure').str.startswith('Count') ].T)
+        for name, d in run_dfs
+    ]
     lighters = [ lighten(c, after_recall_color) for c in _colors ]
 
     if shape is None:
@@ -137,7 +141,6 @@ if __name__ == '__main__':
     if len(args.runs) == 1 and args.runs[0] is None:
         # load all runs in the experiment directory
         df = createDFfromResults(args.runs[1])
-        df = df.T.loc[ df.columns.get_level_values('measure').str.startswith('Count') ].T
         run_dfs = []
         for name, d in df.groupby(level='dataset'):
             if len(d.groupby('save_path')) == 1:
@@ -152,9 +155,7 @@ if __name__ == '__main__':
         for i, (name, p) in enumerate(args.runs):
             if p.is_dir():
                 p = p / "exp_metrics.pgz"
-            d = createDFfromResults(readObj(p))
-            d = d.T.loc[ d.columns.get_level_values('measure').str.startswith('Count') ].T
-            run_dfs.append( (name or str(i), d) )
+            run_dfs.append( (name or str(i), createDFfromResults(readObj(p))) )
     
     # do different thing if there are different plotting function implemented 
     fig = cost_dynamic(run_dfs, **vars(args))
