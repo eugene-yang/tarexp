@@ -1,3 +1,4 @@
+from typing import Dict
 from pathlib import Path
 import argparse
 
@@ -43,26 +44,21 @@ def lighten(color, amount=0.5):
     c = colorsys.rgb_to_hls(*mpl.colors.to_rgb(c))
     return colorsys.hls_to_rgb(c[0], 1 - amount * (1 - c[1]), c[2])
 
-def cost_dynamic(runs, recall_targets, cost_structures, output=None, 
+def cost_dynamic(run_dfs: Dict[str, pd.DataFrame], recall_targets, cost_structures, output=None, 
                  after_recall_color=0.5, shape=None, figsize=None, y_thousands=True, 
                  with_hatches=False, legend_col=None, max_show_round=None,
                  **kwargs):
-    run_dfs = []
-    for i, (name, p) in enumerate(runs):
-        if p.is_dir():
-            p = p / "exp_metrics.pgz"
-        d = createDFfromResults(readObj(p))
-        d = d.T.loc[ d.columns.get_level_values('measure').str.startswith('Count') ].T
-        run_dfs.append( (name or str(i), d) )
     lighters = [ lighten(c, after_recall_color) for c in _colors ]
 
     if shape is None:
-        ns = [ len(runs), len(recall_targets), len(cost_structures) ]
+        ns = [ len(run_dfs), len(recall_targets), len(cost_structures) ]
         shape = ( int(np.prod(ns)/max(ns)), max(ns) )
     if figsize is None:
         figsize = ( shape[1]*3.7 , shape[0]*2.5+0.5 )
 
     fig, axes = plt.subplots( *shape, figsize=figsize, tight_layout=True )
+    if shape == (1, 1):
+        axes = np.array([[axes]])
     if shape[0] == 1:
         axes = axes.reshape(1, -1)
 
@@ -90,7 +86,7 @@ def cost_dynamic(runs, recall_targets, cost_structures, output=None,
                 dd_cs[breakpoint:max_show_round].plot.area(ax=ax, stacked=True, linewidth=0, color=lighters)
                 dd_cs[:breakpoint+1].plot.area(ax=ax, stacked=True, linewidth=0, ylim=(0, dd_cs.sum(axis=1).min()*2.5),
                                                title=fr"({i_ax+1}) Run={name} $s$=$({cs_str})$", xlabel='')
-                
+                ax.margins(x=0)
                 if with_hatches:
                     for c, h in zip(ax.collections, _hatches*2):
                         for p in c.get_paths():
@@ -101,26 +97,25 @@ def cost_dynamic(runs, recall_targets, cost_structures, output=None,
                 ax.xaxis.set_major_locator(mpl.ticker.MaxNLocator(integer=True))
                 if got_target > 0:
                     ax.axvline(got_target, ls='--', c='#555')
+                
             
                 i_ax += 1
 
     for ax in axes[:, 0]:
         ax.set_ylabel(f"Total Cost{ ' (thousands)' if y_thousands else '' }")
 
-    if legend_col is None:
-        legend_col = 2 if shape[1] < 3 else 4
-
-    if legend_col == 2:
-        axes[-1, 0].set_xlabel(' \n\n')
+    if shape[1] == 1:
+        legend_col, add_lines = 1, 5
+    elif shape[1] < 3:
+        legend_col, add_lines = 2, 2
     else:
-        axes[-1, 0].set_xlabel(' \n')
+        legend_col, add_lines = 4, 1
+
+    axes[-1, 0].set_xlabel(' ' + '\n'*add_lines)
 
     fig.legend( *zip(*_legends), ncol=legend_col, loc='lower center', bbox_to_anchor=[0.5, 0.0], frameon=False )
 
-    if output:
-        fig.savefig(output, dpi=200)
-    else:
-        plt.show()
+    return fig
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog="plotting")
@@ -135,6 +130,36 @@ if __name__ == '__main__':
     parser.add_argument('--y_thousands', action='store_true', default=False)
     parser.add_argument('--max_show_round', type=int, default=None)
     parser.add_argument('--with_hatches', action='store_true', default=False)
-    parser.add_argument('--legend_col', type=int, default=None)
 
-    cost_dynamic(**vars(parser.parse_args()))
+    args = parser.parse_args()
+
+    # load runs 
+    if len(args.runs) == 1 and args.runs[0] is None:
+        # load all runs in the experiment directory
+        df = createDFfromResults(args.runs[1])
+        df = df.T.loc[ df.columns.get_level_values('measure').str.startswith('Count') ].T
+        run_dfs = []
+        for name, d in df.groupby(level='dataset'):
+            if len(d.groupby('save_path')) == 1:
+                run_dfs.append(name, d.droplevels(['save_path', 'dataset']))
+            else:
+                run_dfs += [
+                    (f"{name}_{i}", dd.droplevels(['save_path', 'dataset']))
+                    for i, (_, dd) in d.groupby('save_path')
+                ]
+    else:
+        run_dfs = []
+        for i, (name, p) in enumerate(args.runs):
+            if p.is_dir():
+                p = p / "exp_metrics.pgz"
+            d = createDFfromResults(readObj(p))
+            d = d.T.loc[ d.columns.get_level_values('measure').str.startswith('Count') ].T
+            run_dfs.append( (name or str(i), d) )
+    
+    # do different thing if there are different plotting function implemented 
+    fig = cost_dynamic(run_dfs, **vars(args))
+    
+    if args.output:
+        fig.savefig(args.output, dpi=200)
+    else:
+        plt.show()
