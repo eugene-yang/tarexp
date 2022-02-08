@@ -49,7 +49,11 @@ def cost_dynamic(run_dfs: Dict[str, pd.DataFrame], recall_targets, cost_structur
                  with_hatches=False, legend_col=None, max_show_round=None,
                  **kwargs):
     run_dfs = [
-        (name, d.T.loc[ d.columns.get_level_values('measure').str.startswith('Count') ].T)
+        (
+            name, 
+            d.droplevel(list(set(d.index.names)-{'round'})).T\
+             .loc[ d.columns.get_level_values('measure').str.startswith('Count') ].T
+        )
         for name, d in run_dfs
     ]
     lighters = [ lighten(c, after_recall_color) for c in _colors ]
