@@ -84,8 +84,6 @@ class Action:
 @dataclass
 class Experiment:
     output_path: Path | str
-    resume: bool = False
-    dump_frequency: int = 10
     random_seed: int = None 
     metrics: List[ir_measures.measures.Measure | OptimisticCost | str] = None
 
@@ -103,8 +101,6 @@ class Experiment:
         self.callbacks = defaultdict(list)
 
         self._exec_static_kwargs = {
-            'resume': self.resume,
-            'dump_frequency': self.dump_frequency,
             'saved_score_limit': self.saved_score_limit,
             'saved_checkpoint_limit': self.saved_checkpoint_limit,
             'max_round_exec': self.max_round_exec,
@@ -130,8 +126,9 @@ class Experiment:
             if not isinstance(getattr(self, f.name), (Dataset, TaskFeeder, iter_with_length))
         ]
 
-    def run(self, disable_tqdm=False, n_processes=1, n_nodes=1, node_id=0):
-        if not self.resume and self.output_path.exists():
+    def run(self, disable_tqdm=False, n_processes=1, n_nodes=1, node_id=0, 
+            resume=False, dump_frequency=10, **runtime_kwargs):
+        if not resume and self.output_path.exists():
             raise FileExistsError(f"{self.output_path} already exists.")
         self.output_path.mkdir(parents=True, exist_ok=True)
 
@@ -156,12 +153,15 @@ class Experiment:
         
         dispatcher = partial(_dispatchRun, output_path=self.output_path, 
                                            exec_func=self.__class__.exec,
-                                           **self._exec_static_kwargs)
+                                           **self._exec_static_kwargs,
+                                           resume=resume, 
+                                           dump_frequency=dump_frequency, 
+                                           **runtime_kwargs)
 
         if n_processes > 1:
             with Pool(n_processes) as pool:
                 ret = list(pool.imap_unordered(
-                    dispatcher, it, chunksize=n_processes
+                    dispatcher, it, chunksize=1
                 ))
         else:
             ret = list(map(dispatcher, it))
@@ -253,12 +253,6 @@ class TARExperiment(Experiment):
                 for other_settings in other_settings_prod
             ),
             length = nruns
-        )
-
-    def _createAction(self, workflow: Workflow):
-        return Action(
-            should_save = workflow.n_rounds % self.dump_frequency == 0,
-            should_stop = workflow.isStopped
         )
         
     @staticmethod

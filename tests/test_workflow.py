@@ -89,7 +89,7 @@ class testExperiments(unittest.TestCase):
         ]
 
         exp = tarexp.TARExperiment(
-            self.test_dir/"org", resume=False, dump_frequency=2, random_seed=123,
+            self.test_dir/"org", random_seed=123,
             metrics=[
                 RPrec, P@10, 
                 tarexp.OptimisticCost(target_recall=0.8, cost_structure=(1,10,1,10))
@@ -99,7 +99,7 @@ class testExperiments(unittest.TestCase):
             workflow=tarexp.OnePhaseTARWorkflow, batch_size=[200, 100]
         )
 
-        results = exp.run(n_processes=2)
+        results = exp.run(n_processes=1, resume=False, dump_frequency=2)
 
         self.assertEqual(len(results), 8)
 
@@ -109,7 +109,7 @@ class testExperiments(unittest.TestCase):
         ))
 
         replay_exp = tarexp.StoppingExperimentOnReplay(
-            self.test_dir/"replay", resume=False, dump_frequency=1, random_seed=123,
+            self.test_dir/"replay", random_seed=123,
             tasks=tarexp.TaskFeeder(self.ds, self.rel_info[['C11', 'GPRO']]),
             replay=tarexp.OnePhaseTARWorkflowReplay,
             saved_exp_path=self.test_dir/"org",
@@ -120,6 +120,6 @@ class testExperiments(unittest.TestCase):
             ]
         )
 
-        results = replay_exp.run()
+        results = replay_exp.run(resume=False, dump_frequency=1)
 
         self.assertEqual(len(results), 8)
