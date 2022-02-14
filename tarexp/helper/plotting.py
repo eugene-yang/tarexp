@@ -159,7 +159,8 @@ if __name__ == '__main__':
         for i, (name, p) in enumerate(args.runs):
             if p.is_dir():
                 p = p / "exp_metrics.pgz"
-            run_dfs.append( (name or str(i), createDFfromResults(readObj(p))) )
+            run_dfs.append( (name or str(i), 
+                             createDFfromResults(readObj(p)).rename_axis('round', axis=0)))
     
     # do different thing if there are different plotting function implemented 
     fig = cost_dynamic(run_dfs, **vars(args))
