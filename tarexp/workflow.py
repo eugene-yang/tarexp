@@ -233,7 +233,7 @@ class OnePhaseTARWorkflow(Workflow):
                                               size=control_set_size, 
                                               replace=False)
             self.ledger.createControl(control_set,
-                                      self.component.labelDocs(control_set))
+                                      self.component.labelDocs(control_set, random=self._random))
 
         self.review_candidates = seed_doc
 
@@ -246,7 +246,7 @@ class OnePhaseTARWorkflow(Workflow):
         if self.isStopped and not force:
             return 
         self.ledger.annotate(self.review_candidates, 
-                             self.component.labelDocs(self.review_candidates))
+                             self.component.labelDocs(self.review_candidates, randome=self._random))
         self.component.trainRanker(*self.dataset.getTrainingData(self.ledger))
         self._saveScores(
             self.component.scoreDocuments(self.dataset.getAllData())
