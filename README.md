@@ -175,12 +175,12 @@ python -m tarexp.helper.plotting \
 
 ![](./examples/cost-dynamic-2.png)
 
-# Feedback
+## Feedback
 
 Any feedback is welcome! 
 You can reach out to us either by emailing the author or rasing an issue! 
 
-# Reference
+## Reference
 
 The demo paper of `TARexp` is currently under review. 
 
