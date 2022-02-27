@@ -60,6 +60,7 @@ jobs:
       - uses: ammaraskar/sphinx-problem-matcher@master
       - name: Build Sphinx docs
         run: |
+          pip install -e ./
           cd docs
           make autodoc
           make dirhtml

@@ -1,3 +1,4 @@
 sphinx
+twine
 numpydoc
 pydata-sphinx-theme
