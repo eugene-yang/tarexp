@@ -1,3 +1,6 @@
+"""This is the summary in workflow.py
+"""
+
 from __future__ import annotations
 from typing import Dict, List
 from warnings import warn
@@ -17,7 +20,7 @@ from tarexp.evaluation import MeasureKey, OptimisticCost, evaluate
 
 from tarexp.util import saveObj, readObj
 
-def checkAutoRoles(component: Component):
+def _checkAutoRoles(component: Component):
     return component.hasRanker and \
            component.hasStoppingRule and \
            component.hasLabeler and \
@@ -25,6 +28,9 @@ def checkAutoRoles(component: Component):
 
 
 class Workflow(Savable):
+    """Generic workflow class. 
+    
+    """
 
     def __init__(self, dataset: Dataset, component: Component, 
                        max_round_exec: int = -1, 
@@ -33,7 +39,7 @@ class Workflow(Savable):
                        random_seed: int = None, 
                        resume: bool = False, **kwargs):
         super().__init__()
-        if not checkAutoRoles(component):
+        if not _checkAutoRoles(component):
             warn("Input component does not have all essential roles. "
                  "Require manual intervention during iterations to avoid "
                  "infinite loop.")

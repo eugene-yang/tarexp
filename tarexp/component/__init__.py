@@ -1,3 +1,12 @@
+"""all components
+
+.. tip::
+    Things are good! 
+
+
+"""
+
+
 from tarexp.component.base import Component, asComponent, CombinedComponent, combine
 from tarexp.component.ranker import Ranker, SklearnRanker 
 from tarexp.component.labeler import Labeler, PerfectLabeler

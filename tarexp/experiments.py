@@ -70,7 +70,7 @@ def _dispatchRun(setting: dict, output_path: Path, exec_func: function, **kwargs
 
     return plain_setting, exec_func(exp_setting=setting, run_path=output_path / setting_str, **kwargs)
 
-def dispatchEvent(callbacks, event, *args, **kwargs):
+def _dispatchEvent(callbacks, event, *args, **kwargs):
     if event in callbacks:
         for f in callbacks[event]:
             f(*args, **kwargs)
@@ -281,24 +281,24 @@ class TARExperiment(Experiment):
             )
         
         act = _createAction()
-        dispatchEvent(callbacks, "run_begin", act, workflow)
+        _dispatchEvent(callbacks, "run_begin", act, workflow)
         while True:
             workflow.step()
             act = _createAction()
-            dispatchEvent(callbacks, "step_taken", act, workflow)
+            _dispatchEvent(callbacks, "step_taken", act, workflow)
             metric_vals.append(workflow.getMetrics(metrics))
 
             if act.should_save or act.should_stop:
                 workflow.save(run_path)
                 saveObj(metric_vals, run_path / "exp_metrics.pgz")
-                dispatchEvent(callbacks, "saved", act, workflow)
+                _dispatchEvent(callbacks, "saved", act, workflow)
             
             if act.should_stop:
-                dispatchEvent(callbacks, "stopped", act, workflow)
+                _dispatchEvent(callbacks, "stopped", act, workflow)
                 break
 
         act = _createAction()
-        dispatchEvent(callbacks, "run_ended", act, workflow)
+        _dispatchEvent(callbacks, "run_ended", act, workflow)
 
         return metric_vals
 
@@ -368,10 +368,10 @@ class StoppingExperimentOnReplay(Experiment):
         for rule in stopping_rules:
             rule.reset()
         
-        dispatchEvent(callbacks, "run_begin", None, replay)
+        _dispatchEvent(callbacks, "run_begin", None, replay)
         while True:
             replay.step()
-            dispatchEvent(callbacks, "step_taken", None, replay)
+            _dispatchEvent(callbacks, "step_taken", None, replay)
 
             frozen_ledger = replay.ledger
             stopping_record.append({
@@ -385,13 +385,13 @@ class StoppingExperimentOnReplay(Experiment):
 
             if replay.n_rounds % dump_frequency == 0:
                 saveObj(stopping_record, run_path / "exp_metrics.pgz")
-                dispatchEvent(callbacks, "saved", None, replay)
+                _dispatchEvent(callbacks, "saved", None, replay)
             
             if replay.isStopped or (exp_early_stopping and all(stopping_record[-1].values())):
                 # reached the end of replay or all testing stopping rules suggested stopping
-                dispatchEvent(callbacks, "stopped", None, replay)
+                _dispatchEvent(callbacks, "stopped", None, replay)
                 break
 
-        dispatchEvent(callbacks, "run_ended", None, replay)
+        _dispatchEvent(callbacks, "run_ended", None, replay)
 
         return stopping_record
