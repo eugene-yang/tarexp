@@ -4,7 +4,7 @@ name: sphinx
 on: [push, pull_request]
 
 env:
-  DEFAULT_BRANCH: "master"
+  DEFAULT_BRANCH: "main"
   #SPHINXOPTS: "-W --keep-going -T"
   # ^-- If these SPHINXOPTS are enabled, then be strict about the builds and fail on any warnings
 
