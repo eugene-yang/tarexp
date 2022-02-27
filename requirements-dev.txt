@@ -1,0 +1,3 @@
+sphnix
+numpydoc
+pydata-sphinx-theme
