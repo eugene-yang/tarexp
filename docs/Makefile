@@ -14,8 +14,10 @@ help:
 
 .PHONY: help Makefile
 
+autodoc:
+	@$(SPHINXAPI) -o ./source ../tarexp --separate --force
+
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
-	@$(SPHINXAPI) -o ./source ../tarexp --separate --force
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
