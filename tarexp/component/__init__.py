@@ -2,8 +2,6 @@
 
 .. tip::
     Things are good! 
-
-
 """
 
 

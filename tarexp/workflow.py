@@ -1,4 +1,28 @@
-"""This is the summary in workflow.py
+"""An instance of class :py:class:`tarexp.workflow.Workflow` executes the user's declarative specification of a TAR workflow.  
+In doing so, it reaches out to :py:class:`tarexp.component.Component` for services specified in the declarative specification 
+such as creating training batches, scoring and ranking the collection, and testing for stopping conditions.  
+
+After an optional initial seed round where the user can specify a starting set of labeled training data, 
+the workflow is executed as a sequence of training rounds. Each round consists of selecting a batch of 
+training documents (using a :py:class:`tarexp.component.Sampler` object), looking up labels for those documents 
+(using the :py:class:`tarexp.component.Labeler` object), training a model and scoring and ranking the collection 
+documents (using the :py:class:`tarexp.component.Ranker` object).
+
+``TARexp`` supports specifications of both one and two-phase TAR workflows, as described in Yang *et al.* [1]_. 
+One-phase workflows (:py:class:`tarexp.workflow.OnePhaseTARWorkflow` in code) can be run for a fixed number of training rounds, or 
+until all documents have been reviewed.  Two-phase reviews also use a stopping rule to determine when to end training, 
+but then follow that by ranking the collection with the final trained model and reviewing to a statistically determined cutoff.
+
+:py:class:`tarexp.workflow.Workflow` is implemented as a Python iterator, allowing procedures defined outside the workflow 
+to execute at each round. The iterator yields a :py:class:`tarexp.ledger.FrozenLedger`. 
+The user can define a custom per-round evaluation process or record information for later analysis. 
+
+.. seealso::
+    .. [1] Eugene Yang, David D. Lewis, and Ophir Frieder. 
+           "On minimizing cost in legal document review workflows." 
+           *Proceedings of the 21st ACM Symposium on Document Engineering*. 2021.
+           `<https://arxiv.org/abs/2106.09866>`__
+
 """
 
 from __future__ import annotations

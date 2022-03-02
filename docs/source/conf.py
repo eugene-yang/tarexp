@@ -49,7 +49,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.mathjax',
     'sphinx.ext.linkcode',
-    'numpydoc'
+    'sphinx.ext.napoleon'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -98,9 +98,14 @@ html_theme = 'pydata_sphinx_theme'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 html_css_files = [
-    '_static/css/custom.css',
+    'css/custom.css',
 ]
 
+# html_logo = "mepro_headshot.png"
+# html_theme_options = {
+#     'logo_only': True,
+#     'display_version': False,
+# }
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
