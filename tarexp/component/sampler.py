@@ -1,10 +1,28 @@
+"""``TARexp`` provides reference implementations of a variety of TAR-specific algorithms, 
+to aid reproducibility and reduce experimenter work. For instance, uncertainty sampling [1]_, 
+relevance feedback [2]_, and simple random sampling batch selection algorithms are provided.   
+
+This interface is inspired by |libact|_, an Active Learning library. 
+
+.. |libact| replace:: ``libact``
+.. _libact: https://github.com/ntucllab/libact
+
+.. seealso::
+    .. [1] David D. Lewis, and William A. Gale. "A sequential algorithm for training text classifiers." 
+           *SIGIR 1994*. Springer, London, 1994.
+           `<https://arxiv.org/abs/cmp-lg/9407020>`__
+    
+    .. [2] Rocchio Algorithm for psuedo relevance feedback
+           `<https://en.wikipedia.org/wiki/Rocchio_algorithm>`__
+"""
+
 import numpy as np
 from tarexp.component.base import Component
 
 from tarexp.ledger import Ledger
 from tarexp.util import getOneDimScores
 
-def removeKnownDocs(idx_list, ledger):
+def _removeKnownDocs(idx_list, ledger):
     known = np.where(ledger.annotated)[0]
     return idx_list[ ~np.isin(idx_list, known) ]
 
@@ -30,7 +48,7 @@ class UncertaintySampler(Sampler):
         else:
             raise ValueError("Scores should be either probabilities of positive ",
                              "or probabilities of all classes. ")
-        return removeKnownDocs(np.argsort(scores), ledger)[:nask]
+        return _removeKnownDocs(np.argsort(scores), ledger)[:nask]
     
     def freeze(self):
         return self
@@ -39,7 +57,7 @@ class RelevanceSampler(Sampler):
 
     def sampleDocs(self, nask: int, ledger: Ledger, scores, **kwargs):
         scores = getOneDimScores(np.asanyarray(scores))
-        return removeKnownDocs(np.argsort(scores)[::-1], ledger)[:nask]
+        return _removeKnownDocs(np.argsort(scores)[::-1], ledger)[:nask]
 
 
 class RandomSampler(Sampler):

@@ -1,3 +1,13 @@
+"""TAR inherits both the large topic-to-topic variability of IR tasks, and the strong dependence on initial conditions 
+and random seeds of active learning processes. Multiple collections, topics, and runs are necessary to reliably demonstrate 
+that one approach dominates another.
+
+We support spawning multiple processes both across machines on a network, and in multiple threads on appropriate hardware.  
+The method ``.run`` dispatches the TAR tasks with runtime settings. In the above example, experiments will run on the first 
+of the two machines with two processes on each, resulting in all four tasks being run simultaneously. The ``.run`` method 
+returns the per-round metric values of all the experiment tasks running on the node.  
+"""
+
 from __future__ import annotations
 from dataclasses import dataclass, fields
 from functools import partial

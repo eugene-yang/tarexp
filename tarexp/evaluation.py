@@ -1,3 +1,26 @@
+"""Consistent implementation of effectiveness metrics, including tricky issues like tiebreaking is critical to TAR experiments. 
+This is true both for evaluation, and because stopping rules may incorporate effectiveness estimates based on small samples. 
+We provide all metrics from the open source package |ir-measures|_ through the :py:meth:`tarexp.workflow.Workflow.getMetrics` method. 
+Metrics are computed on both the full collection and unreviewed documents to support both finite population and generalization 
+perspectives. 
+
+In addition to standard IR metrics, ``TARexp`` implements *OptimisticCost* (:py:class:`tarexp.evaluation.OptimisticCost`) to 
+support the idealized end-to-end cost analysis for TAR proposed in  Yang *et al.* [1]_. Such analysis requires specifying a 
+target recall and a cost structure associated with the TAR process. ``TARexp`` also provides helper functions for plotting 
+cost dynamics graphs (:py:mod:`tarexp.helper.plotting`). 
+
+.. |ir-measures| replace:: ``ir-measures``
+.. _ir-measures: https://ir-measur.es/en/latest/
+
+.. seealso::
+    .. [1] Eugene Yang, David D. Lewis, and Ophir Frieder. 
+           "On minimizing cost in legal document review workflows." 
+           *Proceedings of the 21st ACM Symposium on Document Engineering*. 2021.
+           `<https://arxiv.org/abs/2106.09866>`__
+
+"""
+
+
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Dict

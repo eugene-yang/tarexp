@@ -1,3 +1,9 @@
+"""A :py:class:`tarexp.component.labeler.Labeler` instance simulates human review. 
+For most TAR experiments, we assume we simply look up the gold label of each document using 
+:py:class:`tarexp.component.labeler.PerfectLabeler`. 
+Random errors can be introduced using :py:class:`tarexp.component.labeler.SuccessProbLabeler`. 
+"""
+
 from tarexp.component.base import Component
 from tarexp.dataset import Dataset
 import numpy as np

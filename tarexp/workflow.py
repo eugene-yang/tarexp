@@ -4,12 +4,12 @@ such as creating training batches, scoring and ranking the collection, and testi
 
 After an optional initial seed round where the user can specify a starting set of labeled training data, 
 the workflow is executed as a sequence of training rounds. Each round consists of selecting a batch of 
-training documents (using a :py:class:`tarexp.component.Sampler` object), looking up labels for those documents 
-(using the :py:class:`tarexp.component.Labeler` object), training a model and scoring and ranking the collection 
-documents (using the :py:class:`tarexp.component.Ranker` object).
+training documents (using :py:class:`tarexp.component.Sampler`), looking up labels for those documents 
+(using :py:class:`tarexp.component.Labeler`), training a model and scoring and ranking the collection 
+documents (using :py:class:`tarexp.component.Ranker`).
 
 ``TARexp`` supports specifications of both one and two-phase TAR workflows, as described in Yang *et al.* [1]_. 
-One-phase workflows (:py:class:`tarexp.workflow.OnePhaseTARWorkflow` in code) can be run for a fixed number of training rounds, or 
+One-phase workflows (:py:class:`tarexp.workflow.OnePhaseTARWorkflow`) can be run for a fixed number of training rounds, or 
 until all documents have been reviewed.  Two-phase reviews also use a stopping rule to determine when to end training, 
 but then follow that by ranking the collection with the final trained model and reviewing to a statistically determined cutoff.
 

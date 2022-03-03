@@ -1,3 +1,21 @@
+"""Any aspect of the history of a batch-based workflow can, if necessary, be reproduced from a record of 
+which documents were labeled on which training rounds (including any initial seed round). 
+The :py:class:`tarexp.ledger.Ledger` instance records this state in memory, and 
+writes it to disk at user-specified intervals to enable restarts (specified in :py:class:`tarexp.workflow.Workflow`). 
+
+The persisted ledger for a complete run can be used to execute ``TARexp`` in *frozen* mode (:py:class:`tarexp.ledger.FrozenLedger`) 
+where no batch selection, training, or scoring is done.  Frozen mode supports efficient testing of new components that 
+do not change training or scoring, e.g., non-interventional stopping rules [1]_, effectiveness estimation methods, etc. 
+Evaluating stopping rules for two-phase reviews also requires persisting scores of all documents at the end of each 
+training round, an option the user can specify.    
+
+.. seealso::
+    .. [1] David D. Lewis, Eugene Yang, and Ophir Frieder. "Certifying One-Phase Technology-Assisted Reviews." 
+           *Proceedings of the 30th ACM International Conference on Information & Knowledge Management*. 2021.
+           `<https://arxiv.org/abs/2108.12746>`__
+
+"""
+
 from dataclasses import FrozenInstanceError
 from collections import Counter
 import numpy as np

@@ -1,16 +1,21 @@
+"""``TARexp`` supports classification models implemented in Scikit-learn through 
+:py:class:`tarexp.component.ranker.SklearnRanker` wrapper. However, any supervised 
+learning model that can produce a score for each document in the collection can be 
+integrated into ``TARexp``. 
+
+.. caution::
+    For rankers that require allocating a lot of memory or carries states 
+    (e.g. neural models and SGDClassifier in sklearn that supports partial_fit), 
+    it would be ideal to put the actual model initialization into ``.begin`` method 
+    and properly dispose the model instance in ``.reset`` method.
+
+"""
+
 import warnings
 from copy import deepcopy
 
 import numpy as np
 from tarexp.component.base import Component
-
-"""
-## Note 
-For rankers that require allocating a lot of memory or carries states 
-(e.g. neural models and SGDClassifier in sklearn that supports partial_fit), 
-it would be ideal to put the actual model initialization into `begin` method 
-and properly dispose the model instance in `reset` method.
-"""
 
 class Ranker(Component):
     

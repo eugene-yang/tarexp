@@ -1,3 +1,6 @@
+"""Stopping rules are a particular focus of TAR research. 
+"""
+
 import numpy as np
 from tarexp.component.base import Component
 from tarexp.ledger import Ledger
@@ -44,6 +47,13 @@ class FixedRoundStoppingRule(StoppingRule):
 
 
 class KneeStoppingRule(StoppingRule):
+    """
+    .. seealso::
+        .. [1] Gordon V. Cormack, and Maura R. Grossman. "Engineering quality and reliability in technology-assisted review." 
+               *Proceedings of the 39th International ACM SIGIR conference on Research and Development in Information Retrieval.* 2016.
+               `<https://dl.acm.org/doi/10.1145/2911451.2911510>`__
+    """
+
     def checkStopping(self, ledger: Ledger, *args, **kwargs) -> bool:
         if ledger.n_rounds < 1:
             return False
@@ -60,6 +70,13 @@ class KneeStoppingRule(StoppingRule):
 
 
 class BudgetStoppingRule(StoppingRule):
+    """
+    .. seealso::
+        .. [2] Gordon V. Cormack, and Maura R. Grossman. "Engineering quality and reliability in technology-assisted review." 
+               *Proceedings of the 39th International ACM SIGIR conference on Research and Development in Information Retrieval.* 2016.
+               `<https://dl.acm.org/doi/10.1145/2911451.2911510>`__
+    """
+
     def checkStopping(self, ledger: Ledger, *args, **kwargs) -> bool:
         if ledger.n_rounds < 1:
             return False
@@ -104,6 +121,12 @@ class Rule2399StoppingRule(StoppingRule):
 
 
 class QuantStoppingRule(StoppingRule):
+    """
+    .. seealso::
+        .. [3] Eugene Yang, David D. Lewis, and Ophir Frieder. "Heuristic stopping rules for technology-assisted review." 
+               *Proceedings of the 21st ACM Symposium on Document Engineering.* 2021.
+               `<https://arxiv.org/abs/2106.09871>`__
+    """
     def __init__(self, target_recall: float, nstd: float = 0):
         super().__init__(target_recall=target_recall)
         self.nstd = nstd
@@ -133,6 +156,12 @@ class QuantStoppingRule(StoppingRule):
         return est_recall - self.nstd*np.sqrt(est_var) >= self.target_recall
 
 class CHMHeuristicsStoppingRule(StoppingRule):
+    """
+    .. seealso::
+        .. [4] Max W. Callaghan, and Finn Müller-Hansen. "Statistical stopping criteria for automated screening in systematic reviews." 
+               *Systematic Reviews 9.1* (2020): 1-14.
+               `<https://pubmed.ncbi.nlm.nih.gov/33248464/>`__
+    """
     def __init__(self, target_recall: float, alpha=0.05):
         super().__init__(target_recall=target_recall)
         self.alpha = alpha
