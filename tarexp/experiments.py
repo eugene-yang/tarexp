@@ -88,18 +88,50 @@ def _dispatchEvent(callbacks, event, *args, **kwargs):
 
 @dataclass
 class Action:
+    """Action controler for feedback functions in experiments.
+
+    Feedback functions recieve an :py:class:`~Action` class that each attribute modifiable for suggesting
+    the experiment running function to perform certain operation. 
+
+    """
     should_save: bool = False
+    """Suggest the workflow to save a checkpoint at this round."""
+
     should_stop: bool = False
+    """Suggest the workflow to stop after this round."""
 
 @dataclass
 class Experiment:
-    output_path: Path | str
-    random_seed: int = None 
-    metrics: List[ir_measures.measures.Measure | OptimisticCost | str] = None
+    """:py:class:`~Experiment` is implemented as a Python Dataclass, which contains information for experiments but not 
+    the states, which are determined by the checkpoint of each individual run on disk. 
+    The attributes (or the properties of the class) are designed to be static configurations of the experiments. 
+    Runtime configurations are passed as arguments to the :py:meth:`~run` method.
 
-    saved_score_limit: int = -1 # experiment setting instead of parameter
+    All experiments inheriting this class should implement the static method :py:meth:`~exec` which describes how
+    a run should execute and :py:meth:`~generateSettings` which generates a list of experimenting settings that will be 
+    yielded as TAR runs. The configuration would be passed as the first arugment (or keyed as ``setting``) to this 
+    static method. 
+
+    All downstream classes should also register any additional arguments through :py:meth:`~registerExecArguments` to 
+    ensure these configurations are passed into the :py:meth:`~exec` static method.
+    """
+    output_path: Path | str
+    """Output directory of the experiment."""
+    
+    random_seed: int = None 
+    """Random seed used in the experiment and all experiment runs."""
+    
+    metrics: List[ir_measures.measures.Measure | OptimisticCost | str] = None
+    """Evaluation metrics that would be calculated and stored at each round of the runs."""
+
+    saved_score_limit: int = -1
+    """Number of rounds the document scores each workflow would be storing. Negative indicates no limitation."""
+    
     saved_checkpoint_limit: int = 2
+    """Maximum number of checkpoints would be stored on disk. Older checkpoints would be deleted silently."""
+    
     max_round_exec: int = -1
+    """Maximum number of rounds each run would be allowed to execute."""
     
     def __post_init__(self):
         if isinstance(self.output_path, str):
@@ -120,17 +152,38 @@ class Experiment:
         }
     
     def on(self, event: str, func: callable):
+        """Register a callback function tied to a certain event. 
+        List of events available for each experiment is stored in :py:attr:`~available_events`.
+
+        Parameters
+        ----------
+        event
+            Name of of the event the callback function would be invoked. 
+        
+        func
+            Callback funtion that will take in an :py:class:`~Action` instance and the :py:class:`tarexp.workflow.Workflow`
+            instance as arguments. 
+        """
         self.callbacks[event].append(func)
     
-    def registerExecArguments(self, kwargs):
+    def registerExecArguments(self, kwargs: Dict[str, Any]):
+        """Register static experiment arguments.
+
+        Parameters
+        ----------
+        kwargs
+            Dictionary of arguments where the keys and values are the name and values of the argument.
+        """
         self._exec_static_kwargs.update(kwargs)
 
     @property
     def available_events(self):
+        """List of available events of this experiment."""
         return ['saved']
     
     @property
     def savable_fields(self):
+        """List of attributes that would be saved in the experiment directory."""
         return [
             f.name for f in fields(self)
             if not isinstance(getattr(self, f.name), (Dataset, TaskFeeder, iter_with_length))
@@ -138,6 +191,39 @@ class Experiment:
 
     def run(self, disable_tqdm=False, n_processes=1, n_nodes=1, node_id=0, 
             resume=False, dump_frequency=10, **runtime_kwargs):
+        """Execute all experiment runs.
+
+        This method natively support multiprocessing on a single machine and parallel processing on multiple machines.
+        However, when running on multiple machines, user needs to manually invoke this method with proper ``n_nodes`` and
+        ``node_id`` values in order to let each machine execute their own parts of experiments.
+
+        Arguments of this method are designed to be runtime configurations, including ones that will eventually be passed
+        to the underlying workflow instances.  
+
+        Parameters
+        ----------
+        disable_tqdm
+            Whether to show the progress bar. Default is ``False`` (showing the bar). 
+        
+        n_process
+            Number of processers to use on this machine. 
+        
+        n_nodes
+            Number of machines running this set of experiments in total. 
+
+        node_id
+            The index of this machine among all machines starting from ``0``. This value should be < ``n_nodes``. 
+        
+        resume
+            Whether to resume from existing runs. Default is ``True``. This value will be passed to the workflow and 
+            expect the workflow to respect it. 
+        
+        dump_frequency
+            The frequency of the workflow to save a checkpoint on disk. 
+        
+        **runtime-kwargs
+            Other runtime arguments to pass to the workflow instance. 
+        """
         if not resume and self.output_path.exists():
             raise FileExistsError(f"{self.output_path} already exists.")
         self.output_path.mkdir(parents=True, exist_ok=True)
@@ -179,25 +265,72 @@ class Experiment:
         return ret
     
     def generateSettings(self) -> iter_with_length | list:
+        """Generate a list experimenting settings.
+
+        Any experiment class that inherits this class should implement its own version since each experiment should define
+        its own set of attributes that could be experimenting with (or more complex ways to generate sensible combinations). 
+        The rest of the attributes should be static. 
+        """
         raise NotImplementedError
 
     @staticmethod
     def exec(setting: dict, run_path: Path, **kwargs) -> List[Dict[MeasureKey, int | float]]:
+        """Executing a TAR run for experiment.
+
+        Any experiment class that inherits this class should implement its own version of this method. 
+        This method describe how an experiment of the workflow will be executed, including when the metrics are calcuated
+        and when the callback functions are invoked. 
+
+        .. note::
+            This method can be confused with the :py:meth:`tarexp.workflow.Workflow.step` method. However, ``exec`` 
+            focuses on the experimenting side which should not modify the behavior of a workflow. 
+        """
         raise NotImplementedError
 
 @dataclass
 class TARExperiment(Experiment):
+    """An experiment that executes a TAR workflow. 
+    
+    This experiment class is designed to be compatible with any workflow that inherits :py:class:`tarexp.workflow.Workflow`
+    class. 
+
+    Please refer to :py:class:`~Experiment` for properties inherited from it.
+
+    .. important::
+        Any attribute that marked as **experimentable** will contribute to the process of generating the combination of the 
+        experiment runs. For example, if 2 tasks, 3 sets of components, 3 batch sizes, and 10 control set sizes are provided,
+        :py:meth:`~generateSettings` will yield 2x3x3x10 = 180 runs. 
+    """
     tasks: Dataset | List[Dataset] | TaskFeeder = None
+    """**Experimentable** (A list of) dataset instance or :py:class:`tarexp.dataset.TaskFeeder` class.
+    Each task is considered as an independent TAR review project which consists of a collection and a set of gold labels. 
+    """
+    
     components: Component | List[Component] | iter_with_length = None
+    """**Experimentable** (A list of) combined components for experiments."""
+    
     workflow: Workflow = OnePhaseTARWorkflow
+    """Workflow that will be used for experiment."""
 
     # workflow specific arguments
     batch_size: int | List[int] = 200
+    """**Experimentable** (A list of) batch sizes for the TAR workflow."""
+    
     control_set_size: int | List[int] = 0
+    """**Experimentable** (A list of) control set sizes for TAR workflow."""
+    
     workflow_kwargs: dict = None
+    """**Experimentable** Other experimenting arguments. 
+    If the value of the pair in the dictionary is a list, it will 
+    be considered as an experimentable arguments and also contributes to the combination.
+    """
 
+    
     repeat_tasks: int = 1
+    """**Experimentable** Number of times each task will be replicated with different random seed."""
+    
     seed_docs_construction: Tuple[int, int] = (1, 0)
+    """Number of positive and negative seed documents will be generated for each run."""
 
     def __post_init__(self):
         super().__post_init__()
@@ -237,6 +370,12 @@ class TARExperiment(Experiment):
         ]
 
     def generateSettings(self):
+        """Generate an iterator that yields experiment settings in dictionaries. 
+
+        In this experiments, :py:attr:`~tasks`, :py:attr:`~components`, :py:attr:`~repeat_tasks`, :py:attr:`~batch_size`,
+        :py:attr:`~control_set_size`, and any other values in :py:attr:`~workflow_kwargs` will be contributed to the 
+        combination.
+        """
         other_settings_prod = _generateProducts(self.workflow_kwargs)
         nruns = len(self.tasks) * len(self.components) * self.repeat_tasks * \
                 len(self.batch_size) * len(self.control_set_size) * \
@@ -253,6 +392,7 @@ class TARExperiment(Experiment):
                     'irep': irep,
                     'batch_size': bs,
                     'control_set_size': ctl_set,
+                    'random_seed': self.random_seed + irep,
                     **other_settings
                 }
                 for ds in tasks
@@ -270,6 +410,10 @@ class TARExperiment(Experiment):
              workflow_cls: Workflow, resume: bool, 
              metrics: list, dump_frequency: int, 
              callbacks: dict, **static_setting) -> List[Dict[MeasureKey, int | float]]:
+        """Execute a run of experiment using the workflow specified in :py:attr:`~workflow`.
+        This method is used internally by the dispatcher invoked by :py:meth:`tarexp.experiments.Experiment.run`.
+        """
+
         if run_path.exists():
             if not resume:
                 warn(f"Run path {run_path} already exists, task skipped.")
@@ -281,6 +425,7 @@ class TARExperiment(Experiment):
             if workflow.isStopped:
                 return metric_vals
         else:
+            del static_setting['random_seed'] # it is also an experimenting variable here
             workflow = workflow_cls(**exp_setting, **static_setting)
             metric_vals = []
 
@@ -315,12 +460,32 @@ class TARExperiment(Experiment):
 
 @dataclass
 class StoppingExperimentOnReplay(Experiment):
-    tasks: Dataset | List[Dataset] | TaskFeeder = None
-    replay: WorkflowReplay = None
+    """Stopping Rule experiments on existing TAR runs using :py:class:`tarexp.workflow.WorkflowReplay`.
+    
+    This experiment invokes different stopping rules at each replay round to test whether the rule suggests stopping. 
+    All runs in the provided TAR experiment directory will be tested. 
+
+    .. important::
+        Since stopping rules are only tested on the replays, any rule that intervenes with the TAR process (such as 
+        changing the sampling of the documents for estimating progress) cannot be tested with this experiment. User 
+        should execute individual TAR runs by using :py:class:`~TARExperiment` to test those stopping rules. 
+    """
     saved_exp_path: Path | str = None
+    """Path to the directory of the TAR runs."""
+    
+    tasks: Dataset | List[Dataset] | TaskFeeder = None
+    """List of dataset instance or TaskFeeder that provides the datasets for replay experiments."""
+    
+    replay: WorkflowReplay = None
+    """The replay workflow class that corresponds to the workflow used to generate the TAR runs provided in 
+    :py:attr:`~saved_exp_path`.
+    """
+    
     stopping_rules: List[StoppingRule] = None
+    """List of stopping rules that will be tested on the replay workflow."""
 
     exp_early_stopping: bool = True
+    """Whether to early stop the replay if all stopping rule tested have already suggested stopping."""
 
     def __post_init__(self):
         super().__post_init__()
@@ -370,6 +535,12 @@ class StoppingExperimentOnReplay(Experiment):
     def exec(exp_setting: dict, run_path: Path, replay_cls: WorkflowReplay, 
              stopping_rules: List[StoppingRule], metrics: list, 
              dump_frequency: int, exp_early_stopping: bool, callbacks: dict, **kwargs):
+        """Execute a run of experiment using the replay workflow specified in :py:attr:`~replay_workflow`.
+        This method is used internally by the dispatcher invoked by :py:meth:`tarexp.experiments.Experiment.run`.
+
+        .. note::
+            Since the stopping rule runs are designed to be fast, resume is not supported in this experiment.
+        """
         run_path.mkdir(exist_ok=True, parents=True)
         replay = replay_cls.load( exp_setting['save_path'], exp_setting['dataset'] )
 

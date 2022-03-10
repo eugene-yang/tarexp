@@ -29,7 +29,7 @@ release = ''
 
 
 autodoc_member_order = 'bysource'
-autodoc_typehints = 'description'
+# autodoc_typehints = 'description'
 
 numpydoc_class_members_toctree = True
 numpydoc_show_class_members = False
