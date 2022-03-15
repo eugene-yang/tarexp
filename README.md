@@ -11,7 +11,7 @@ Helper functions to support results analysis are also avaiable.
 
 Please visit our Google Colab Demo to check out the full running example [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/eugene-yang/tarexp/blob/main/examples/exp-demo.ipynb)
 
-*The full documentation is coming soon! Please stay tune :)*
+Please refer to the documentation for more detail: https://eugene.zone/tarexp. 
 
 ## Get Started
 
