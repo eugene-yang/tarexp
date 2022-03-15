@@ -339,7 +339,6 @@ class TaskFeeder:
     @classmethod
     def from_irds(cls, **kwargs):
         """
-        .. warning::
-            Coming soon.
+        .. danger:: Has not implemented yet. Coming soon. 
         """
         raise NotImplementedError
