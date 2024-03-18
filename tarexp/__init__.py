@@ -1,4 +1,4 @@
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 
 from tarexp.dataset import Dataset, SparseVectorDataset, TaskFeeder
 from tarexp.workflow import Workflow, WorkflowReplay, \
