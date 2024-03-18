@@ -1,0 +1,794 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>tarexp package &#8212; TARexp  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1c6b4a1a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tarexp';</script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="tarexp.component package" href="../tarexp.component/" />
+    <link rel="prev" title="tarexp" href="../modules/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">TARexp  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../started/">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../modules/">
+                        API Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example/">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../references/">
+                        References
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../started/">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../modules/">
+                        API Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example/">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../references/">
+                        References
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">tarexp package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tarexp.component/">tarexp.component package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.base/">tarexp.component.base module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.labeler/">tarexp.component.labeler module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.ranker/">tarexp.component.ranker module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.sampler/">tarexp.component.sampler module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.stopping/">tarexp.component.stopping module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tarexp.helper/">tarexp.helper package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.helper.pandas_tools/">tarexp.helper.pandas_tools module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.helper.plotting/">tarexp.helper.plotting module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.base/">tarexp.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.dataset/">tarexp.dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.evaluation/">tarexp.evaluation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.experiments/">tarexp.experiments module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.ledger/">tarexp.ledger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.util/">tarexp.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.workflow/">tarexp.workflow module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../modules/" class="nav-link">tarexp</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">tarexp package</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="tarexp-package">
+<h1>tarexp package<a class="headerlink" href="#tarexp-package" title="Permalink to this heading">#</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tarexp.component/">tarexp.component package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.component/#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.base/">tarexp.component.base module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.base/#tarexp.component.base.Component"><code class="docutils literal notranslate"><span class="pre">Component</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.base/#tarexp.component.base.FunctionComponent"><code class="docutils literal notranslate"><span class="pre">FunctionComponent</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.base/#tarexp.component.base.asComponent"><code class="docutils literal notranslate"><span class="pre">asComponent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.base/#tarexp.component.base.CombinedComponent"><code class="docutils literal notranslate"><span class="pre">CombinedComponent</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.base/#tarexp.component.base.combine"><code class="docutils literal notranslate"><span class="pre">combine()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.labeler/">tarexp.component.labeler module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.labeler/#tarexp.component.labeler.Labeler"><code class="docutils literal notranslate"><span class="pre">Labeler</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.labeler/#tarexp.component.labeler.PerfectLabeler"><code class="docutils literal notranslate"><span class="pre">PerfectLabeler</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.labeler/#tarexp.component.labeler.SuccessProbLabeler"><code class="docutils literal notranslate"><span class="pre">SuccessProbLabeler</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.ranker/">tarexp.component.ranker module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.ranker/#tarexp.component.ranker.Ranker"><code class="docutils literal notranslate"><span class="pre">Ranker</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.ranker/#tarexp.component.ranker.SklearnRanker"><code class="docutils literal notranslate"><span class="pre">SklearnRanker</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.ranker/#tarexp.component.ranker.addDummyNeg"><code class="docutils literal notranslate"><span class="pre">addDummyNeg()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.sampler/">tarexp.component.sampler module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.sampler/#tarexp.component.sampler.Sampler"><code class="docutils literal notranslate"><span class="pre">Sampler</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.sampler/#tarexp.component.sampler.UncertaintySampler"><code class="docutils literal notranslate"><span class="pre">UncertaintySampler</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.sampler/#tarexp.component.sampler.RelevanceSampler"><code class="docutils literal notranslate"><span class="pre">RelevanceSampler</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.sampler/#tarexp.component.sampler.RandomSampler"><code class="docutils literal notranslate"><span class="pre">RandomSampler</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.stopping/">tarexp.component.stopping module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.stopping/#tarexp.component.stopping.StoppingRule"><code class="docutils literal notranslate"><span class="pre">StoppingRule</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.stopping/#tarexp.component.stopping.NullStoppingRule"><code class="docutils literal notranslate"><span class="pre">NullStoppingRule</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.stopping/#tarexp.component.stopping.FixedRoundStoppingRule"><code class="docutils literal notranslate"><span class="pre">FixedRoundStoppingRule</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.stopping/#tarexp.component.stopping.KneeStoppingRule"><code class="docutils literal notranslate"><span class="pre">KneeStoppingRule</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.stopping/#tarexp.component.stopping.BudgetStoppingRule"><code class="docutils literal notranslate"><span class="pre">BudgetStoppingRule</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.stopping/#tarexp.component.stopping.ReviewHalfStoppingRule"><code class="docutils literal notranslate"><span class="pre">ReviewHalfStoppingRule</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.stopping/#tarexp.component.stopping.BatchPrecStoppingRule"><code class="docutils literal notranslate"><span class="pre">BatchPrecStoppingRule</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.stopping/#tarexp.component.stopping.Rule2399StoppingRule"><code class="docutils literal notranslate"><span class="pre">Rule2399StoppingRule</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.stopping/#tarexp.component.stopping.QuantStoppingRule"><code class="docutils literal notranslate"><span class="pre">QuantStoppingRule</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.component.stopping/#tarexp.component.stopping.CHMHeuristicsStoppingRule"><code class="docutils literal notranslate"><span class="pre">CHMHeuristicsStoppingRule</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.component/#module-tarexp.component">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tarexp.helper/">tarexp.helper package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.helper/#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.helper.pandas_tools/">tarexp.helper.pandas_tools module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.helper.pandas_tools/#tarexp.helper.pandas_tools.createDFfromResults"><code class="docutils literal notranslate"><span class="pre">createDFfromResults()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.helper.plotting/">tarexp.helper.plotting module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.helper.plotting/#tarexp.helper.plotting.lighten"><code class="docutils literal notranslate"><span class="pre">lighten()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tarexp.helper.plotting/#tarexp.helper.plotting.cost_dynamic"><code class="docutils literal notranslate"><span class="pre">cost_dynamic()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.helper/#module-tarexp.helper">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tarexp.base/">tarexp.base module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.base/#tarexp.base.Eventable"><code class="docutils literal notranslate"><span class="pre">Eventable</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.base/#tarexp.base.Eventable.fire"><code class="docutils literal notranslate"><span class="pre">Eventable.fire()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.base/#tarexp.base.Eventable.on"><code class="docutils literal notranslate"><span class="pre">Eventable.on()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.base/#tarexp.base.Eventable.updateCallbacks"><code class="docutils literal notranslate"><span class="pre">Eventable.updateCallbacks()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.base/#tarexp.base.Savable"><code class="docutils literal notranslate"><span class="pre">Savable</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.base/#tarexp.base.Savable.save"><code class="docutils literal notranslate"><span class="pre">Savable.save()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.base/#tarexp.base.Savable.load"><code class="docutils literal notranslate"><span class="pre">Savable.load()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.base/#tarexp.base.space"><code class="docutils literal notranslate"><span class="pre">space</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.base/#tarexp.base.space.keys"><code class="docutils literal notranslate"><span class="pre">space.keys()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.base/#tarexp.base.space.items"><code class="docutils literal notranslate"><span class="pre">space.items()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.base/#tarexp.base.space.values"><code class="docutils literal notranslate"><span class="pre">space.values()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.base/#tarexp.base.easy_repr"><code class="docutils literal notranslate"><span class="pre">easy_repr()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tarexp.dataset/">tarexp.dataset module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset.identifier"><code class="docutils literal notranslate"><span class="pre">Dataset.identifier</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset.name"><code class="docutils literal notranslate"><span class="pre">Dataset.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset.n_docs"><code class="docutils literal notranslate"><span class="pre">Dataset.n_docs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset.labels"><code class="docutils literal notranslate"><span class="pre">Dataset.labels</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset.hasLabels"><code class="docutils literal notranslate"><span class="pre">Dataset.hasLabels</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset.pos_doc_ids"><code class="docutils literal notranslate"><span class="pre">Dataset.pos_doc_ids</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset.neg_doc_ids"><code class="docutils literal notranslate"><span class="pre">Dataset.neg_doc_ids</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset.ingest"><code class="docutils literal notranslate"><span class="pre">Dataset.ingest()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset.setLabels"><code class="docutils literal notranslate"><span class="pre">Dataset.setLabels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset.getAllData"><code class="docutils literal notranslate"><span class="pre">Dataset.getAllData()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset.getTrainingData"><code class="docutils literal notranslate"><span class="pre">Dataset.getTrainingData()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset.duplicate"><code class="docutils literal notranslate"><span class="pre">Dataset.duplicate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset.from_text"><code class="docutils literal notranslate"><span class="pre">Dataset.from_text()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.SparseVectorDataset"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.SparseVectorDataset.n_docs"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.n_docs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.SparseVectorDataset.labels"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.labels</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.SparseVectorDataset.identifier"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.identifier</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.SparseVectorDataset.pos_doc_ids"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.pos_doc_ids</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.SparseVectorDataset.neg_doc_ids"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.neg_doc_ids</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.SparseVectorDataset.ingest"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.ingest()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.SparseVectorDataset.setLabels"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.setLabels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.SparseVectorDataset.duplicate"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.duplicate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.SparseVectorDataset.from_sparse"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.from_sparse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.TaskFeeder"><code class="docutils literal notranslate"><span class="pre">TaskFeeder</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.TaskFeeder.from_irds"><code class="docutils literal notranslate"><span class="pre">TaskFeeder.from_irds()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tarexp.evaluation/">tarexp.evaluation module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.MeasureKey"><code class="docutils literal notranslate"><span class="pre">MeasureKey</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.MeasureKey.measure"><code class="docutils literal notranslate"><span class="pre">MeasureKey.measure</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.MeasureKey.section"><code class="docutils literal notranslate"><span class="pre">MeasureKey.section</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.MeasureKey.target_recall"><code class="docutils literal notranslate"><span class="pre">MeasureKey.target_recall</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.CostCountKey"><code class="docutils literal notranslate"><span class="pre">CostCountKey</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.CostCountKey.measure"><code class="docutils literal notranslate"><span class="pre">CostCountKey.measure</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.CostCountKey.section"><code class="docutils literal notranslate"><span class="pre">CostCountKey.section</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.CostCountKey.target_recall"><code class="docutils literal notranslate"><span class="pre">CostCountKey.target_recall</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.CostCountKey.label"><code class="docutils literal notranslate"><span class="pre">CostCountKey.label</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.OptimisticCost"><code class="docutils literal notranslate"><span class="pre">OptimisticCost</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.OptimisticCost.measure"><code class="docutils literal notranslate"><span class="pre">OptimisticCost.measure</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.OptimisticCost.section"><code class="docutils literal notranslate"><span class="pre">OptimisticCost.section</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.OptimisticCost.target_recall"><code class="docutils literal notranslate"><span class="pre">OptimisticCost.target_recall</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.OptimisticCost.cost_structure"><code class="docutils literal notranslate"><span class="pre">OptimisticCost.cost_structure</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.OptimisticCost.calc_all"><code class="docutils literal notranslate"><span class="pre">OptimisticCost.calc_all()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.evaluate"><code class="docutils literal notranslate"><span class="pre">evaluate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tarexp.experiments/">tarexp.experiments module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Action"><code class="docutils literal notranslate"><span class="pre">Action</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Action.should_save"><code class="docutils literal notranslate"><span class="pre">Action.should_save</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Action.should_stop"><code class="docutils literal notranslate"><span class="pre">Action.should_stop</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Experiment"><code class="docutils literal notranslate"><span class="pre">Experiment</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Experiment.output_path"><code class="docutils literal notranslate"><span class="pre">Experiment.output_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Experiment.random_seed"><code class="docutils literal notranslate"><span class="pre">Experiment.random_seed</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Experiment.metrics"><code class="docutils literal notranslate"><span class="pre">Experiment.metrics</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Experiment.saved_score_limit"><code class="docutils literal notranslate"><span class="pre">Experiment.saved_score_limit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Experiment.saved_checkpoint_limit"><code class="docutils literal notranslate"><span class="pre">Experiment.saved_checkpoint_limit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Experiment.max_round_exec"><code class="docutils literal notranslate"><span class="pre">Experiment.max_round_exec</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Experiment.on"><code class="docutils literal notranslate"><span class="pre">Experiment.on()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Experiment.registerExecArguments"><code class="docutils literal notranslate"><span class="pre">Experiment.registerExecArguments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Experiment.available_events"><code class="docutils literal notranslate"><span class="pre">Experiment.available_events</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Experiment.savable_fields"><code class="docutils literal notranslate"><span class="pre">Experiment.savable_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Experiment.run"><code class="docutils literal notranslate"><span class="pre">Experiment.run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Experiment.generateSettings"><code class="docutils literal notranslate"><span class="pre">Experiment.generateSettings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.Experiment.exec"><code class="docutils literal notranslate"><span class="pre">Experiment.exec()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.TARExperiment"><code class="docutils literal notranslate"><span class="pre">TARExperiment</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.TARExperiment.tasks"><code class="docutils literal notranslate"><span class="pre">TARExperiment.tasks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.TARExperiment.components"><code class="docutils literal notranslate"><span class="pre">TARExperiment.components</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.TARExperiment.workflow"><code class="docutils literal notranslate"><span class="pre">TARExperiment.workflow</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.TARExperiment.batch_size"><code class="docutils literal notranslate"><span class="pre">TARExperiment.batch_size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.TARExperiment.control_set_size"><code class="docutils literal notranslate"><span class="pre">TARExperiment.control_set_size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.TARExperiment.workflow_kwargs"><code class="docutils literal notranslate"><span class="pre">TARExperiment.workflow_kwargs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.TARExperiment.repeat_tasks"><code class="docutils literal notranslate"><span class="pre">TARExperiment.repeat_tasks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.TARExperiment.seed_docs_construction"><code class="docutils literal notranslate"><span class="pre">TARExperiment.seed_docs_construction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.TARExperiment.available_events"><code class="docutils literal notranslate"><span class="pre">TARExperiment.available_events</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.TARExperiment.generateSettings"><code class="docutils literal notranslate"><span class="pre">TARExperiment.generateSettings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.TARExperiment.exec"><code class="docutils literal notranslate"><span class="pre">TARExperiment.exec()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.StoppingExperimentOnReplay"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.StoppingExperimentOnReplay.saved_exp_path"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.saved_exp_path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.StoppingExperimentOnReplay.tasks"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.tasks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.StoppingExperimentOnReplay.replay"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.replay</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.StoppingExperimentOnReplay.stopping_rules"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.stopping_rules</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.StoppingExperimentOnReplay.exp_early_stopping"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.exp_early_stopping</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.StoppingExperimentOnReplay.available_events"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.available_events</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.StoppingExperimentOnReplay.generateSettings"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.generateSettings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.experiments/#tarexp.experiments.StoppingExperimentOnReplay.exec"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.exec()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tarexp.ledger/">tarexp.ledger module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger"><code class="docutils literal notranslate"><span class="pre">Ledger</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.createControl"><code class="docutils literal notranslate"><span class="pre">Ledger.createControl()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.annotate"><code class="docutils literal notranslate"><span class="pre">Ledger.annotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.getReviewedIds"><code class="docutils literal notranslate"><span class="pre">Ledger.getReviewedIds()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.control_mask"><code class="docutils literal notranslate"><span class="pre">Ledger.control_mask</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.n_rounds"><code class="docutils literal notranslate"><span class="pre">Ledger.n_rounds</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.n_docs"><code class="docutils literal notranslate"><span class="pre">Ledger.n_docs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.n_annotated"><code class="docutils literal notranslate"><span class="pre">Ledger.n_annotated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.n_pos_annotated"><code class="docutils literal notranslate"><span class="pre">Ledger.n_pos_annotated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.n_neg_annotated"><code class="docutils literal notranslate"><span class="pre">Ledger.n_neg_annotated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.annotated"><code class="docutils literal notranslate"><span class="pre">Ledger.annotated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.annotation"><code class="docutils literal notranslate"><span class="pre">Ledger.annotation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.isDone"><code class="docutils literal notranslate"><span class="pre">Ledger.isDone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.getAnnotationCounts"><code class="docutils literal notranslate"><span class="pre">Ledger.getAnnotationCounts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.freeze"><code class="docutils literal notranslate"><span class="pre">Ledger.freeze()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.freeze_at"><code class="docutils literal notranslate"><span class="pre">Ledger.freeze_at()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.FrozenLedger"><code class="docutils literal notranslate"><span class="pre">FrozenLedger</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.FrozenLedger.annotate"><code class="docutils literal notranslate"><span class="pre">FrozenLedger.annotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.FrozenLedger.n_rounds"><code class="docutils literal notranslate"><span class="pre">FrozenLedger.n_rounds</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tarexp.util/">tarexp.util module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.util/#tarexp.util.stable_hash"><code class="docutils literal notranslate"><span class="pre">stable_hash()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.util/#tarexp.util.getOneDimScores"><code class="docutils literal notranslate"><span class="pre">getOneDimScores()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.util/#tarexp.util.saveObj"><code class="docutils literal notranslate"><span class="pre">saveObj()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.util/#tarexp.util.readObj"><code class="docutils literal notranslate"><span class="pre">readObj()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.util/#tarexp.util.iter_with_length"><code class="docutils literal notranslate"><span class="pre">iter_with_length</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tarexp.workflow/">tarexp.workflow module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow"><code class="docutils literal notranslate"><span class="pre">Workflow</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow.ledger"><code class="docutils literal notranslate"><span class="pre">Workflow.ledger</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow.component"><code class="docutils literal notranslate"><span class="pre">Workflow.component</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow.dataset"><code class="docutils literal notranslate"><span class="pre">Workflow.dataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow.n_rounds"><code class="docutils literal notranslate"><span class="pre">Workflow.n_rounds</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow.isStopped"><code class="docutils literal notranslate"><span class="pre">Workflow.isStopped</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow.latest_scores"><code class="docutils literal notranslate"><span class="pre">Workflow.latest_scores</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow.save"><code class="docutils literal notranslate"><span class="pre">Workflow.save()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow.load"><code class="docutils literal notranslate"><span class="pre">Workflow.load()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow.step"><code class="docutils literal notranslate"><span class="pre">Workflow.step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow.getMetrics"><code class="docutils literal notranslate"><span class="pre">Workflow.getMetrics()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow.makeReplay"><code class="docutils literal notranslate"><span class="pre">Workflow.makeReplay()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.WorkflowReplay"><code class="docutils literal notranslate"><span class="pre">WorkflowReplay</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.WorkflowReplay.n_rounds"><code class="docutils literal notranslate"><span class="pre">WorkflowReplay.n_rounds</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.WorkflowReplay.ledger"><code class="docutils literal notranslate"><span class="pre">WorkflowReplay.ledger</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.WorkflowReplay.isStopped"><code class="docutils literal notranslate"><span class="pre">WorkflowReplay.isStopped</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.WorkflowReplay.step"><code class="docutils literal notranslate"><span class="pre">WorkflowReplay.step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.WorkflowReplay.save"><code class="docutils literal notranslate"><span class="pre">WorkflowReplay.save()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.OnePhaseTARWorkflow"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.OnePhaseTARWorkflow.review_candidates"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow.review_candidates</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.OnePhaseTARWorkflow.step"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow.step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.OnePhaseTARWorkflow.getMetrics"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow.getMetrics()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.OnePhaseTARWorkflow.makeReplay"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow.makeReplay()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.OnePhaseTARWorkflowReplay"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflowReplay</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.OnePhaseTARWorkflowReplay.latest_scores"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflowReplay.latest_scores</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.OnePhaseTARWorkflowReplay.review_candidates"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflowReplay.review_candidates</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.TwoPhaseTARWorkflow"><code class="docutils literal notranslate"><span class="pre">TwoPhaseTARWorkflow</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.TwoPhaseTARWorkflow.step"><code class="docutils literal notranslate"><span class="pre">TwoPhaseTARWorkflow.step()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-tarexp">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-tarexp" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../modules/"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">tarexp</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../tarexp.component/"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">tarexp.component package</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-tarexp">Module contents</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/tarexp.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2022, Eugene Yang.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

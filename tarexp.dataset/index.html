@@ -1,0 +1,821 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>tarexp.dataset module &#8212; TARexp  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1c6b4a1a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tarexp.dataset';</script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="tarexp.evaluation module" href="../tarexp.evaluation/" />
+    <link rel="prev" title="tarexp.base module" href="../tarexp.base/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">TARexp  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../started/">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../modules/">
+                        API Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example/">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../references/">
+                        References
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../started/">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../modules/">
+                        API Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example/">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../references/">
+                        References
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../tarexp/">tarexp package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tarexp.component/">tarexp.component package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.base/">tarexp.component.base module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.labeler/">tarexp.component.labeler module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.ranker/">tarexp.component.ranker module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.sampler/">tarexp.component.sampler module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.stopping/">tarexp.component.stopping module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tarexp.helper/">tarexp.helper package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.helper.pandas_tools/">tarexp.helper.pandas_tools module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.helper.plotting/">tarexp.helper.plotting module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.base/">tarexp.base module</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">tarexp.dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.evaluation/">tarexp.evaluation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.experiments/">tarexp.experiments module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.ledger/">tarexp.ledger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.util/">tarexp.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.workflow/">tarexp.workflow module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../modules/" class="nav-link">tarexp</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../tarexp/" class="nav-link">tarexp package</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">tarexp.datas...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-tarexp.dataset">
+<span id="tarexp-dataset-module"></span><h1>tarexp.dataset module<a class="headerlink" href="#module-tarexp.dataset" title="Permalink to this heading">#</a></h1>
+<p>A dataset contains the essential information of the collection for retrieval.
+It is designed to be a static variable throughout the TAR run.</p>
+<p>Encoded documents in vectors are required but not limited any form.
+Depending on the intended experiments, the vectors can be generated by scikit-learn TFIDF vectorizer
+or even Huggingface Transformers tokenizers.
+We leave this flexibility to the users for further extensions.</p>
+<p>Groud truth labels are essential when running experiments without human intervention.
+It is also used in most evaluation that requires ground truth labels.
+If the workflow is designed to run with actual human reviewing, the labels is no longer required.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.dataset.Dataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.dataset.</span></span><span class="sig-name descname"><span class="pre">Dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/dataset.py#L25-L148"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.dataset.Dataset" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Meta class of <code class="docutils literal notranslate"><span class="pre">TARexp</span></code> dataset.</p>
+<p>The class defines the basic features for a dataset.
+All downstream datasets that inherits this class should implement the following properties or method:</p>
+<ul>
+<li><p>Essentials</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference internal" href="#tarexp.dataset.Dataset.identifier" title="tarexp.dataset.Dataset.identifier"><code class="xref py py-attr docutils literal notranslate"><span class="pre">identifier</span></code></a></dt><dd><p>The unique identifier of the dataset. It is used in verifying the dataset provided is identical when
+resuming a workflow. The identifier should summarize both vectors and the labels with a hash that does not
+depends on the memory location of the variable (e.g. the built-in <code class="docutils literal notranslate"><span class="pre">hash()</span></code> function) but the actual
+content. Utility function <a class="reference internal" href="../tarexp.util/#tarexp.util.stable_hash" title="tarexp.util.stable_hash"><code class="xref py py-func docutils literal notranslate"><span class="pre">tarexp.util.stable_hash()</span></code></a> provides such capability.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#tarexp.dataset.Dataset.ingest" title="tarexp.dataset.Dataset.ingest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ingest()</span></code></a></dt><dd><p>It ingests a list of raw text into vectors and stored in the attribute <code class="xref py py-attr docutils literal notranslate"><span class="pre">_vectors</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#tarexp.dataset.Dataset.getAllData" title="tarexp.dataset.Dataset.getAllData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getAllData()</span></code></a></dt><dd><p>(Optional) It returns all vectors of the documents in the dataset. Ideally, it should returns a copy of the
+vector but could also be a reference if the colletion is too large to copy in memory. This meta class
+implemented a simple version but user implementing new dataset class should consider re-implement it to
+support on-demand processing of the vectors (such as collators in pyTorch).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#tarexp.dataset.Dataset.getTrainingData" title="tarexp.dataset.Dataset.getTrainingData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getTrainingData()</span></code></a></dt><dd><p>(Optional) It takes a <a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger" title="tarexp.ledger.Ledger"><code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.ledger.Ledger</span></code></a> as an argument and returns the vectors of reviewed
+documents and <strong>labels from the ledger</strong>. This meta class also already implemented a simple version but
+should consider re-implementing for the same reason as <a class="reference internal" href="#tarexp.dataset.Dataset.getAllData" title="tarexp.dataset.Dataset.getAllData"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getAllData()</span></code></a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#tarexp.dataset.Dataset.duplicate" title="tarexp.dataset.Dataset.duplicate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">duplicate()</span></code></a></dt><dd><p>Returns a copy of the dataset along with any information that should be copied. This method should perform
+deep copy on all containing objects to prevent memory referencing the prevent fast multi-processing.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Labels (Optional)</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference internal" href="#tarexp.dataset.Dataset.labels" title="tarexp.dataset.Dataset.labels"><code class="xref py py-attr docutils literal notranslate"><span class="pre">labels</span></code></a></dt><dd><p>The labels of the dataset. We recommand implementing this information as a property instead of an attribute
+of the class to prevent modifying the labels by accident during the workflow. If the labels are intended to
+be unavailable, please consider raise an <code class="docutils literal notranslate"><span class="pre">NotImplemented</span></code> exception instead of <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> to
+reflect the intention.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#tarexp.dataset.Dataset.pos_doc_ids" title="tarexp.dataset.Dataset.pos_doc_ids"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pos_doc_ids</span></code></a> and <a class="reference internal" href="#tarexp.dataset.Dataset.neg_doc_ids" title="tarexp.dataset.Dataset.neg_doc_ids"><code class="xref py py-attr docutils literal notranslate"><span class="pre">neg_doc_ids</span></code></a></dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">set</span></code> of positive and negative docuemnt ids.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#tarexp.dataset.Dataset.setLabels" title="tarexp.dataset.Dataset.setLabels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setLabels()</span></code></a></dt><dd><p>The method that returns a <strong>new dataset</strong> that contains the label of all documents in the dataset. It should
+also check all documents are set with a label. Spawning a new instance makes sure that the original dataset
+instance is not polluted.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.dataset.Dataset.identifier">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">identifier</span></span><a class="headerlink" href="#tarexp.dataset.Dataset.identifier" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.dataset.Dataset.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#tarexp.dataset.Dataset.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.dataset.Dataset.n_docs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_docs</span></span><a class="headerlink" href="#tarexp.dataset.Dataset.n_docs" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of documents in the dataset.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.dataset.Dataset.labels">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">labels</span></span><a class="headerlink" href="#tarexp.dataset.Dataset.labels" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.dataset.Dataset.hasLabels">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hasLabels</span></span><a class="headerlink" href="#tarexp.dataset.Dataset.hasLabels" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.dataset.Dataset.pos_doc_ids">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pos_doc_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#tarexp.dataset.Dataset.pos_doc_ids" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.dataset.Dataset.neg_doc_ids">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">neg_doc_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#tarexp.dataset.Dataset.neg_doc_ids" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.dataset.Dataset.ingest">
+<span class="sig-name descname"><span class="pre">ingest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/dataset.py#L126-L127"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.dataset.Dataset.ingest" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.dataset.Dataset.setLabels">
+<span class="sig-name descname"><span class="pre">setLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/dataset.py#L129-L130"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.dataset.Dataset.setLabels" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.dataset.Dataset.getAllData">
+<span class="sig-name descname"><span class="pre">getAllData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/dataset.py#L132-L133"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.dataset.Dataset.getAllData" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.dataset.Dataset.getTrainingData">
+<span class="sig-name descname"><span class="pre">getTrainingData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ledger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger" title="tarexp.ledger.Ledger"><span class="pre">Ledger</span></a></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/dataset.py#L135-L138"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.dataset.Dataset.getTrainingData" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.dataset.Dataset.duplicate">
+<span class="sig-name descname"><span class="pre">duplicate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/dataset.py#L140-L141"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.dataset.Dataset.duplicate" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.dataset.Dataset.from_text">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/dataset.py#L143-L148"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.dataset.Dataset.from_text" title="Permalink to this definition">#</a></dt>
+<dd><p>Class factory method that returns an instance of the class with ingested text.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.dataset.SparseVectorDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.dataset.</span></span><span class="sig-name descname"><span class="pre">SparseVectorDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vectorizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/dataset.py#L151-L265"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.dataset.SparseVectorDataset" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a></p>
+<p>Dataset with Scipy Sparse Matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vectorizer</strong> – A function or a class instance that has a <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> method (such as the vectorizers from
+scikit-learn).</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.dataset.SparseVectorDataset.n_docs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_docs</span></span><a class="headerlink" href="#tarexp.dataset.SparseVectorDataset.n_docs" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of documents in the dataset.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.dataset.SparseVectorDataset.labels">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">labels</span></span><a class="headerlink" href="#tarexp.dataset.SparseVectorDataset.labels" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a copy of the labels of all docuemnts.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.dataset.SparseVectorDataset.identifier">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">identifier</span></span><a class="headerlink" href="#tarexp.dataset.SparseVectorDataset.identifier" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.dataset.SparseVectorDataset.pos_doc_ids">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pos_doc_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#tarexp.dataset.SparseVectorDataset.pos_doc_ids" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the ids of the positive documents.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.dataset.SparseVectorDataset.neg_doc_ids">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">neg_doc_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span></em><a class="headerlink" href="#tarexp.dataset.SparseVectorDataset.neg_doc_ids" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the ids of the negative documents.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.dataset.SparseVectorDataset.ingest">
+<span class="sig-name descname"><span class="pre">ingest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/dataset.py#L208-L224"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.dataset.SparseVectorDataset.ingest" title="Permalink to this definition">#</a></dt>
+<dd><p>Ingest the text using the <code class="xref py py-attr docutils literal notranslate"><span class="pre">vectorizer</span></code> and store the vectors in this instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> – A list of text that will be ingested and stored. If the labels are set, the length of the list should be
+identical to the length of labels.</p></li>
+<li><p><strong>force</strong> – Whether skipping the test on the length of the text and the labels.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.dataset.SparseVectorDataset.setLabels">
+<span class="sig-name descname"><span class="pre">setLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/dataset.py#L226-L244"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.dataset.SparseVectorDataset.setLabels" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a new datset with new labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> – A list or Numpy array of binary labels. The length should match the number of documents in the dataset.</p></li>
+<li><p><strong>inplace</strong> – Whether applying this set of labels to the current dataset. If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the method will replace the labels
+and returns <code class="docutils literal notranslate"><span class="pre">None</span></code>. Default <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.dataset.SparseVectorDataset.duplicate">
+<span class="sig-name descname"><span class="pre">duplicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/dataset.py#L246-L257"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.dataset.SparseVectorDataset.duplicate" title="Permalink to this definition">#</a></dt>
+<dd><p>Duplicate the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deep</strong> – Whether to perform deep copy on the vectors. Default <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.dataset.SparseVectorDataset.from_sparse">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_sparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/dataset.py#L259-L265"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.dataset.SparseVectorDataset.from_sparse" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a <a class="reference internal" href="#tarexp.dataset.SparseVectorDataset" title="tarexp.dataset.SparseVectorDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">SparseVectorDataset</span></code></a> instance from a sparse matrix.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.dataset.TaskFeeder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.dataset.</span></span><span class="sig-name descname"><span class="pre">TaskFeeder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><span class="pre">Dataset</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/dataset.py#L267-L344"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.dataset.TaskFeeder" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Python Iterator that yields review tasks with different set of labels given the same base dataset (a dataset
+without labels.)</p>
+<p>This class support both iterator in for loop or <code class="docutils literal notranslate"><span class="pre">next()</span></code> function and index look up <code class="docutils literal notranslate"><span class="pre">[]</span></code> if the list of labels
+provided has already been materialized (not an iterator).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> – A <a class="reference internal" href="#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> instance that does not contain any label. This instance will spawn downstream tasks with
+different labels</p></li>
+<li><p><strong>labels</strong> – <p>If a Python dictionary is provided, the key is considered as the names of the tasks and the values are the
+corresponding labels. The length of all set of labels should be the same as the number of documents provided
+inbase dataset.</p>
+<p>If a Pandas DataFrame is provided, the columns are considered to be the tasks where the column name are fed
+as the task name. The number of rows in the DataFrame should be the same as the number of documents in the
+base dataset.</p>
+<p>If an iterator is provided, the length of the labels is not checked against the number of documents in the base
+dataset and a warning will be raised. The iterator should yield a tuple of the name of the task and the
+corresponding labels. The order of should also be stable especially when running experiments across multiple
+machines. If the iterator support length via <code class="docutils literal notranslate"><span class="pre">__len__</span></code>, the class will respect it.</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.dataset.TaskFeeder.from_irds">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_irds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/dataset.py#L339-L344"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.dataset.TaskFeeder.from_irds" title="Permalink to this definition">#</a></dt>
+<dd><div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Has not implemented yet. Coming soon.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../tarexp.base/"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">tarexp.base module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../tarexp.evaluation/"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">tarexp.evaluation module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.Dataset.identifier"><code class="docutils literal notranslate"><span class="pre">Dataset.identifier</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.Dataset.name"><code class="docutils literal notranslate"><span class="pre">Dataset.name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.Dataset.n_docs"><code class="docutils literal notranslate"><span class="pre">Dataset.n_docs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.Dataset.labels"><code class="docutils literal notranslate"><span class="pre">Dataset.labels</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.Dataset.hasLabels"><code class="docutils literal notranslate"><span class="pre">Dataset.hasLabels</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.Dataset.pos_doc_ids"><code class="docutils literal notranslate"><span class="pre">Dataset.pos_doc_ids</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.Dataset.neg_doc_ids"><code class="docutils literal notranslate"><span class="pre">Dataset.neg_doc_ids</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.Dataset.ingest"><code class="docutils literal notranslate"><span class="pre">Dataset.ingest()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.Dataset.setLabels"><code class="docutils literal notranslate"><span class="pre">Dataset.setLabels()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.Dataset.getAllData"><code class="docutils literal notranslate"><span class="pre">Dataset.getAllData()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.Dataset.getTrainingData"><code class="docutils literal notranslate"><span class="pre">Dataset.getTrainingData()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.Dataset.duplicate"><code class="docutils literal notranslate"><span class="pre">Dataset.duplicate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.Dataset.from_text"><code class="docutils literal notranslate"><span class="pre">Dataset.from_text()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.SparseVectorDataset"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.SparseVectorDataset.n_docs"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.n_docs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.SparseVectorDataset.labels"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.labels</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.SparseVectorDataset.identifier"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.identifier</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.SparseVectorDataset.pos_doc_ids"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.pos_doc_ids</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.SparseVectorDataset.neg_doc_ids"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.neg_doc_ids</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.SparseVectorDataset.ingest"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.ingest()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.SparseVectorDataset.setLabels"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.setLabels()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.SparseVectorDataset.duplicate"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.duplicate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.SparseVectorDataset.from_sparse"><code class="docutils literal notranslate"><span class="pre">SparseVectorDataset.from_sparse()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.TaskFeeder"><code class="docutils literal notranslate"><span class="pre">TaskFeeder</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.dataset.TaskFeeder.from_irds"><code class="docutils literal notranslate"><span class="pre">TaskFeeder.from_irds()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/tarexp.dataset.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2022, Eugene Yang.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

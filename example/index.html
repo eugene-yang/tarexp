@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Examples &#8212; TARexp  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1c6b4a1a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'example';</script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="References" href="../references/" />
+    <link rel="prev" title="tarexp.workflow module" href="../tarexp.workflow/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">TARexp  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../started/">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../modules/">
+                        API Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../references/">
+                        References
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../started/">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../modules/">
+                        API Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../references/">
+                        References
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Examples</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h1>
+<p>Please visit our Google Colab Demo to check out the full example <a href='https://colab.research.google.com/github/eugene-yang/tarexp/blob/main/examples/exp-demo.ipynb' target='_blank'><img src='https://colab.research.google.com/assets/colab-badge.svg'></a>.</p>
+<section id="running-workflow">
+<h2>Running Workflow<a class="headerlink" href="#running-workflow" title="Permalink to this heading">#</a></h2>
+<p>The following snippet is an example of creating a <code class="docutils literal notranslate"><span class="pre">dataset</span></code> instance for <code class="docutils literal notranslate"><span class="pre">TARexp</span></code>.
+For <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> rankers, the structure of the dataset is bascially a sparse <code class="docutils literal notranslate"><span class="pre">scipy</span></code> matrix
+for the vectorized dataset and a list or an array of binary labels with the same length of the matrix.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">rcv1</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_rcv1</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">rcv1</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+<span class="n">rel_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rcv1</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="n">rcv1</span><span class="p">[</span><span class="s1">&#39;target_names&#39;</span><span class="p">])</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">tarexp</span><span class="o">.</span><span class="n">SparseVectorDataset</span><span class="o">.</span><span class="n">from_sparse</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The following snippet defines a set of componets to use for a workflow,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">setting</span> <span class="o">=</span> <span class="n">component</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">SklearnRanker</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;liblinear&#39;</span><span class="p">),</span>
+                            <span class="n">component</span><span class="o">.</span><span class="n">PerfectLabeler</span><span class="p">(),</span>
+                            <span class="n">component</span><span class="o">.</span><span class="n">RelevanceSampler</span><span class="p">(),</span>
+                            <span class="n">component</span><span class="o">.</span><span class="n">FixedRoundStoppingRule</span><span class="p">(</span><span class="n">max_round</span><span class="o">=</span><span class="mi">20</span><span class="p">))()</span>
+</pre></div>
+</div>
+<p>And to declare a workflow, simply put in your dataset, setting, and other parameters to the workflow.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">workflow</span> <span class="o">=</span> <span class="n">tarexp</span><span class="o">.</span><span class="n">OnePhaseTARWorkflow</span><span class="p">(</span>
+    <span class="n">ds</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">rel_info</span><span class="p">[</span><span class="s1">&#39;GPRO&#39;</span><span class="p">]),</span>
+    <span class="n">setting</span><span class="p">,</span>
+    <span class="n">seed_doc</span><span class="o">=</span><span class="p">[</span><span class="mi">1023</span><span class="p">],</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">random_seed</span><span class="o">=</span><span class="mi">123</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>And finally, you can start executing the workflow by running it as an iterator.
+We also support everything from <a class="reference external" href="https://ir-measur.es/en/latest/">ir-measures</a> as evaluation metrics.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">recording_metrics</span> <span class="o">=</span> <span class="p">[</span><span class="n">ir_measures</span><span class="o">.</span><span class="n">RPrec</span><span class="p">,</span> <span class="n">tarexp</span><span class="o">.</span><span class="n">OptimisticCost</span><span class="p">(</span><span class="n">target_recall</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">cost_structure</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">))]</span>
+<span class="k">for</span> <span class="n">ledger</span> <span class="ow">in</span> <span class="n">workflow</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Round </span><span class="si">{}</span><span class="s2">: found </span><span class="si">{}</span><span class="s2"> positives in total&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ledger</span><span class="o">.</span><span class="n">n_rounds</span><span class="p">,</span> <span class="n">ledger</span><span class="o">.</span><span class="n">n_pos_annotated</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;metric:&quot;</span><span class="p">,</span> <span class="n">workflow</span><span class="o">.</span><span class="n">getMetrics</span><span class="p">(</span><span class="n">recording_metrics</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Besides standard IR evaluation metrics, we also implement <code class="docutils literal notranslate"><span class="pre">OptimisticCost</span></code> as cost-based evaluation metrics in <code class="docutils literal notranslate"><span class="pre">TARexp</span></code>.
+Please refer to <a href="#id1"><span class="problematic" id="id2">`this paper &lt;https://arxiv.org/abs/2106.09866`__</span></a> for more information and consider citing it if you use this measurement.</p>
+</section>
+<section id="running-experiments">
+<h2>Running Experiments<a class="headerlink" href="#running-experiments" title="Permalink to this heading">#</a></h2>
+<section id="tar-experiments">
+<h3>TAR Experiments<a class="headerlink" href="#tar-experiments" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">tarexp.TARExperiment</span></code> is a wrapper and dispatcher for running TAR experiments with different settings.
+It construct all combinations of the input settings and dispath each TAR run to execute.</p>
+<p>The following command defines a set of 6 TAR runs which consists of 3 topics and each has 2 runs with batch size 200 and 100.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">exp</span> <span class="o">=</span> <span class="n">tarexp</span><span class="o">.</span><span class="n">TARExperiment</span><span class="p">(</span><span class="s1">&#39;./my_tar_exp/&#39;</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">max_round_exec</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                            <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">RPrec</span><span class="p">,</span> <span class="n">P</span><span class="o">@</span><span class="mi">10</span><span class="p">,</span> <span class="n">tarexp</span><span class="o">.</span><span class="n">OptimisticCost</span><span class="p">(</span><span class="n">target_recall</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">cost_structure</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">))],</span>
+                            <span class="n">tasks</span><span class="o">=</span><span class="n">tarexp</span><span class="o">.</span><span class="n">TaskFeeder</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">rel_info</span><span class="p">[[</span><span class="s1">&#39;GPRO&#39;</span><span class="p">,</span> <span class="s1">&#39;GOBIT&#39;</span><span class="p">,</span> <span class="s1">&#39;E141&#39;</span><span class="p">]]),</span>
+                            <span class="n">components</span><span class="o">=</span><span class="n">setting</span><span class="p">,</span>
+                            <span class="n">workflow</span><span class="o">=</span><span class="n">tarexp</span><span class="o">.</span><span class="n">OnePhaseTARWorkflow</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>To start running the experiment, please use the following command which will
+execute with single processor and resume from any crash runs if exist in the output directory.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">n_processes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">resume</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dump_frequency</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-stopping-rules">
+<h3>Testing Stopping Rules<a class="headerlink" href="#testing-stopping-rules" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">TARexp</span></code> also encourages experiments on stopping rules.
+We have built-in a number of stopping rules in the package and continuing to update them.</p>
+<p>The following snippet is an exmaple for running a replay experiment based on a set of existing
+TAR runs with a list of stopping rules defined in <code class="docutils literal notranslate"><span class="pre">stopping_rules</span></code> arguments.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">replay_exp</span> <span class="o">=</span> <span class="n">tarexp</span><span class="o">.</span><span class="n">StoppingExperimentOnReplay</span><span class="p">(</span>
+                    <span class="s1">&#39;./test_stopping_rules&#39;</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
+                    <span class="n">tasks</span><span class="o">=</span><span class="n">tarexp</span><span class="o">.</span><span class="n">TaskFeeder</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">rel_info</span><span class="p">[[</span><span class="s1">&#39;GPRO&#39;</span><span class="p">,</span><span class="s1">&#39;GOBIT&#39;</span><span class="p">,</span> <span class="s1">&#39;E141&#39;</span><span class="p">]]),</span>
+                    <span class="n">replay</span><span class="o">=</span><span class="n">tarexp</span><span class="o">.</span><span class="n">OnePhaseTARWorkflowReplay</span><span class="p">,</span>
+                    <span class="n">saved_exp_path</span><span class="o">=</span><span class="s1">&#39;./my_tar_exp&#39;</span><span class="p">,</span>
+                    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">tarexp</span><span class="o">.</span><span class="n">OptimisticCost</span><span class="p">(</span><span class="n">target_recall</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">cost_structure</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span>
+                            <span class="n">tarexp</span><span class="o">.</span><span class="n">OptimisticCost</span><span class="p">(</span><span class="n">target_recall</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">cost_structure</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))],</span>
+                    <span class="n">stopping_rules</span><span class="o">=</span><span class="p">[</span>
+                        <span class="n">component</span><span class="o">.</span><span class="n">KneeStoppingRule</span><span class="p">(),</span>
+                        <span class="n">component</span><span class="o">.</span><span class="n">BudgetStoppingRule</span><span class="p">(),</span>
+                        <span class="n">component</span><span class="o">.</span><span class="n">BatchPrecStoppingRule</span><span class="p">(),</span>
+                        <span class="n">component</span><span class="o">.</span><span class="n">ReviewHalfStoppingRule</span><span class="p">(),</span>
+                        <span class="n">component</span><span class="o">.</span><span class="n">Rule2399StoppingRule</span><span class="p">(),</span>
+                        <span class="n">component</span><span class="o">.</span><span class="n">QuantStoppingRule</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                        <span class="n">component</span><span class="o">.</span><span class="n">QuantStoppingRule</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                        <span class="n">component</span><span class="o">.</span><span class="n">QuantStoppingRule</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                        <span class="n">component</span><span class="o">.</span><span class="n">CHMHeuristicsStoppingRule</span><span class="p">(</span><span class="mf">0.8</span><span class="p">),</span>
+                        <span class="n">component</span><span class="o">.</span><span class="n">CHMHeuristicsStoppingRule</span><span class="p">(</span><span class="mf">0.4</span><span class="p">),</span>
+                        <span class="n">component</span><span class="o">.</span><span class="n">CHMHeuristicsStoppingRule</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
+                    <span class="p">]</span>
+            <span class="p">)</span>
+<span class="n">stopping_results</span> <span class="o">=</span> <span class="n">replay_exp</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">resume</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dump_frequency</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">TARexp</span></code> also provide visualization tools for TAR runs.</p>
+<p><code class="docutils literal notranslate"><span class="pre">createDFfromResults</span></code> creates a pandas DataFrame from either the result variable</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">tarexp</span><span class="o">.</span><span class="n">helper</span><span class="o">.</span><span class="n">createDFfromResults</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">remove_redundant_level</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or the output directory</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">tarexp</span><span class="o">.</span><span class="n">helper</span><span class="o">.</span><span class="n">createDFfromResults</span><span class="p">(</span><span class="s1">&#39;./my_tar_exp&#39;</span><span class="p">,</span> <span class="n">remove_redundant_level</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And the following command provides you the cost dynamic graph introduced in <a class="reference external" href="https://arxiv.org/abs/2106.09866">this paper</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tarexp</span><span class="o">.</span><span class="n">helper</span><span class="o">.</span><span class="n">cost_dynamic</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;GOBIT&#39;</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;dataset&#39;</span><span class="p">),</span>
+    <span class="n">recall_targets</span><span class="o">=</span><span class="p">[</span><span class="mf">0.8</span><span class="p">],</span> <span class="n">cost_structures</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+    <span class="n">with_hatches</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Cost Dynamic Graph with 3 Cost Structures" class="with-shadow" src="../_images/cost-dynamic-1.png" />
+<p>Alternatively, you can also create this graph by using a command line interface</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>tarexp.helper.plotting<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--runs<span class="w"> </span><span class="nv">GPRO</span><span class="o">=</span>./my_tar_exp/GPRO.61b1f31a0a29de634939db77c0dde383/<span class="w">  </span><span class="se">\</span>
+<span class="w">            </span><span class="nv">GOBIT</span><span class="o">=</span>./my_tar_exp/GOBIT.ae86e0b37809cb139dfa1f4cf914fb9b/<span class="w">  </span><span class="se">\</span>
+<span class="w">    </span>--cost_structures<span class="w"> </span><span class="m">1</span>-1-1-1<span class="w"> </span><span class="m">25</span>-5-5-1<span class="w"> </span>--y_thousands<span class="w"> </span>--with_hatches
+</pre></div>
+</div>
+<img alt="Cost Dynamic Graph with 2 Runs and 2 Cost Structures" class="with-shadow" src="../_images/cost-dynamic-2.png" />
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../tarexp.workflow/"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">tarexp.workflow module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../references/"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">References</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-workflow">Running Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-experiments">Running Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tar-experiments">TAR Experiments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-stopping-rules">Testing Stopping Rules</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/example.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2022, Eugene Yang.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

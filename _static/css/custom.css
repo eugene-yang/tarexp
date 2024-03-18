@@ -1,0 +1,25 @@
+.prev-next-area {
+    display: none;
+}
+
+dl.py.class, dl.py.function {
+    margin-bottom: 2rem;
+}
+
+
+/* From: https://github.com/sphinx-doc/sphinx/issues/1514#issuecomment-742703082 */
+
+/* .sig-param::before {
+    content: "\a\20\20\20\20\20\20\20\20\20\20\20\20\20\20\20\20";
+    white-space: pre;
+}
+
+dt em.sig-param:last-of-type::after {
+    content: "\a";
+    white-space: pre;
+}
+
+
+dl.class > dt:first-of-type {
+    display: block !important;
+} */

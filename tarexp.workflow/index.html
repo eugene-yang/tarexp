@@ -1,0 +1,918 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>tarexp.workflow module &#8212; TARexp  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1c6b4a1a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tarexp.workflow';</script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Examples" href="../example/" />
+    <link rel="prev" title="tarexp.util module" href="../tarexp.util/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">TARexp  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../started/">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../modules/">
+                        API Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example/">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../references/">
+                        References
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../started/">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../modules/">
+                        API Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example/">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../references/">
+                        References
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../tarexp/">tarexp package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tarexp.component/">tarexp.component package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.base/">tarexp.component.base module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.labeler/">tarexp.component.labeler module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.ranker/">tarexp.component.ranker module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.sampler/">tarexp.component.sampler module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.stopping/">tarexp.component.stopping module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tarexp.helper/">tarexp.helper package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.helper.pandas_tools/">tarexp.helper.pandas_tools module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.helper.plotting/">tarexp.helper.plotting module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.base/">tarexp.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.dataset/">tarexp.dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.evaluation/">tarexp.evaluation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.experiments/">tarexp.experiments module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.ledger/">tarexp.ledger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.util/">tarexp.util module</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">tarexp.workflow module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../modules/" class="nav-link">tarexp</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../tarexp/" class="nav-link">tarexp package</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">tarexp.workf...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-tarexp.workflow">
+<span id="tarexp-workflow-module"></span><h1>tarexp.workflow module<a class="headerlink" href="#module-tarexp.workflow" title="Permalink to this heading">#</a></h1>
+<p>An instance of class <a class="reference internal" href="#tarexp.workflow.Workflow" title="tarexp.workflow.Workflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Workflow</span></code></a> executes the user’s declarative specification of a TAR workflow.
+In doing so, it reaches out to <code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.component.Component</span></code> for services specified in the declarative specification
+such as creating training batches, scoring and ranking the collection, and testing for stopping conditions.</p>
+<p>After an optional initial seed round where the user can specify a starting set of labeled training data,
+the workflow is executed as a sequence of training rounds. Each round consists of selecting a batch of
+training documents (using <code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.component.Sampler</span></code>), looking up labels for those documents
+(using <code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.component.Labeler</span></code>), training a model and scoring and ranking the collection
+documents (using <code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.component.Ranker</span></code>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">TARexp</span></code> supports specifications of both one and two-phase TAR workflows, as described in Yang <em>et al.</em> <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.
+One-phase workflows (<a class="reference internal" href="#tarexp.workflow.OnePhaseTARWorkflow" title="tarexp.workflow.OnePhaseTARWorkflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow</span></code></a>) can be run for a fixed number of training rounds, or
+until all documents have been reviewed.  Two-phase reviews also use a stopping rule to determine when to end training,
+but then follow that by ranking the collection with the final trained model and reviewing to a statistically determined cutoff.</p>
+<p><a class="reference internal" href="#tarexp.workflow.Workflow" title="tarexp.workflow.Workflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Workflow</span></code></a> is implemented as a Python iterator, allowing procedures defined outside the workflow
+to execute at each round. The iterator yields a <a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.FrozenLedger" title="tarexp.ledger.FrozenLedger"><code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.ledger.FrozenLedger</span></code></a>.
+The user can define a custom per-round evaluation process or record information for later analysis.</p>
+<p><a class="reference internal" href="#tarexp.workflow.WorkflowReplay" title="tarexp.workflow.WorkflowReplay"><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowReplay</span></code></a> is a special kind of workflow that replays an existing wokrflow record.
+The replay executes the original TAR run without changing the documents being reviewed at each round.
+It can be used to gather more information throughout the process and testing other components based on
+an exisiting TAR run such as stopping rule.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p>Eugene Yang, David D. Lewis, and Ophir Frieder.
+“On minimizing cost in legal document review workflows.”
+<em>Proceedings of the 21st ACM Symposium on Document Engineering</em>. 2021.
+<a class="reference external" href="https://arxiv.org/abs/2106.09866">https://arxiv.org/abs/2106.09866</a></p>
+</aside>
+</aside>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.workflow.Workflow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.workflow.</span></span><span class="sig-name descname"><span class="pre">Workflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><span class="pre">Dataset</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.component.base/#tarexp.component.base.Component" title="tarexp.component.base.Component"><span class="pre">Component</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_round_exec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved_score_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved_checkpoint_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resume</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L60-L348"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.Workflow" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../tarexp.base/#tarexp.base.Savable" title="tarexp.base.Savable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Savable</span></code></a></p>
+<p>Meta workflow class.</p>
+<p>The meta workflow class provides essential interface and bookkeeping for most workflows.
+It also implement the iterator interface which yields a <a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.FrozenLedger" title="tarexp.ledger.FrozenLedger"><code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.ledger.FrozenLedger</span></code></a> in each round.
+The state of a workflow instance is stored in the <a class="reference internal" href="#tarexp.workflow.Workflow.ledger" title="tarexp.workflow.Workflow.ledger"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ledger</span></code></a>.</p>
+<p>All workflow inheriting this class should implement the <a class="reference internal" href="#tarexp.workflow.Workflow.step" title="tarexp.workflow.Workflow.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> method which defines the TAR process at each step.
+Any initialization of the workflow, including sampling the control set, should be implemented in the <code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__()</span></code> method.
+<a class="reference internal" href="#tarexp.workflow.Workflow.getMetrics" title="tarexp.workflow.Workflow.getMetrics"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getMetrics()</span></code></a> and <a class="reference internal" href="#tarexp.workflow.Workflow.makeReplay" title="tarexp.workflow.Workflow.makeReplay"><code class="xref py py-meth docutils literal notranslate"><span class="pre">makeReplay()</span></code></a> are optional.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Workflow initialization raises warnning when the sepcifying component has all four essential roles for running
+a TAR experiment (ranker, stopping rule, labeler, and sampler).
+However, workflow can execute without one or multiple of them but simply skipping such process <strong>silently</strong>.
+User need to manually perform these processes in the iterator block or after invoking <a class="reference internal" href="#tarexp.workflow.Workflow.step" title="tarexp.workflow.Workflow.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> to ensure
+the workflow executes correctly.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> – Textual dataset the workflow will search on. When running experiments, it should contain gold labels but not strictly
+required (might raises exceptions depending on the labeler). User could manually provide labels to the workflow in
+each step manually.</p></li>
+<li><p><strong>component</strong> – A combined component that contains ideally all 4 essential roles. Components can be combined by using
+<a class="reference internal" href="../tarexp.component.base/#tarexp.component.base.combine" title="tarexp.component.base.combine"><code class="xref py py-func docutils literal notranslate"><span class="pre">tarexp.component.base.combine()</span></code></a>.</p></li>
+<li><p><strong>max_round_exec</strong> – Maximum round the workflow will execute before the stopping rule suggests stopping. <code class="docutils literal notranslate"><span class="pre">-1</span></code> indicates no limit.
+Default is <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p></li>
+<li><p><strong>saved_score_limit</strong> – Number of set of documents’ score from each round would be stored in memory. Number smaller than 0 indicates
+no limitation. This would also affect the saved checkpoint, so for full replay capability, the value should be &lt; 0.
+Default is <code class="docutils literal notranslate"><span class="pre">-1</span></code>. 0 is not allowed.</p></li>
+<li><p><strong>saved_checkpoint_limit</strong> – Number of workflow checkpoints would be stored on disk in the output directory. If the limit is reached, older
+checkpoint will be deleted <strong>silently</strong>. Default <code class="docutils literal notranslate"><span class="pre">2</span></code> (fewer than 2 is not recommanded for stability as the latest
+checkpoint could be incomplete if the failure happens during saving).</p></li>
+<li><p><strong>random_seed</strong> – Random seed for any randomization process (if any) used in the workflow. Default <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>resume</strong> – Not initializing the components if <code class="docutils literal notranslate"><span class="pre">True</span></code>. Used internally by the <a class="reference internal" href="#tarexp.workflow.Workflow.load" title="tarexp.workflow.Workflow.load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load()</span></code></a> method. Default <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.workflow.Workflow.ledger">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ledger</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger" title="tarexp.ledger.Ledger"><span class="pre">Ledger</span></a></em><a class="headerlink" href="#tarexp.workflow.Workflow.ledger" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.workflow.Workflow.component">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">component</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tarexp.component.base/#tarexp.component.base.Component" title="tarexp.component.base.Component"><span class="pre">Component</span></a></em><a class="headerlink" href="#tarexp.workflow.Workflow.component" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.workflow.Workflow.dataset">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dataset</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><span class="pre">Dataset</span></a></em><a class="headerlink" href="#tarexp.workflow.Workflow.dataset" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.workflow.Workflow.n_rounds">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_rounds</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#tarexp.workflow.Workflow.n_rounds" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of rounds have been executed.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.workflow.Workflow.isStopped">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">isStopped</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#tarexp.workflow.Workflow.isStopped" title="Permalink to this definition">#</a></dt>
+<dd><p>Is the workflow stopped.
+A workflow would stop if the stopping rule suggests so, all documents have been reviewed, or reaches the maximum
+number of rounds (<code class="xref py py-attr docutils literal notranslate"><span class="pre">max_round_exec</span></code>)</p>
+<p>The decision is cached so the stopping rule would only be consulted once for efficiency.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.workflow.Workflow.latest_scores">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">latest_scores</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#tarexp.workflow.Workflow.latest_scores" title="Permalink to this definition">#</a></dt>
+<dd><p>The latest set of document scores.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.workflow.Workflow.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_component</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L207-L262"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.Workflow.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Saving the workflow state.</p>
+<p>The workflow state (checkpoint) will be saved a directory containing all essential attributes, including the
+ledger and the components.
+The scores will also be stored but if <code class="xref py py-attr docutils literal notranslate"><span class="pre">saved_score_limit</span></code> is not &lt; 0, the scores stored will be
+incomplete and could only contain the document scores from the latest round.
+Incomplete scores are sufficient for continuing an incomplete workflow but might not be sufficient to run
+replay experiments, especially ones that leverage the document scores to estimate the progess
+(e.g., <a class="reference internal" href="../tarexp.component.stopping/#tarexp.component.stopping.QuantStoppingRule" title="tarexp.component.stopping.QuantStoppingRule"><code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.component.stopping.QuantStoppingRule</span></code></a>).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The underlying dataset is <strong>not</strong> saved along with the workflow as it is supposed to be static
+regardless of containing the gold labels or not. However, dataset hash is stored in the checkpoint to
+verify the dataset providing at loading time is consistent.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_dir</strong> – Path to the directory containing the checkpoints.</p></li>
+<li><p><strong>with_component</strong> – Whether the components are saved along with the workflow. Default <code class="docutils literal notranslate"><span class="pre">True</span></code>.
+If the components are not saved, resuming the workflow would be unsupported.</p></li>
+<li><p><strong>overwrite</strong> – Whether overwriting a checkpoint of the current round if exists.
+Default <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.workflow.Workflow.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">saved_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><span class="pre">Dataset</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L264-L316"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.Workflow.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Load the workflow from checkpoint</p>
+<p>Identical dataset must be provided when loading the workflow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>saved_path</strong> – Path to either the directory containing the checkpoints or a specific checkpoint.
+If multiple checkpoints exist in the provided directory, the latest checkpoint will be
+selected and loaded.</p></li>
+<li><p><strong>dataset</strong> – The dataset the workflow was using before saving.</p></li>
+<li><p><strong>force</strong> – Whether to skip checking the hash of the dataset. It is not recommanded to turn on since it could
+result in inconsistent workflow behavior. Default <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.workflow.Workflow.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L318-L330"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.Workflow.step" title="Permalink to this definition">#</a></dt>
+<dd><p>Abstract method defining a TAR step in the workflow.
+Workflow classes inheriting this meta class should implement this method.</p>
+<p>Ideally, a TAR step should start from checking whether the workflow has been stopped by consulting
+<a class="reference internal" href="#tarexp.workflow.Workflow.isStopped" title="tarexp.workflow.Workflow.isStopped"><code class="xref py py-attr docutils literal notranslate"><span class="pre">isStopped</span></code></a> and proceed to other parts including retraining the ranker and suggest review documents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>force</strong> – Whether to force execute a TAR step if the workflow is already stopped</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.workflow.Workflow.getMetrics">
+<span class="sig-name descname"><span class="pre">getMetrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measures</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.OptimisticCost" title="tarexp.evaluation.OptimisticCost"><span class="pre">OptimisticCost</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ir_measures.measures.Measure</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.MeasureKey" title="tarexp.evaluation.MeasureKey"><span class="pre">MeasureKey</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L332-L344"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.Workflow.getMetrics" title="Permalink to this definition">#</a></dt>
+<dd><p>Abstract method for providing evaluation metric values at the current round.</p>
+<p>Each workflow inheriting this meta class can define its own method for evaluating
+the measures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>measures</strong> – List of evaluation measures.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.workflow.Workflow.makeReplay">
+<span class="sig-name descname"><span class="pre">makeReplay</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#tarexp.workflow.WorkflowReplay" title="tarexp.workflow.WorkflowReplay"><span class="pre">WorkflowReplay</span></a></span></span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L346-L348"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.Workflow.makeReplay" title="Permalink to this definition">#</a></dt>
+<dd><p>Abstract method for creating replay workflow based on the current TAR workflow.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.workflow.WorkflowReplay">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.workflow.</span></span><span class="sig-name descname"><span class="pre">WorkflowReplay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><span class="pre">Dataset</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ledger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.FrozenLedger" title="tarexp.ledger.FrozenLedger"><span class="pre">FrozenLedger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved_scores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">OrderedDict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L350-L411"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.WorkflowReplay" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tarexp.workflow.Workflow" title="tarexp.workflow.Workflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Workflow</span></code></a></p>
+<p>Meta workflow replay class.</p>
+<p>An existing workflow can be transformed into a <a class="reference internal" href="#tarexp.workflow.WorkflowReplay" title="tarexp.workflow.WorkflowReplay"><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowReplay</span></code></a> class that freeze the past state of the
+workflow and replay the process.
+The replay supports efficient experiments on components and procedures that do not interferes the workflow such as
+control sets and stopping rules.
+Since replay operates on an existing workflow, the replay is not savable.</p>
+<p>Each replay workflow corresponds to an actual workflow. They should be implemented in pair with <code class="docutils literal notranslate"><span class="pre">Replay</span></code> at the end
+of the class name for consistence in the module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> – Instance of dataset the workflow replay will be operating on. Ideally it should be the same as the one the original
+workflow operated on but not strictly enforced.</p></li>
+<li><p><strong>ledger</strong> – The frozen ledger that records the past states of the workflow.</p></li>
+<li><p><strong>saved_scores</strong> – The document scores from each TAR round. It is optional depending on the kind of experiments the user intend to run.
+Experiments such as testing the size or sampling process of the control set do not require the document scores.</p></li>
+<li><p><strong>random_seed</strong> – The random seed for the randomization in the workflow if needed.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.workflow.WorkflowReplay.n_rounds">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_rounds</span></span><a class="headerlink" href="#tarexp.workflow.WorkflowReplay.n_rounds" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of rounds have been executed.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.workflow.WorkflowReplay.ledger">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ledger</span></span><a class="headerlink" href="#tarexp.workflow.WorkflowReplay.ledger" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.workflow.WorkflowReplay.isStopped">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">isStopped</span></span><a class="headerlink" href="#tarexp.workflow.WorkflowReplay.isStopped" title="Permalink to this definition">#</a></dt>
+<dd><p>Is the workflow stopped.
+A workflow would stop if the stopping rule suggests so, all documents have been reviewed, or reaches the maximum
+number of rounds (<code class="xref py py-attr docutils literal notranslate"><span class="pre">max_round_exec</span></code>)</p>
+<p>The decision is cached so the stopping rule would only be consulted once for efficiency.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.workflow.WorkflowReplay.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L403-L407"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.WorkflowReplay.step" title="Permalink to this definition">#</a></dt>
+<dd><p>Replay a TAR step.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.workflow.WorkflowReplay.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L409-L411"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.WorkflowReplay.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Not supported in workflow replay.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.workflow.OnePhaseTARWorkflow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.workflow.</span></span><span class="sig-name descname"><span class="pre">OnePhaseTARWorkflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><span class="pre">Dataset</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.component.base/#tarexp.component.base.Component" title="tarexp.component.base.Component"><span class="pre">Component</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed_doc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_set_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L414-L532"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.OnePhaseTARWorkflow" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tarexp.workflow.Workflow" title="tarexp.workflow.Workflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Workflow</span></code></a></p>
+<p>One Phase TAR Workflow</p>
+<p>This class defines a one phase TAR workflow that samples a fixed-size set of documents at each round based on certain
+sampling strategy that takes document scores as input. The suggested documents are reviewed by the human expert (which
+is simulated through revealing the gold label or other procedure defined in the component). The ranker is then retrained
+based on all the labeled documents and the entire collection is scored and ranked by the updated ranker.
+Please refer to Yang <em>et al.</em> <a class="footnote-reference brackets" href="#id2" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> for further reference.</p>
+<p>Please also refer to <a class="reference internal" href="#tarexp.workflow.Workflow" title="tarexp.workflow.Workflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Workflow</span></code></a> for other optional parameters.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.workflow.OnePhaseTARWorkflow.review_candidates">
+<span class="sig-name descname"><span class="pre">review_candidates</span></span><a class="headerlink" href="#tarexp.workflow.OnePhaseTARWorkflow.review_candidates" title="Permalink to this definition">#</a></dt>
+<dd><p>A list of document id that are suggested for review at the current round.</p>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> – Textual dataset the workflow will search on. When running experiments, it should contain gold labels but not strictly
+required (might raises exceptions depending on the labeler). User could manually provide labels to the workflow in
+each step manually.</p></li>
+<li><p><strong>component</strong> – A combined component that contains ideally all 4 essential roles. Components can be combined by using
+<a class="reference internal" href="../tarexp.component.base/#tarexp.component.base.combine" title="tarexp.component.base.combine"><code class="xref py py-func docutils literal notranslate"><span class="pre">tarexp.component.base.combine()</span></code></a>.</p></li>
+<li><p><strong>seed_doc</strong> – A list of documents the human experts reviewed before the iterative process started. Often referred as the
+<strong>seed set</strong> in eDiscovery community.</p></li>
+<li><p><strong>batch_size</strong> – The number of document the human experts review in each TAR round.</p></li>
+<li><p><strong>control_set_size</strong> – Size of the control set.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.workflow.OnePhaseTARWorkflow.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L478-L506"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.OnePhaseTARWorkflow.step" title="Permalink to this definition">#</a></dt>
+<dd><p>Step of the one phase TAR workflow.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If the required roles in the component are missing, the process will be skipped <em>silently</em> without
+warnings or excpetions.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>force</strong> – Whether to force execute a TAR step if the workflow is already stopped</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.workflow.OnePhaseTARWorkflow.getMetrics">
+<span class="sig-name descname"><span class="pre">getMetrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measures</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.OptimisticCost" title="tarexp.evaluation.OptimisticCost"><span class="pre">OptimisticCost</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ir_measures.measures.Measure</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">np.ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.MeasureKey" title="tarexp.evaluation.MeasureKey"><span class="pre">MeasureKey</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L508-L528"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.OnePhaseTARWorkflow.getMetrics" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the evaluation measures at the current round</p>
+<p>If the underlying dataset does not contain gold labels, they should be provided here in order to calculate the
+values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>measures</strong> – List of evaluation measures.</p></li>
+<li><p><strong>labels</strong> – Labels of the documets in the collection.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.workflow.OnePhaseTARWorkflow.makeReplay">
+<span class="sig-name descname"><span class="pre">makeReplay</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#tarexp.workflow.OnePhaseTARWorkflowReplay" title="tarexp.workflow.OnePhaseTARWorkflowReplay"><span class="pre">OnePhaseTARWorkflowReplay</span></a></span></span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L530-L532"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.OnePhaseTARWorkflow.makeReplay" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a replay workflow that contains records up to the current round.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.workflow.OnePhaseTARWorkflowReplay">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.workflow.</span></span><span class="sig-name descname"><span class="pre">OnePhaseTARWorkflowReplay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><span class="pre">Dataset</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ledger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.FrozenLedger" title="tarexp.ledger.FrozenLedger"><span class="pre">FrozenLedger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved_scores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L535-L573"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.OnePhaseTARWorkflowReplay" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tarexp.workflow.WorkflowReplay" title="tarexp.workflow.WorkflowReplay"><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowReplay</span></code></a>, <a class="reference internal" href="#tarexp.workflow.OnePhaseTARWorkflow" title="tarexp.workflow.OnePhaseTARWorkflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow</span></code></a></p>
+<p>Replay workflow for <a class="reference internal" href="#tarexp.workflow.OnePhaseTARWorkflow" title="tarexp.workflow.OnePhaseTARWorkflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> – Instance of dataset the workflow replay will be operating on. Ideally it should be the same as the one the original
+workflow operated on but not strictly enforced.</p></li>
+<li><p><strong>ledger</strong> – The frozen ledger that records the past states of the workflow.</p></li>
+<li><p><strong>saved_scores</strong> – The document scores from each TAR round. It is optional depending on the kind of experiments the user intend to run.
+Experiments such as testing the size or sampling process of the control set do not require the document scores.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.workflow.OnePhaseTARWorkflowReplay.latest_scores">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">latest_scores</span></span><a class="headerlink" href="#tarexp.workflow.OnePhaseTARWorkflowReplay.latest_scores" title="Permalink to this definition">#</a></dt>
+<dd><p>The latest set of document scores.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.workflow.OnePhaseTARWorkflowReplay.review_candidates">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">review_candidates</span></span><a class="headerlink" href="#tarexp.workflow.OnePhaseTARWorkflowReplay.review_candidates" title="Permalink to this definition">#</a></dt>
+<dd><p>A list of document id that are suggested for review at the current round.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.workflow.TwoPhaseTARWorkflow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.workflow.</span></span><span class="sig-name descname"><span class="pre">TwoPhaseTARWorkflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L576-L606"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.TwoPhaseTARWorkflow" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tarexp.workflow.OnePhaseTARWorkflow" title="tarexp.workflow.OnePhaseTARWorkflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow</span></code></a></p>
+<p>Two phase workflow extended from <a class="reference internal" href="#tarexp.workflow.OnePhaseTARWorkflow" title="tarexp.workflow.OnePhaseTARWorkflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow</span></code></a>.</p>
+<p>The two phase workflow adds a second phase process that is defined as a <code class="docutils literal notranslate"><span class="pre">poststopping</span></code> role in the component,
+which would be executed after stopping is suggested by the stopping rule.
+If such role does not exist in the component, an exception would be raised.</p>
+<p>Please refer to <a class="reference internal" href="#tarexp.workflow.OnePhaseTARWorkflow" title="tarexp.workflow.OnePhaseTARWorkflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow</span></code></a> for parameter documentation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.workflow.TwoPhaseTARWorkflow.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L593-L606"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.workflow.TwoPhaseTARWorkflow.step" title="Permalink to this definition">#</a></dt>
+<dd><p>Step of the one phase TAR workflow. If stopping is suggested, the second phase review process will be
+invoked.
+Please refer to <a class="reference internal" href="#tarexp.workflow.OnePhaseTARWorkflow.step" title="tarexp.workflow.OnePhaseTARWorkflow.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tarexp.workflow.OnePhaseTARWorkflow.step()</span></code></a> for more documentation.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../tarexp.util/"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">tarexp.util module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../example/"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.Workflow"><code class="docutils literal notranslate"><span class="pre">Workflow</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.Workflow.ledger"><code class="docutils literal notranslate"><span class="pre">Workflow.ledger</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.Workflow.component"><code class="docutils literal notranslate"><span class="pre">Workflow.component</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.Workflow.dataset"><code class="docutils literal notranslate"><span class="pre">Workflow.dataset</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.Workflow.n_rounds"><code class="docutils literal notranslate"><span class="pre">Workflow.n_rounds</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.Workflow.isStopped"><code class="docutils literal notranslate"><span class="pre">Workflow.isStopped</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.Workflow.latest_scores"><code class="docutils literal notranslate"><span class="pre">Workflow.latest_scores</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.Workflow.save"><code class="docutils literal notranslate"><span class="pre">Workflow.save()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.Workflow.load"><code class="docutils literal notranslate"><span class="pre">Workflow.load()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.Workflow.step"><code class="docutils literal notranslate"><span class="pre">Workflow.step()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.Workflow.getMetrics"><code class="docutils literal notranslate"><span class="pre">Workflow.getMetrics()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.Workflow.makeReplay"><code class="docutils literal notranslate"><span class="pre">Workflow.makeReplay()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.WorkflowReplay"><code class="docutils literal notranslate"><span class="pre">WorkflowReplay</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.WorkflowReplay.n_rounds"><code class="docutils literal notranslate"><span class="pre">WorkflowReplay.n_rounds</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.WorkflowReplay.ledger"><code class="docutils literal notranslate"><span class="pre">WorkflowReplay.ledger</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.WorkflowReplay.isStopped"><code class="docutils literal notranslate"><span class="pre">WorkflowReplay.isStopped</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.WorkflowReplay.step"><code class="docutils literal notranslate"><span class="pre">WorkflowReplay.step()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.WorkflowReplay.save"><code class="docutils literal notranslate"><span class="pre">WorkflowReplay.save()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.OnePhaseTARWorkflow"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.OnePhaseTARWorkflow.review_candidates"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow.review_candidates</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.OnePhaseTARWorkflow.step"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow.step()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.OnePhaseTARWorkflow.getMetrics"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow.getMetrics()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.OnePhaseTARWorkflow.makeReplay"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow.makeReplay()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.OnePhaseTARWorkflowReplay"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflowReplay</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.OnePhaseTARWorkflowReplay.latest_scores"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflowReplay.latest_scores</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.OnePhaseTARWorkflowReplay.review_candidates"><code class="docutils literal notranslate"><span class="pre">OnePhaseTARWorkflowReplay.review_candidates</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.TwoPhaseTARWorkflow"><code class="docutils literal notranslate"><span class="pre">TwoPhaseTARWorkflow</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.workflow.TwoPhaseTARWorkflow.step"><code class="docutils literal notranslate"><span class="pre">TwoPhaseTARWorkflow.step()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/tarexp.workflow.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2022, Eugene Yang.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,884 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>tarexp.experiments module &#8212; TARexp  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1c6b4a1a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tarexp.experiments';</script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="tarexp.ledger module" href="../tarexp.ledger/" />
+    <link rel="prev" title="tarexp.evaluation module" href="../tarexp.evaluation/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">TARexp  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../started/">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../modules/">
+                        API Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example/">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../references/">
+                        References
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../started/">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../modules/">
+                        API Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example/">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../references/">
+                        References
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../tarexp/">tarexp package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tarexp.component/">tarexp.component package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.base/">tarexp.component.base module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.labeler/">tarexp.component.labeler module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.ranker/">tarexp.component.ranker module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.sampler/">tarexp.component.sampler module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.stopping/">tarexp.component.stopping module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tarexp.helper/">tarexp.helper package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.helper.pandas_tools/">tarexp.helper.pandas_tools module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.helper.plotting/">tarexp.helper.plotting module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.base/">tarexp.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.dataset/">tarexp.dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.evaluation/">tarexp.evaluation module</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">tarexp.experiments module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.ledger/">tarexp.ledger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.util/">tarexp.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.workflow/">tarexp.workflow module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../modules/" class="nav-link">tarexp</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../tarexp/" class="nav-link">tarexp package</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">tarexp.exper...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-tarexp.experiments">
+<span id="tarexp-experiments-module"></span><h1>tarexp.experiments module<a class="headerlink" href="#module-tarexp.experiments" title="Permalink to this heading">#</a></h1>
+<p>TAR inherits both the large topic-to-topic variability of IR tasks, and the strong dependence on initial conditions
+and random seeds of active learning processes. Multiple collections, topics, and runs are necessary to reliably demonstrate
+that one approach dominates another.</p>
+<p>We support spawning multiple processes both across machines on a network, and in multiple threads on appropriate hardware.
+The method <code class="docutils literal notranslate"><span class="pre">.run</span></code> dispatches the TAR tasks with runtime settings. In the above example, experiments will run on the first
+of the two machines with two processes on each, resulting in all four tasks being run simultaneously. The <code class="docutils literal notranslate"><span class="pre">.run</span></code> method
+returns the per-round metric values of all the experiment tasks running on the node.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.experiments.Action">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.experiments.</span></span><span class="sig-name descname"><span class="pre">Action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">should_save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/experiments.py#L90-L101"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.experiments.Action" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Action controler for feedback functions in experiments.</p>
+<p>Feedback functions recieve an <a class="reference internal" href="#tarexp.experiments.Action" title="tarexp.experiments.Action"><code class="xref py py-class docutils literal notranslate"><span class="pre">Action</span></code></a> class that each attribute modifiable for suggesting
+the experiment running function to perform certain operation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.Action.should_save">
+<span class="sig-name descname"><span class="pre">should_save</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#tarexp.experiments.Action.should_save" title="Permalink to this definition">#</a></dt>
+<dd><p>Suggest the workflow to save a checkpoint at this round.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.Action.should_stop">
+<span class="sig-name descname"><span class="pre">should_stop</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#tarexp.experiments.Action.should_stop" title="Permalink to this definition">#</a></dt>
+<dd><p>Suggest the workflow to stop after this round.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.experiments.Experiment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.experiments.</span></span><span class="sig-name descname"><span class="pre">Experiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ir_measures.measures.Measure</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.OptimisticCost" title="tarexp.evaluation.OptimisticCost"><span class="pre">OptimisticCost</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved_score_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved_checkpoint_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_round_exec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/experiments.py#L104-L288"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.experiments.Experiment" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><a class="reference internal" href="#tarexp.experiments.Experiment" title="tarexp.experiments.Experiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Experiment</span></code></a> is implemented as a Python Dataclass, which contains information for experiments but not
+the states, which are determined by the checkpoint of each individual run on disk.
+The attributes (or the properties of the class) are designed to be static configurations of the experiments.
+Runtime configurations are passed as arguments to the <a class="reference internal" href="#tarexp.experiments.Experiment.run" title="tarexp.experiments.Experiment.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run()</span></code></a> method.</p>
+<p>All experiments inheriting this class should implement the static method <a class="reference internal" href="#tarexp.experiments.Experiment.exec" title="tarexp.experiments.Experiment.exec"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exec()</span></code></a> which describes how
+a run should execute and <a class="reference internal" href="#tarexp.experiments.Experiment.generateSettings" title="tarexp.experiments.Experiment.generateSettings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">generateSettings()</span></code></a> which generates a list of experimenting settings that will be
+yielded as TAR runs. The configuration would be passed as the first arugment (or keyed as <code class="docutils literal notranslate"><span class="pre">setting</span></code>) to this
+static method.</p>
+<p>All downstream classes should also register any additional arguments through <a class="reference internal" href="#tarexp.experiments.Experiment.registerExecArguments" title="tarexp.experiments.Experiment.registerExecArguments"><code class="xref py py-meth docutils literal notranslate"><span class="pre">registerExecArguments()</span></code></a> to
+ensure these configurations are passed into the <a class="reference internal" href="#tarexp.experiments.Experiment.exec" title="tarexp.experiments.Experiment.exec"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exec()</span></code></a> static method.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.Experiment.output_path">
+<span class="sig-name descname"><span class="pre">output_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#tarexp.experiments.Experiment.output_path" title="Permalink to this definition">#</a></dt>
+<dd><p>Output directory of the experiment.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.Experiment.random_seed">
+<span class="sig-name descname"><span class="pre">random_seed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tarexp.experiments.Experiment.random_seed" title="Permalink to this definition">#</a></dt>
+<dd><p>Random seed used in the experiment and all experiment runs.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.Experiment.metrics">
+<span class="sig-name descname"><span class="pre">metrics</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ir_measures.measures.Measure</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.OptimisticCost" title="tarexp.evaluation.OptimisticCost"><span class="pre">OptimisticCost</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tarexp.experiments.Experiment.metrics" title="Permalink to this definition">#</a></dt>
+<dd><p>Evaluation metrics that would be calculated and stored at each round of the runs.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.Experiment.saved_score_limit">
+<span class="sig-name descname"><span class="pre">saved_score_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#tarexp.experiments.Experiment.saved_score_limit" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of rounds the document scores each workflow would be storing. Negative indicates no limitation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.Experiment.saved_checkpoint_limit">
+<span class="sig-name descname"><span class="pre">saved_checkpoint_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#tarexp.experiments.Experiment.saved_checkpoint_limit" title="Permalink to this definition">#</a></dt>
+<dd><p>Maximum number of checkpoints would be stored on disk. Older checkpoints would be deleted silently.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.Experiment.max_round_exec">
+<span class="sig-name descname"><span class="pre">max_round_exec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#tarexp.experiments.Experiment.max_round_exec" title="Permalink to this definition">#</a></dt>
+<dd><p>Maximum number of rounds each run would be allowed to execute.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.experiments.Experiment.on">
+<span class="sig-name descname"><span class="pre">on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/experiments.py#L154-L167"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.experiments.Experiment.on" title="Permalink to this definition">#</a></dt>
+<dd><p>Register a callback function tied to a certain event.
+List of events available for each experiment is stored in <a class="reference internal" href="#tarexp.experiments.Experiment.available_events" title="tarexp.experiments.Experiment.available_events"><code class="xref py py-attr docutils literal notranslate"><span class="pre">available_events</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – Name of of the event the callback function would be invoked.</p></li>
+<li><p><strong>func</strong> – Callback funtion that will take in an <a class="reference internal" href="#tarexp.experiments.Action" title="tarexp.experiments.Action"><code class="xref py py-class docutils literal notranslate"><span class="pre">Action</span></code></a> instance and the <a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow" title="tarexp.workflow.Workflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.workflow.Workflow</span></code></a>
+instance as arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.experiments.Experiment.registerExecArguments">
+<span class="sig-name descname"><span class="pre">registerExecArguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/experiments.py#L169-L177"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.experiments.Experiment.registerExecArguments" title="Permalink to this definition">#</a></dt>
+<dd><p>Register static experiment arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – Dictionary of arguments where the keys and values are the name and values of the argument.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.experiments.Experiment.available_events">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">available_events</span></span><a class="headerlink" href="#tarexp.experiments.Experiment.available_events" title="Permalink to this definition">#</a></dt>
+<dd><p>List of available events of this experiment.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.experiments.Experiment.savable_fields">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">savable_fields</span></span><a class="headerlink" href="#tarexp.experiments.Experiment.savable_fields" title="Permalink to this definition">#</a></dt>
+<dd><p>List of attributes that would be saved in the experiment directory.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.experiments.Experiment.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">disable_tqdm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_processes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dump_frequency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">runtime_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/experiments.py#L192-L265"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.experiments.Experiment.run" title="Permalink to this definition">#</a></dt>
+<dd><p>Execute all experiment runs.</p>
+<p>This method natively support multiprocessing on a single machine and parallel processing on multiple machines.
+However, when running on multiple machines, user needs to manually invoke this method with proper <code class="docutils literal notranslate"><span class="pre">n_nodes</span></code> and
+<code class="docutils literal notranslate"><span class="pre">node_id</span></code> values in order to let each machine execute their own parts of experiments.</p>
+<p>Arguments of this method are designed to be runtime configurations, including ones that will eventually be passed
+to the underlying workflow instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>disable_tqdm</strong> – Whether to show the progress bar. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code> (showing the bar).</p></li>
+<li><p><strong>n_process</strong> – Number of processers to use on this machine.</p></li>
+<li><p><strong>n_nodes</strong> – Number of machines running this set of experiments in total.</p></li>
+<li><p><strong>node_id</strong> – The index of this machine among all machines starting from <code class="docutils literal notranslate"><span class="pre">0</span></code>. This value should be &lt; <code class="docutils literal notranslate"><span class="pre">n_nodes</span></code>.</p></li>
+<li><p><strong>resume</strong> – Whether to resume from existing runs. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>. This value will be passed to the workflow and
+expect the workflow to respect it.</p></li>
+<li><p><strong>dump_frequency</strong> – The frequency of the workflow to save a checkpoint on disk.</p></li>
+<li><p><strong>**runtime-kwargs</strong> – Other runtime arguments to pass to the workflow instance.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.experiments.Experiment.generateSettings">
+<span class="sig-name descname"><span class="pre">generateSettings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../tarexp.util/#tarexp.util.iter_with_length" title="tarexp.util.iter_with_length"><span class="pre">iter_with_length</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span></span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/experiments.py#L267-L274"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.experiments.Experiment.generateSettings" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate a list experimenting settings.</p>
+<p>Any experiment class that inherits this class should implement its own version since each experiment should define
+its own set of attributes that could be experimenting with (or more complex ways to generate sensible combinations).
+The rest of the attributes should be static.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.experiments.Experiment.exec">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">setting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.MeasureKey" title="tarexp.evaluation.MeasureKey"><span class="pre">MeasureKey</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/experiments.py#L276-L288"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.experiments.Experiment.exec" title="Permalink to this definition">#</a></dt>
+<dd><p>Executing a TAR run for experiment.</p>
+<p>Any experiment class that inherits this class should implement its own version of this method.
+This method describe how an experiment of the workflow will be executed, including when the metrics are calcuated
+and when the callback functions are invoked.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method can be confused with the <a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow.step" title="tarexp.workflow.Workflow.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tarexp.workflow.Workflow.step()</span></code></a> method. However, <code class="docutils literal notranslate"><span class="pre">exec</span></code>
+focuses on the experimenting side which should not modify the behavior of a workflow.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.experiments.TARExperiment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.experiments.</span></span><span class="sig-name descname"><span class="pre">TARExperiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_path:</span> <span class="pre">Path</span> <span class="pre">|</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics:</span> <span class="pre">List[ir_measures.measures.Measure</span> <span class="pre">|</span> <span class="pre">OptimisticCost</span> <span class="pre">|</span> <span class="pre">str]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved_score_limit:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved_checkpoint_limit:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_round_exec:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tasks:</span> <span class="pre">Dataset</span> <span class="pre">|</span> <span class="pre">List[Dataset]</span> <span class="pre">|</span> <span class="pre">TaskFeeder</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">components:</span> <span class="pre">Component</span> <span class="pre">|</span> <span class="pre">List[Component]</span> <span class="pre">|</span> <span class="pre">iter_with_length</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow:</span> <span class="pre">Workflow</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'tarexp.workflow.OnePhaseTARWorkflow'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size:</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">List[int]</span> <span class="pre">=</span> <span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_set_size:</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">List[int]</span> <span class="pre">=</span> <span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_kwargs:</span> <span class="pre">dict</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat_tasks:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed_docs_construction:</span> <span class="pre">Tuple[int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int]</span> <span class="pre">=</span> <span class="pre">(1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/experiments.py#L291-L458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.experiments.TARExperiment" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tarexp.experiments.Experiment" title="tarexp.experiments.Experiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Experiment</span></code></a></p>
+<p>An experiment that executes a TAR workflow.</p>
+<p>This experiment class is designed to be compatible with any workflow that inherits <a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow" title="tarexp.workflow.Workflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.workflow.Workflow</span></code></a>
+class.</p>
+<p>Please refer to <a class="reference internal" href="#tarexp.experiments.Experiment" title="tarexp.experiments.Experiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Experiment</span></code></a> for properties inherited from it.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Any attribute that marked as <strong>experimentable</strong> will contribute to the process of generating the combination of the
+experiment runs. For example, if 2 tasks, 3 sets of components, 3 batch sizes, and 10 control set sizes are provided,
+<a class="reference internal" href="#tarexp.experiments.TARExperiment.generateSettings" title="tarexp.experiments.TARExperiment.generateSettings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">generateSettings()</span></code></a> will yield 2x3x3x10 = 180 runs.</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.TARExperiment.tasks">
+<span class="sig-name descname"><span class="pre">tasks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><span class="pre">Dataset</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><span class="pre">Dataset</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.TaskFeeder" title="tarexp.dataset.TaskFeeder"><span class="pre">TaskFeeder</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tarexp.experiments.TARExperiment.tasks" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>Experimentable</strong> (A list of) dataset instance or <a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.TaskFeeder" title="tarexp.dataset.TaskFeeder"><code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.dataset.TaskFeeder</span></code></a> class.
+Each task is considered as an independent TAR review project which consists of a collection and a set of gold labels.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.TARExperiment.components">
+<span class="sig-name descname"><span class="pre">components</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tarexp.component.base/#tarexp.component.base.Component" title="tarexp.component.base.Component"><span class="pre">Component</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../tarexp.component.base/#tarexp.component.base.Component" title="tarexp.component.base.Component"><span class="pre">Component</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../tarexp.util/#tarexp.util.iter_with_length" title="tarexp.util.iter_with_length"><span class="pre">iter_with_length</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tarexp.experiments.TARExperiment.components" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>Experimentable</strong> (A list of) combined components for experiments.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.TARExperiment.workflow">
+<span class="sig-name descname"><span class="pre">workflow</span></span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/workflow.py#L414-L532"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.experiments.TARExperiment.workflow" title="Permalink to this definition">#</a></dt>
+<dd><p>Workflow that will be used for experiment.</p>
+<p>alias of <a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.OnePhaseTARWorkflow" title="tarexp.workflow.OnePhaseTARWorkflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">OnePhaseTARWorkflow</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.TARExperiment.batch_size">
+<span class="sig-name descname"><span class="pre">batch_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">200</span></em><a class="headerlink" href="#tarexp.experiments.TARExperiment.batch_size" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>Experimentable</strong> (A list of) batch sizes for the TAR workflow.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.TARExperiment.control_set_size">
+<span class="sig-name descname"><span class="pre">control_set_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#tarexp.experiments.TARExperiment.control_set_size" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>Experimentable</strong> (A list of) control set sizes for TAR workflow.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.TARExperiment.workflow_kwargs">
+<span class="sig-name descname"><span class="pre">workflow_kwargs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tarexp.experiments.TARExperiment.workflow_kwargs" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>Experimentable</strong> Other experimenting arguments.
+If the value of the pair in the dictionary is a list, it will
+be considered as an experimentable arguments and also contributes to the combination.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.TARExperiment.repeat_tasks">
+<span class="sig-name descname"><span class="pre">repeat_tasks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#tarexp.experiments.TARExperiment.repeat_tasks" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>Experimentable</strong> Number of times each task will be replicated with different random seed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.TARExperiment.seed_docs_construction">
+<span class="sig-name descname"><span class="pre">seed_docs_construction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(1,</span> <span class="pre">0)</span></em><a class="headerlink" href="#tarexp.experiments.TARExperiment.seed_docs_construction" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of positive and negative seed documents will be generated for each run.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.experiments.TARExperiment.available_events">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">available_events</span></span><a class="headerlink" href="#tarexp.experiments.TARExperiment.available_events" title="Permalink to this definition">#</a></dt>
+<dd><p>List of available events of this experiment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.experiments.TARExperiment.generateSettings">
+<span class="sig-name descname"><span class="pre">generateSettings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/experiments.py#L372-L406"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.experiments.TARExperiment.generateSettings" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate an iterator that yields experiment settings in dictionaries.</p>
+<p>In this experiments, <a class="reference internal" href="#tarexp.experiments.TARExperiment.tasks" title="tarexp.experiments.TARExperiment.tasks"><code class="xref py py-attr docutils literal notranslate"><span class="pre">tasks</span></code></a>, <a class="reference internal" href="#tarexp.experiments.TARExperiment.components" title="tarexp.experiments.TARExperiment.components"><code class="xref py py-attr docutils literal notranslate"><span class="pre">components</span></code></a>, <a class="reference internal" href="#tarexp.experiments.TARExperiment.repeat_tasks" title="tarexp.experiments.TARExperiment.repeat_tasks"><code class="xref py py-attr docutils literal notranslate"><span class="pre">repeat_tasks</span></code></a>, <a class="reference internal" href="#tarexp.experiments.TARExperiment.batch_size" title="tarexp.experiments.TARExperiment.batch_size"><code class="xref py py-attr docutils literal notranslate"><span class="pre">batch_size</span></code></a>,
+<a class="reference internal" href="#tarexp.experiments.TARExperiment.control_set_size" title="tarexp.experiments.TARExperiment.control_set_size"><code class="xref py py-attr docutils literal notranslate"><span class="pre">control_set_size</span></code></a>, and any other values in <a class="reference internal" href="#tarexp.experiments.TARExperiment.workflow_kwargs" title="tarexp.experiments.TARExperiment.workflow_kwargs"><code class="xref py py-attr docutils literal notranslate"><span class="pre">workflow_kwargs</span></code></a> will be contributed to the
+combination.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.experiments.TARExperiment.exec">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exp_setting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow" title="tarexp.workflow.Workflow"><span class="pre">Workflow</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">resume</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dump_frequency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callbacks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">static_setting</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.MeasureKey" title="tarexp.evaluation.MeasureKey"><span class="pre">MeasureKey</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/experiments.py#L408-L458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.experiments.TARExperiment.exec" title="Permalink to this definition">#</a></dt>
+<dd><p>Execute a run of experiment using the workflow specified in <a class="reference internal" href="#tarexp.experiments.TARExperiment.workflow" title="tarexp.experiments.TARExperiment.workflow"><code class="xref py py-attr docutils literal notranslate"><span class="pre">workflow</span></code></a>.
+This method is used internally by the dispatcher invoked by <a class="reference internal" href="#tarexp.experiments.Experiment.run" title="tarexp.experiments.Experiment.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tarexp.experiments.Experiment.run()</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.experiments.StoppingExperimentOnReplay">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.experiments.</span></span><span class="sig-name descname"><span class="pre">StoppingExperimentOnReplay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ir_measures.measures.Measure</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../tarexp.evaluation/#tarexp.evaluation.OptimisticCost" title="tarexp.evaluation.OptimisticCost"><span class="pre">OptimisticCost</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved_score_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved_checkpoint_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_round_exec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved_exp_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tasks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><span class="pre">Dataset</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><span class="pre">Dataset</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.TaskFeeder" title="tarexp.dataset.TaskFeeder"><span class="pre">TaskFeeder</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.WorkflowReplay" title="tarexp.workflow.WorkflowReplay"><span class="pre">WorkflowReplay</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopping_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../tarexp.component.stopping/#tarexp.component.stopping.StoppingRule" title="tarexp.component.stopping.StoppingRule"><span class="pre">StoppingRule</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exp_early_stopping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/experiments.py#L462-L578"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.experiments.StoppingExperimentOnReplay" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tarexp.experiments.Experiment" title="tarexp.experiments.Experiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Experiment</span></code></a></p>
+<p>Stopping Rule experiments on existing TAR runs using <a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.WorkflowReplay" title="tarexp.workflow.WorkflowReplay"><code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.workflow.WorkflowReplay</span></code></a>.</p>
+<p>This experiment invokes different stopping rules at each replay round to test whether the rule suggests stopping.
+All runs in the provided TAR experiment directory will be tested.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Since stopping rules are only tested on the replays, any rule that intervenes with the TAR process (such as
+changing the sampling of the documents for estimating progress) cannot be tested with this experiment. User
+should execute individual TAR runs by using <a class="reference internal" href="#tarexp.experiments.TARExperiment" title="tarexp.experiments.TARExperiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">TARExperiment</span></code></a> to test those stopping rules.</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.StoppingExperimentOnReplay.saved_exp_path">
+<span class="sig-name descname"><span class="pre">saved_exp_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tarexp.experiments.StoppingExperimentOnReplay.saved_exp_path" title="Permalink to this definition">#</a></dt>
+<dd><p>Path to the directory of the TAR runs.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.StoppingExperimentOnReplay.tasks">
+<span class="sig-name descname"><span class="pre">tasks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><span class="pre">Dataset</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.Dataset" title="tarexp.dataset.Dataset"><span class="pre">Dataset</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../tarexp.dataset/#tarexp.dataset.TaskFeeder" title="tarexp.dataset.TaskFeeder"><span class="pre">TaskFeeder</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tarexp.experiments.StoppingExperimentOnReplay.tasks" title="Permalink to this definition">#</a></dt>
+<dd><p>List of dataset instance or TaskFeeder that provides the datasets for replay experiments.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.StoppingExperimentOnReplay.replay">
+<span class="sig-name descname"><span class="pre">replay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.WorkflowReplay" title="tarexp.workflow.WorkflowReplay"><span class="pre">WorkflowReplay</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tarexp.experiments.StoppingExperimentOnReplay.replay" title="Permalink to this definition">#</a></dt>
+<dd><p>The replay workflow class that corresponds to the workflow used to generate the TAR runs provided in
+<a class="reference internal" href="#tarexp.experiments.StoppingExperimentOnReplay.saved_exp_path" title="tarexp.experiments.StoppingExperimentOnReplay.saved_exp_path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">saved_exp_path</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.StoppingExperimentOnReplay.stopping_rules">
+<span class="sig-name descname"><span class="pre">stopping_rules</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../tarexp.component.stopping/#tarexp.component.stopping.StoppingRule" title="tarexp.component.stopping.StoppingRule"><span class="pre">StoppingRule</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tarexp.experiments.StoppingExperimentOnReplay.stopping_rules" title="Permalink to this definition">#</a></dt>
+<dd><p>List of stopping rules that will be tested on the replay workflow.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.experiments.StoppingExperimentOnReplay.exp_early_stopping">
+<span class="sig-name descname"><span class="pre">exp_early_stopping</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#tarexp.experiments.StoppingExperimentOnReplay.exp_early_stopping" title="Permalink to this definition">#</a></dt>
+<dd><p>Whether to early stop the replay if all stopping rule tested have already suggested stopping.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tarexp.experiments.StoppingExperimentOnReplay.available_events">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">available_events</span></span><a class="headerlink" href="#tarexp.experiments.StoppingExperimentOnReplay.available_events" title="Permalink to this definition">#</a></dt>
+<dd><p>List of available events of this experiment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.experiments.StoppingExperimentOnReplay.generateSettings">
+<span class="sig-name descname"><span class="pre">generateSettings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/experiments.py#L515-L532"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.experiments.StoppingExperimentOnReplay.generateSettings" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate a list experimenting settings.</p>
+<p>Any experiment class that inherits this class should implement its own version since each experiment should define
+its own set of attributes that could be experimenting with (or more complex ways to generate sensible combinations).
+The rest of the attributes should be static.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.experiments.StoppingExperimentOnReplay.exec">
+<span class="sig-name descname"><span class="pre">exec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replay_cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.WorkflowReplay" title="tarexp.workflow.WorkflowReplay"><span class="pre">WorkflowReplay</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopping_rules</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../tarexp.component.stopping/#tarexp.component.stopping.StoppingRule" title="tarexp.component.stopping.StoppingRule"><span class="pre">StoppingRule</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dump_frequency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exp_early_stopping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callbacks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/experiments.py#L535-L578"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.experiments.StoppingExperimentOnReplay.exec" title="Permalink to this definition">#</a></dt>
+<dd><p>Execute a run of experiment using the replay workflow specified in <code class="xref py py-attr docutils literal notranslate"><span class="pre">replay_workflow</span></code>.
+This method is used internally by the dispatcher invoked by <a class="reference internal" href="#tarexp.experiments.Experiment.run" title="tarexp.experiments.Experiment.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tarexp.experiments.Experiment.run()</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since the stopping rule runs are designed to be fast, resume is not supported in this experiment.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../tarexp.evaluation/"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">tarexp.evaluation module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../tarexp.ledger/"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">tarexp.ledger module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Action"><code class="docutils literal notranslate"><span class="pre">Action</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Action.should_save"><code class="docutils literal notranslate"><span class="pre">Action.should_save</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Action.should_stop"><code class="docutils literal notranslate"><span class="pre">Action.should_stop</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Experiment"><code class="docutils literal notranslate"><span class="pre">Experiment</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Experiment.output_path"><code class="docutils literal notranslate"><span class="pre">Experiment.output_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Experiment.random_seed"><code class="docutils literal notranslate"><span class="pre">Experiment.random_seed</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Experiment.metrics"><code class="docutils literal notranslate"><span class="pre">Experiment.metrics</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Experiment.saved_score_limit"><code class="docutils literal notranslate"><span class="pre">Experiment.saved_score_limit</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Experiment.saved_checkpoint_limit"><code class="docutils literal notranslate"><span class="pre">Experiment.saved_checkpoint_limit</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Experiment.max_round_exec"><code class="docutils literal notranslate"><span class="pre">Experiment.max_round_exec</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Experiment.on"><code class="docutils literal notranslate"><span class="pre">Experiment.on()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Experiment.registerExecArguments"><code class="docutils literal notranslate"><span class="pre">Experiment.registerExecArguments()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Experiment.available_events"><code class="docutils literal notranslate"><span class="pre">Experiment.available_events</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Experiment.savable_fields"><code class="docutils literal notranslate"><span class="pre">Experiment.savable_fields</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Experiment.run"><code class="docutils literal notranslate"><span class="pre">Experiment.run()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Experiment.generateSettings"><code class="docutils literal notranslate"><span class="pre">Experiment.generateSettings()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.Experiment.exec"><code class="docutils literal notranslate"><span class="pre">Experiment.exec()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.TARExperiment"><code class="docutils literal notranslate"><span class="pre">TARExperiment</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.TARExperiment.tasks"><code class="docutils literal notranslate"><span class="pre">TARExperiment.tasks</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.TARExperiment.components"><code class="docutils literal notranslate"><span class="pre">TARExperiment.components</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.TARExperiment.workflow"><code class="docutils literal notranslate"><span class="pre">TARExperiment.workflow</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.TARExperiment.batch_size"><code class="docutils literal notranslate"><span class="pre">TARExperiment.batch_size</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.TARExperiment.control_set_size"><code class="docutils literal notranslate"><span class="pre">TARExperiment.control_set_size</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.TARExperiment.workflow_kwargs"><code class="docutils literal notranslate"><span class="pre">TARExperiment.workflow_kwargs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.TARExperiment.repeat_tasks"><code class="docutils literal notranslate"><span class="pre">TARExperiment.repeat_tasks</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.TARExperiment.seed_docs_construction"><code class="docutils literal notranslate"><span class="pre">TARExperiment.seed_docs_construction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.TARExperiment.available_events"><code class="docutils literal notranslate"><span class="pre">TARExperiment.available_events</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.TARExperiment.generateSettings"><code class="docutils literal notranslate"><span class="pre">TARExperiment.generateSettings()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.TARExperiment.exec"><code class="docutils literal notranslate"><span class="pre">TARExperiment.exec()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.StoppingExperimentOnReplay"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.StoppingExperimentOnReplay.saved_exp_path"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.saved_exp_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.StoppingExperimentOnReplay.tasks"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.tasks</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.StoppingExperimentOnReplay.replay"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.replay</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.StoppingExperimentOnReplay.stopping_rules"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.stopping_rules</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.StoppingExperimentOnReplay.exp_early_stopping"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.exp_early_stopping</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.StoppingExperimentOnReplay.available_events"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.available_events</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.StoppingExperimentOnReplay.generateSettings"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.generateSettings()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.experiments.StoppingExperimentOnReplay.exec"><code class="docutils literal notranslate"><span class="pre">StoppingExperimentOnReplay.exec()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/tarexp.experiments.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2022, Eugene Yang.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

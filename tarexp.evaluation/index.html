@@ -1,0 +1,706 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>tarexp.evaluation module &#8212; TARexp  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1c6b4a1a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=df4b10f6"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tarexp.evaluation';</script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="tarexp.experiments module" href="../tarexp.experiments/" />
+    <link rel="prev" title="tarexp.dataset module" href="../tarexp.dataset/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">TARexp  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../started/">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../modules/">
+                        API Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example/">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../references/">
+                        References
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../started/">
+                        Get Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../modules/">
+                        API Documentation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../example/">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../references/">
+                        References
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../tarexp/">tarexp package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tarexp.component/">tarexp.component package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.base/">tarexp.component.base module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.labeler/">tarexp.component.labeler module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.ranker/">tarexp.component.ranker module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.sampler/">tarexp.component.sampler module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.component.stopping/">tarexp.component.stopping module</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tarexp.helper/">tarexp.helper package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.helper.pandas_tools/">tarexp.helper.pandas_tools module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tarexp.helper.plotting/">tarexp.helper.plotting module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.base/">tarexp.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.dataset/">tarexp.dataset module</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">tarexp.evaluation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.experiments/">tarexp.experiments module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.ledger/">tarexp.ledger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.util/">tarexp.util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tarexp.workflow/">tarexp.workflow module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../modules/" class="nav-link">tarexp</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../tarexp/" class="nav-link">tarexp package</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">tarexp.evalu...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-tarexp.evaluation">
+<span id="tarexp-evaluation-module"></span><h1>tarexp.evaluation module<a class="headerlink" href="#module-tarexp.evaluation" title="Permalink to this heading">#</a></h1>
+<p>Consistent implementation of effectiveness metrics, including tricky issues like tiebreaking is critical to TAR experiments.
+This is true both for evaluation, and because stopping rules may incorporate effectiveness estimates based on small samples.
+We provide all metrics from the open source package <a class="reference external" href="https://ir-measur.es/en/latest/"><code class="docutils literal notranslate"><span class="pre">ir-measures</span></code></a> through the <a class="reference internal" href="../tarexp.workflow/#tarexp.workflow.Workflow.getMetrics" title="tarexp.workflow.Workflow.getMetrics"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tarexp.workflow.Workflow.getMetrics()</span></code></a> method.
+Metrics are computed on both the full collection and unreviewed documents to support both finite population and generalization
+perspectives.</p>
+<p>In addition to standard IR metrics, <code class="docutils literal notranslate"><span class="pre">TARexp</span></code> implements <em>OptimisticCost</em> (<a class="reference internal" href="#tarexp.evaluation.OptimisticCost" title="tarexp.evaluation.OptimisticCost"><code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.evaluation.OptimisticCost</span></code></a>) to
+support the idealized end-to-end cost analysis for TAR proposed in  Yang <em>et al.</em> <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Such analysis requires specifying a
+target recall and a cost structure associated with the TAR process. <code class="docutils literal notranslate"><span class="pre">TARexp</span></code> also provides helper functions for plotting
+cost dynamics graphs (<a class="reference internal" href="../tarexp.helper.plotting/#module-tarexp.helper.plotting" title="tarexp.helper.plotting"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tarexp.helper.plotting</span></code></a>).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p>Eugene Yang, David D. Lewis, and Ophir Frieder.
+“On minimizing cost in legal document review workflows.”
+<em>Proceedings of the 21st ACM Symposium on Document Engineering</em>. 2021.
+<a class="reference external" href="https://arxiv.org/abs/2106.09866">https://arxiv.org/abs/2106.09866</a></p>
+</aside>
+</aside>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.evaluation.MeasureKey">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.evaluation.</span></span><span class="sig-name descname"><span class="pre">MeasureKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ir_measures.measures.Measure</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_recall</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/evaluation.py#L36-L52"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.evaluation.MeasureKey" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Hashable key for evaluation metric.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.evaluation.MeasureKey.measure">
+<span class="sig-name descname"><span class="pre">measure</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ir_measures.measures.Measure</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tarexp.evaluation.MeasureKey.measure" title="Permalink to this definition">#</a></dt>
+<dd><p>Name of the measurement.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.evaluation.MeasureKey.section">
+<span class="sig-name descname"><span class="pre">section</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'all'</span></em><a class="headerlink" href="#tarexp.evaluation.MeasureKey.section" title="Permalink to this definition">#</a></dt>
+<dd><p>Part of the collection that the evaluation is measured on. Can be but not limited to “all”, “known” (reviewed
+documents), etc.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.evaluation.MeasureKey.target_recall">
+<span class="sig-name descname"><span class="pre">target_recall</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tarexp.evaluation.MeasureKey.target_recall" title="Permalink to this definition">#</a></dt>
+<dd><p>The recall target. Can be <code class="docutils literal notranslate"><span class="pre">None</span></code> depending on whether the measure requires one.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.evaluation.CostCountKey">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.evaluation.</span></span><span class="sig-name descname"><span class="pre">CostCountKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ir_measures.measures.Measure</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_recall</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/evaluation.py#L55-L75"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.evaluation.CostCountKey" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tarexp.evaluation.MeasureKey" title="tarexp.evaluation.MeasureKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeasureKey</span></code></a></p>
+<p>Hashable key for the recording count of the documents.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.evaluation.CostCountKey.measure">
+<span class="sig-name descname"><span class="pre">measure</span></span><a class="headerlink" href="#tarexp.evaluation.CostCountKey.measure" title="Permalink to this definition">#</a></dt>
+<dd><p>Name of the measurement.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.evaluation.CostCountKey.section">
+<span class="sig-name descname"><span class="pre">section</span></span><a class="headerlink" href="#tarexp.evaluation.CostCountKey.section" title="Permalink to this definition">#</a></dt>
+<dd><p>Part of the collection that the evaluation is measured on. Can be but not limited to “all”, “known” (reviewed
+documents), etc.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.evaluation.CostCountKey.target_recall">
+<span class="sig-name descname"><span class="pre">target_recall</span></span><a class="headerlink" href="#tarexp.evaluation.CostCountKey.target_recall" title="Permalink to this definition">#</a></dt>
+<dd><p>The recall target. Can be <code class="docutils literal notranslate"><span class="pre">None</span></code> depending on whether the measure requires one.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.evaluation.CostCountKey.label">
+<span class="sig-name descname"><span class="pre">label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tarexp.evaluation.CostCountKey.label" title="Permalink to this definition">#</a></dt>
+<dd><p>The ground truth label that the measure is counting.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tarexp.evaluation.OptimisticCost">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarexp.evaluation.</span></span><span class="sig-name descname"><span class="pre">OptimisticCost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ir_measures.measures.Measure</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_recall</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cost_structure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/evaluation.py#L78-L164"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.evaluation.OptimisticCost" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tarexp.evaluation.MeasureKey" title="tarexp.evaluation.MeasureKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeasureKey</span></code></a></p>
+<p>Optimistic Cost</p>
+<p>The cost measure that records the total cost of reviewing documents in both first and (an optimal) second phase
+review workflow.
+Please refer to  Yang <em>et al.</em> <a class="footnote-reference brackets" href="#id2" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> for further details.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.evaluation.OptimisticCost.measure">
+<span class="sig-name descname"><span class="pre">measure</span></span><a class="headerlink" href="#tarexp.evaluation.OptimisticCost.measure" title="Permalink to this definition">#</a></dt>
+<dd><p>Name of the measurement.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.evaluation.OptimisticCost.section">
+<span class="sig-name descname"><span class="pre">section</span></span><a class="headerlink" href="#tarexp.evaluation.OptimisticCost.section" title="Permalink to this definition">#</a></dt>
+<dd><p>Part of the collection that the evaluation is measured on. Can be but not limited to “all”, “known” (reviewed
+documents), etc.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.evaluation.OptimisticCost.target_recall">
+<span class="sig-name descname"><span class="pre">target_recall</span></span><a class="headerlink" href="#tarexp.evaluation.OptimisticCost.target_recall" title="Permalink to this definition">#</a></dt>
+<dd><p>The recall target. Can be <code class="docutils literal notranslate"><span class="pre">None</span></code> depending on whether the measure requires one.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tarexp.evaluation.OptimisticCost.cost_structure">
+<span class="sig-name descname"><span class="pre">cost_structure</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#tarexp.evaluation.OptimisticCost.cost_structure" title="Permalink to this definition">#</a></dt>
+<dd><p>Four-tuple cost structure. The elements of the tuple are the unit cost of reviewing positive and negative
+documents in the first phase and positive and negative ones in the second phase respectively.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tarexp.evaluation.OptimisticCost.calc_all">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calc_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measures</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/evaluation.py#L113-L164"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.evaluation.OptimisticCost.calc_all" title="Permalink to this definition">#</a></dt>
+<dd><p>Static method for calculating multiple <a class="reference internal" href="#tarexp.evaluation.OptimisticCost" title="tarexp.evaluation.OptimisticCost"><code class="xref py py-class docutils literal notranslate"><span class="pre">OptimisticCost</span></code></a> measures given a cost Pandas DataFrame.</p>
+<p>The dataframe should contain “query_id”, “iteration”, “relevance” (as ground truth), “score”, “control” (boolean
+values of whether the document is in the control set), “known” (whether the document is reviewed) as columns and
+all documents in the collection as rows.
+This dataframe is similar to the one used in <code class="docutils literal notranslate"><span class="pre">ir_measures.calc_all()</span></code>.</p>
+<p>This method is also used internally by <a class="reference internal" href="#tarexp.evaluation.evaluate" title="tarexp.evaluation.evaluate"><code class="xref py py-func docutils literal notranslate"><span class="pre">evaluate()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>measures</strong> – A list of <a class="reference internal" href="#tarexp.evaluation.OptimisticCost" title="tarexp.evaluation.OptimisticCost"><code class="xref py py-class docutils literal notranslate"><span class="pre">OptimisticCost</span></code></a> instance for calculation.</p></li>
+<li><p><strong>df</strong> – The cost Pandas DataFrame</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Python dictionary with key as the measures and values as the measurement values.
+The count of each section given the all recall targets provided in the <code class="docutils literal notranslate"><span class="pre">measures</span></code> argument would also be
+returned as auxiliary information.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tarexp.evaluation.evaluate">
+<span class="sig-prename descclassname"><span class="pre">tarexp.evaluation.</span></span><span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ledger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger" title="tarexp.ledger.Ledger"><span class="pre">Ledger</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measures</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#tarexp.evaluation.MeasureKey" title="tarexp.evaluation.MeasureKey"><span class="pre">MeasureKey</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference external" href="https://github.com/eugene-yang/tarexp/blob/main/tarexp/evaluation.py#L166-L226"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tarexp.evaluation.evaluate" title="Permalink to this definition">#</a></dt>
+<dd><p>Evaluate TAR run based on a given <a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger" title="tarexp.ledger.Ledger"><code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.ledger.Ledger</span></code></a>.</p>
+<p>This function calculates the evaluation metrics based on the provided Ledger.
+The measures are evaluated on the <strong>last round</strong> recorded in the ledger.
+If inteded to caculate metrics on past rounds, please provide a ledger that only contains information up to the
+round the user is intended to evaluate by using <a class="reference internal" href="../tarexp.ledger/#tarexp.ledger.Ledger.freeze_at" title="tarexp.ledger.Ledger.freeze_at"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tarexp.ledger.Ledger.freeze_at()</span></code></a>.</p>
+<p>It serves as a catch-all function for all evaluation metrics <code class="docutils literal notranslate"><span class="pre">TARexp</span></code> supports, including all measurements in
+<a class="reference external" href="https://ir-measur.es/en/latest/"><code class="docutils literal notranslate"><span class="pre">ir-measures</span></code></a> and <a class="reference internal" href="#tarexp.evaluation.OptimisticCost" title="tarexp.evaluation.OptimisticCost"><code class="xref py py-class docutils literal notranslate"><span class="pre">OptimisticCost</span></code></a>.
+Future addtional of the supported evaluation metrics should also be added to this function for completeness.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> – The ground-truth labels of the documents. This is different from the labels recorded in the Ledger which is the
+review results (not necessarily the groun-truth if not using a <code class="xref py py-class docutils literal notranslate"><span class="pre">tarexp.components.labeler.PerfectLabeler</span></code>)</p></li>
+<li><p><strong>ledger</strong> – The ledger the recorded the progress.</p></li>
+<li><p><strong>score</strong> – A list of the document scores.</p></li>
+<li><p><strong>measures</strong> – A list of <a class="reference internal" href="#tarexp.evaluation.MeasureKey" title="tarexp.evaluation.MeasureKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeasureKey</span></code></a> instance, the name of the measurments supported in <a class="reference external" href="https://ir-measur.es/en/latest/"><code class="docutils literal notranslate"><span class="pre">ir-measures</span></code></a>, or
+<a class="reference external" href="https://ir-measur.es/en/latest/"><code class="docutils literal notranslate"><span class="pre">ir-measures</span></code></a> measurement object (such as <code class="docutils literal notranslate"><span class="pre">ir_measures.P&#64;10</span></code>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Python dictionary of keys as instances of <a class="reference internal" href="#tarexp.evaluation.MeasureKey" title="tarexp.evaluation.MeasureKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeasureKey</span></code></a> and values as the corresponding measurement
+values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[<a class="reference internal" href="#tarexp.evaluation.MeasureKey" title="tarexp.evaluation.MeasureKey"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeasureKey</span></code></a>, int|float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../tarexp.dataset/"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">tarexp.dataset module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../tarexp.experiments/"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">tarexp.experiments module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.MeasureKey"><code class="docutils literal notranslate"><span class="pre">MeasureKey</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.MeasureKey.measure"><code class="docutils literal notranslate"><span class="pre">MeasureKey.measure</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.MeasureKey.section"><code class="docutils literal notranslate"><span class="pre">MeasureKey.section</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.MeasureKey.target_recall"><code class="docutils literal notranslate"><span class="pre">MeasureKey.target_recall</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.CostCountKey"><code class="docutils literal notranslate"><span class="pre">CostCountKey</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.CostCountKey.measure"><code class="docutils literal notranslate"><span class="pre">CostCountKey.measure</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.CostCountKey.section"><code class="docutils literal notranslate"><span class="pre">CostCountKey.section</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.CostCountKey.target_recall"><code class="docutils literal notranslate"><span class="pre">CostCountKey.target_recall</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.CostCountKey.label"><code class="docutils literal notranslate"><span class="pre">CostCountKey.label</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.OptimisticCost"><code class="docutils literal notranslate"><span class="pre">OptimisticCost</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.OptimisticCost.measure"><code class="docutils literal notranslate"><span class="pre">OptimisticCost.measure</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.OptimisticCost.section"><code class="docutils literal notranslate"><span class="pre">OptimisticCost.section</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.OptimisticCost.target_recall"><code class="docutils literal notranslate"><span class="pre">OptimisticCost.target_recall</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.OptimisticCost.cost_structure"><code class="docutils literal notranslate"><span class="pre">OptimisticCost.cost_structure</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.OptimisticCost.calc_all"><code class="docutils literal notranslate"><span class="pre">OptimisticCost.calc_all()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarexp.evaluation.evaluate"><code class="docutils literal notranslate"><span class="pre">evaluate()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/tarexp.evaluation.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2022, Eugene Yang.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
